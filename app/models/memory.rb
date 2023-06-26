@@ -1,3 +1,3 @@
 class Memory < ApplicationRecord
-  belongs_to :events_users
+  belongs_to :events_user
 end
