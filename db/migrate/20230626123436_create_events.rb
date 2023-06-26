@@ -9,7 +9,6 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       t.boolean :break
       t.string :difficulty
       t.text :description
-      t.references :user, null: false, foreign_key: true
       t.references :hike, null: false, foreign_key: true
 
       t.timestamps
