@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_130821) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_152549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "memory_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_bookings_on_chatroom_id"
+    t.index ["event_id"], name: "index_bookings_on_event_id"
+    t.index ["memory_id"], name: "index_bookings_on_memory_id"
+    t.index ["users_id"], name: "index_bookings_on_users_id"
+  end
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "messages"
@@ -35,19 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_130821) do
     t.bigint "users_id", null: false
     t.index ["hike_id"], name: "index_events_on_hike_id"
     t.index ["users_id"], name: "index_events_on_users_id"
-  end
-
-  create_table "events_users", force: :cascade do |t|
-    t.bigint "users_id", null: false
-    t.bigint "event_id", null: false
-    t.bigint "memory_id", null: false
-    t.bigint "chatroom_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chatroom_id"], name: "index_events_users_on_chatroom_id"
-    t.index ["event_id"], name: "index_events_users_on_event_id"
-    t.index ["memory_id"], name: "index_events_users_on_memory_id"
-    t.index ["users_id"], name: "index_events_users_on_users_id"
   end
 
   create_table "hikes", force: :cascade do |t|
@@ -90,11 +90,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_130821) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "chatrooms"
+  add_foreign_key "bookings", "events"
+  add_foreign_key "bookings", "memories"
+  add_foreign_key "bookings", "users", column: "users_id"
   add_foreign_key "events", "hikes"
   add_foreign_key "events", "users", column: "users_id"
-  add_foreign_key "events_users", "chatrooms"
-  add_foreign_key "events_users", "events"
-  add_foreign_key "events_users", "memories"
-  add_foreign_key "events_users", "users", column: "users_id"
   add_foreign_key "lists", "events"
 end
