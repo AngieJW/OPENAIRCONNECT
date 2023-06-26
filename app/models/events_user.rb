@@ -1,4 +1,4 @@
-class EventsUser < ApplicationRecord
+class Booking < ApplicationRecord
   belongs_to :users
   belongs_to :event
   belongs_to :memory
