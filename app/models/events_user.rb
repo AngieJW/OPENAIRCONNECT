@@ -1,5 +1,6 @@
 class Booking < ApplicationRecord
-  belongs_to :users
+  has_many :users
+  
   belongs_to :event
   belongs_to :memory
   belongs_to :chatroom
