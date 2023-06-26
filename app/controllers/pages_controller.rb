@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @bookings = Booking.all
+    # @bookings = Booking.all
   end
 
   def dashboard
