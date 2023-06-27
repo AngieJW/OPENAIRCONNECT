@@ -8,13 +8,10 @@ puts 'users delete'
 Event.delete_all
 puts 'events delete'
 
-# has_many :events
-# has_many :events_users
-
-# validates :first_name, presence: true
-# validates :last_name, presence: true
-# validates :phone_number, presence: true
-# validates :password, presence: true
+# validates :meeting_date, presence: true
+# validates :meeting_time, presence: true
+# validates :meeting_point, presence: true
+# validates :group_size, presence: true
 
 Faker::Config.locale = 'fr-CA'
 
@@ -26,7 +23,17 @@ Faker::Config.locale = 'fr-CA'
                          first_name: new_first_name,
                          last_name: new_last_name,
                          phone_number: Faker::PhoneNumber.phone_number)
-  # new_event = Event.create()
+  new_hike = Hike.create(distance: 304,
+                         elevation: 120,
+                         duration: Time.new,
+                         starting_lat: 3.112,
+                         starting_lng: 4.41,
+                         ending_lat: 1312,
+                         ending_lng: 121)
+  # new_event = Event.create(meeting_date: Date.new,
+  #                          meeting_time: Time.new,
+  #                          meeting_point: '21 Rue Haxo',
+  #                          group_size: rand(5..10))
 end
 
-puts 'users created'
+puts 'finished'
