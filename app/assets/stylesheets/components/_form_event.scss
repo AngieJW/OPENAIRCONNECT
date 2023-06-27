@@ -1,0 +1,23 @@
+.form-event {
+  width: 90vw;
+
+
+ h1{
+  color: $dark-green;
+  margin: 0.5em auto;
+  }
+}
+
+.input-event {
+  background-color: rgb(255, 255, 255);
+  color: $gray;
+  border-color: $green;
+  border-width: 3px;
+  border-radius: 5px;
+  margin: 0 auto;
+  &:focus {
+    background-color: $vanilla;
+    border-color: $green;
+    border-width: 3px;
+  }
+}
