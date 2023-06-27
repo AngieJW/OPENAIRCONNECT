@@ -1,5 +1,5 @@
 class Hike < ApplicationRecord
-  has_many :events, presence: true
+  has_many :events
 
   validates :distance, presence: true
   validates :elevation, presence: true
