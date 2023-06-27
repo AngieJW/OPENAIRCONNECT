@@ -1,0 +1,7 @@
+<%= simple_form_for @event do |f| %>
+  <%= f.input :meeting_date, as: :date, html5: true %>
+  <%= f.input :meeting_time %>
+  <%= f.input :meeting_point %>
+  <%= f.input :group_size %>
+  <%= f.button :submit %>
+<% end %>
