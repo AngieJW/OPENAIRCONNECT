@@ -1,0 +1,18 @@
+<h1>Event#show</h1>
+<p>Find me in app/views/event/show.html.erb</p>
+<%#
+    t.date "meeting_date"
+    t.time "meeting_time"
+    t.string "meeting_point"
+    t.integer "group_size"
+    t.boolean "swim"
+    t.boolean "break"
+    t.string "difficulty"
+    t.text "description"
+    t.bigint "hike_id", null: false
+    t.bigint "user_id", null: false %>
+
+meet date : <%= @event.meeting_date %> <br>
+meet time : <%= @event.meeting_time %> <br>
+meet point : <%= @event.meeting_point %> <br>
+size group : <%= @event.group_size %>
