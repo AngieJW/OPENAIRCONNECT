@@ -27,9 +27,9 @@ Faker::Config.locale = 'fr-CA'
                          elevation: 120,
                          duration: Time.new,
                          starting_lat: 3.112,
-                         starting_lng: 4.41,
+                         starting_long: 4.41,
                          ending_lat: 1312,
-                         ending_lng: 121)
+                         ending_long: 121)
   # new_event = Event.create(meeting_date: Date.new,
   #                          meeting_time: Time.new,
   #                          meeting_point: '21 Rue Haxo',
