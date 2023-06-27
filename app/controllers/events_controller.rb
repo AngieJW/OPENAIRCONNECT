@@ -10,6 +10,16 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def create
+    @event = Event.new
+    @event.user = current_user
+    if @event.save!
+      redirect_to events_paths
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit
   end
 
