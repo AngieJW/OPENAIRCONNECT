@@ -1,7 +1,14 @@
-<%= simple_form_for @event do |f| %>
-  <%= f.input :meeting_date, as: :date, html5: true %>
-  <%= f.input :meeting_time %>
-  <%= f.input :meeting_point %>
-  <%= f.input :group_size %>
-  <%= f.button :submit %>
+<%= simple_form_for @event , defaults: { input_html: { class: 'input-event' } } do |f| %>
+  <%= f.input :location, label: false, placeholder: "Lieu de l'évènement" %>
+  <%= f.input :meeting_date, label: "Date", as: :date, html5: true %>
+  <%= f.input :meeting_time, label: "Heure" %>
+  <%= f.input :meeting_point, label: false, placeholder: "Point de rendez-vous" %>
+  <%= f.input :group_size , label: false, placeholder: "Taille max du groupe" %>
+  <%= f.input :difficulty, label: false, placeholder: "Difficulté" %>
+  <div class="container d-flex justify-content-around">
+    <%= f.input :swim, label: "Baignade" %>
+    <%= f.input :break, label: "Pause" %>
+  </div>
+  <%= f.input :description, label: false, placeholder: "Description"  %>
+  <%= f.button :submit, "Suivant", class: "btn btn-warning m-2"  %>
 <% end %>
