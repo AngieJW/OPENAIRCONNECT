@@ -33,3 +33,9 @@
     text-decoration: none;
   }
 }
+
+@media (max-width: 600px) {
+  .navbar-lewagon .navbar-item p {
+    display: none;
+  }
+}
