@@ -1,9 +1,9 @@
 class Event < ApplicationRecord
   belongs_to :hike
   belongs_to :user
+  has_many :list, dependent: :destroy
+  has_one :chatroom, through: :booking
+  has_one :memory, through: :booking
 
-  validates :meeting_date, presence: true
-  validates :meeting_time, presence: true
-  validates :meeting_point, presence: true
-  validates :group_size, presence: true
+  validates :meeting_date, :meeting_point, :meeting_time, presence: true
 end
