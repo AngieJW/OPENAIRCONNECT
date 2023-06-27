@@ -4,7 +4,7 @@ class CreateBookings < ActiveRecord::Migration[7.0]
       t.references :user, null: false, foreign_key: true
       t.references :event, null: false, foreign_key: true
       t.references :memory, null: false, foreign_key: true
-      t.references :chatroom, null: false, foreign_key: true
+      t.references :chatroom, null: true, foreign_key: true
 
       t.timestamps
     end
