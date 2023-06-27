@@ -24,12 +24,8 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-<<<<<<< HEAD
-  config.mailer_sender = 'openairconnect@noreply.com'
 
-=======
   config.mailer_sender = 'openairconnect@no-reply.com'
->>>>>>> 4cc283e04880afcbfb1acc9dfea03420285a6b84
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
