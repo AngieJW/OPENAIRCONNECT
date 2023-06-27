@@ -1,9 +1,12 @@
 
+Booking.destroy_all
+
 Event.delete_all
 puts 'events delete'
 
 User.delete_all
 puts 'users delete'
+
 
 Hike.delete_all
 puts 'hikes delete'
@@ -13,6 +16,16 @@ coucou = User.create(email: 'terevamillet@yahoo.fr',
                      first_name: 'Tereva',
                      last_name: 'Millet',
                      phone_number: '0618729271')
+jeanjean = User.create(email: 'toto@gmail.com',
+                      password: 'tototo',
+                      first_name: 'Tereva',
+                      last_name: 'Millet',
+                      phone_number: '0618729271')
+lenonvoulu = User.create(email: 'titi@gmail.com',
+                        password: 'tototo',
+                        first_name: 'Tereva',
+                        last_name: 'Millet',
+                        phone_number: '0618729271')
 new_hike = Hike.create(distance: 304,
                        elevation: 120,
                        duration: Time.new,
@@ -27,5 +40,8 @@ eventu = Event.create(meeting_date: Date.new,
                       user: coucou)
 eventu.hike = new_hike
 eventu.save!
+
+booking = Booking.create(user: coucou, event: eventu)
+booking = Booking.create(user: jeanjean, event: eventu)
 
 puts 'finished'
