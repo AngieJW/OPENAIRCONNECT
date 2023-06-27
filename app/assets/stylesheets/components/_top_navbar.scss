@@ -1,0 +1,18 @@
+.top-navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #28965A;
+
+  .navbar-brand {
+    color: white;
+    text-align: center;
+  }
+}
+
+.logout-link {
+  position: absolute;
+  right: 10px;
+  color: white;
+}
