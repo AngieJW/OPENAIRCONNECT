@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'event/index'
+  get 'event/show'
+  get 'event/new'
+  get 'event/edit'
   devise_for :users
 
   root to: "pages#home"
