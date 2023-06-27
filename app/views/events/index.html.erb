@@ -3,6 +3,7 @@
 
 
 <% @events.each do |event| %>
-  owner : <%= event.user.first_name %> <%= event.user.last_name %>
-  <%= link_to 'details', event_path(event) %>
+  owner : <%= event.user.first_name %> <%= event.user.last_name %> <br>
+  point de rdv : <%= event.meeting_point %>
+  <%= link_to 'details', event_path(event) %> <br> <br>
 <% end %>
