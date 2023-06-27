@@ -11,10 +11,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new
+    @event = Event.new(event_params)
     @event.user = current_user
+    @event.hike = Hike.new
     if @event.save!
-      redirect_to events_paths
+      redirect_to events_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,5 +28,9 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(:meeting_date, :meeting_time, :meeting_point, :group_size)
   end
 end
