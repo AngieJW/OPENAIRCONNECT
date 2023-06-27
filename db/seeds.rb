@@ -1,7 +1,10 @@
-User.delete_all
-puts 'users delete'
+
 Event.delete_all
 puts 'events delete'
+
+User.delete_all
+puts 'users delete'
+
 Hike.delete_all
 puts 'hikes delete'
 
