@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :events, only: %i[index show new create edit update] do
     resources :chatrooms, only: %i[new create]
-    resources :lists, only: %i[show new create edit update destroy]
+    resources :items, only: %i[show new create edit update destroy]
     resources :memories, only: %i[show new create edit update]
   end
 end
