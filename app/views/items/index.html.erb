@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <h1>Packing list</h1>
+
+  <div class="form-check">
+    <% @items.each do |item| %>
+    # TO DO: add a new attribute ???
+    <% if item.packed? %>
+      <% status = "checked" %>
+    <% else %>
+      <% status = "" %>
+    <ul>
+      <li>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" status>
+          <label class="form-check-label" for="flexCheckDefault">
+          # item name here
+          <%= item.item %> : <%= item.quantity %>
+          </label>
+         </div>
+       <% end %>
+    </div>
+
+
+
+
+
+
+    <ul>
+      <li> <%= item.item %> : <%= item.quantity %> </li>
+    </ul>
+  <% end %>
+</div>

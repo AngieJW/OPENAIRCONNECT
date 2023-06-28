@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[show]
+  before_action :set_item, only: %i[show edit update destroy]
 
   def index
-    @item = Item.All
+    @items = Item.all
   end
 
   def new
@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def destroy
