@@ -1,9 +1,19 @@
-<h1>Event#index</h1>
-<p>Find me in app/views/event/index.html.erb</p>
+<main id="event_index">
 
+<div class="container-fluid">
+  <ul class="row d-flex justify-content-start p-4 g-2">
+  <% @events.each do |event| %>
+    <li class="card card_openair col-xs-12 col-lg-6 p-3">
+      <%= image_tag('PrisonMick.jpg') %>
+      <div class="card-body card-event-stats">
+      <%= event.meeting_date.strftime('%A %B %Y') %>
+      Organisé par <%= event.user.first_name %>
+      <%= link_to 'details', event_path(event) %>
+      </div>
+    </li>
+  <% end %>
 
-<% @events.each do |event| %>
-  owner : <%= event.user.first_name %> <%= event.user.last_name %> <br>
-  point de rdv : <%= event.meeting_point %>
-  <%= link_to 'details', event_path(event) %> <br> <br>
-<% end %>
+  </ul>
+</div>
+
+</main>
