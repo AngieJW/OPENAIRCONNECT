@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show]
+  before_action :set_event, only: %i[show edit update destroy]
   def index
     @events = policy_scope(Event)
   end

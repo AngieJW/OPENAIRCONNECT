@@ -1,6 +1,8 @@
 
 Booking.destroy_all
 
+Item.destroy_all
+
 Event.delete_all
 puts 'events delete'
 
@@ -10,6 +12,7 @@ puts 'users delete'
 
 Hike.delete_all
 puts 'hikes delete'
+
 
 coucou = User.create(email: 'terevamillet@yahoo.fr',
                      password: 'tereva',
@@ -40,6 +43,10 @@ eventu = Event.create(meeting_date: Date.new,
                       user: coucou)
 eventu.hike = new_hike
 eventu.save!
+
+item = Item.create(name: "gourde", quantity: "2", event: eventu)
+item2 = Item.create(name: "pain", quantity: "1", event: eventu)
+item3 = Item.create(name: "tente", quantity: "1", event: eventu)
 
 booking = Booking.create(user: coucou, event: eventu)
 booking = Booking.create(user: jeanjean, event: eventu)

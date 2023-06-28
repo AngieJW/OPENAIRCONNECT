@@ -28,4 +28,8 @@ class ItemPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def update_all
+    true
+  end
 end
