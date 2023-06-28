@@ -6,8 +6,8 @@ class EventPolicy < ApplicationPolicy
     end
   end
 
-  def new
-    true
+  def new?
+    return create?
   end
 
   def create?
@@ -19,6 +19,10 @@ class EventPolicy < ApplicationPolicy
   end
 
   def edit?
+    return update?
+  end
+
+  def update?
     record.user == user
   end
 

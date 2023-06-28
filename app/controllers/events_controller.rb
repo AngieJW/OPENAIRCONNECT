@@ -17,26 +17,31 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     @event.hike = Hike.new
+    authorize @event
     if @event.save!
       redirect_to events_path
     else
       render :new, status: :unprocessable_entity
     end
-    authorize @event
   end
 
   def edit
     authorize @event
   end
 
+  def update
+    authorize @event
+  end
+
   def destroy
+    authorize @event
     @event.destroy
     redirect_to events_path, status: :see_other
   end
 
   private
 
-  def se_event
+  def set_event
     @event = Event.find(params[:id])
   end
 
