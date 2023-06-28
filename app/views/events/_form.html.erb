@@ -6,8 +6,14 @@
   <%= f.input :group_size , label: false, placeholder: "Taille max du groupe" %>
   <%= f.input :difficulty, label: false, placeholder: "Difficulté" %>
   <div class="container d-flex justify-content-around">
-    <%= f.input :swim, label: "Baignade" %>
-    <%= f.input :break, label: "Pause" %>
+    <%# <%= f.input :swim,
+                  as: :check_boxes,
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item' %>
+        <%= f.label :swim,  'Baignade' %>
+        <%= f.check_box :swim,
+                        input_html: { class: "tag-selector" },
+                        item_wrapper_class: 'tag-item' %>
   </div>
   <%= f.input :description, label: false, placeholder: "Description"  %>
   <%= f.button :submit, "Suivant", class: "btn btn-warning m-2"  %>

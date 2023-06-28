@@ -34,6 +34,11 @@ class EventsController < ApplicationController
     redirect_to events_path, status: :see_other
   end
 
+  def myevents
+    @events = Event.where(user: current_user)
+    authorize @event
+  end
+
   private
 
   def set_event
