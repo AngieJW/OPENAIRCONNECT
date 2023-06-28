@@ -17,9 +17,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_204514) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "event_id", null: false
+    t.bigint "memory_id", null: false
+    t.bigint "chatroom_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_bookings_on_chatroom_id"
     t.index ["event_id"], name: "index_bookings_on_event_id"
+    t.index ["memory_id"], name: "index_bookings_on_memory_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -93,7 +97,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_204514) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "chatrooms"
   add_foreign_key "bookings", "events"
+  add_foreign_key "bookings", "memories"
   add_foreign_key "bookings", "users"
   add_foreign_key "events", "hikes"
   add_foreign_key "events", "memories"
