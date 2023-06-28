@@ -36,10 +36,6 @@ class ApplicationPolicy
     false
   end
 
-  def myevents?
-    false
-  end
-
   class Scope
     def initialize(user, scope)
       @user = user

@@ -36,7 +36,7 @@ class EventsController < ApplicationController
 
   def myevents
     @events = Event.where(user: current_user)
-    authorize @event
+    authorize @events
   end
 
   private

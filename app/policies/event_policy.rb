@@ -26,7 +26,7 @@ class EventPolicy < ApplicationPolicy
     record.user == user
   end
 
-  def myevents
+  def myevents?
     true
   end
 end

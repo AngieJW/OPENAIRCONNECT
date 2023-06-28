@@ -1,1 +1,21 @@
-<p>slt connard</p>
+<h1>Mes evenements</h1>
+
+<main id="myevents">
+
+<div class="container-fluid">
+  <ul class="row d-flex justify-content-start p-4 g-2">
+  <% @events.each do |event| %>
+    <li class="card card_openair col-xs-12 col-lg-6 p-3">
+      <%= image_tag('PrisonMick.jpg') %>
+      <div class="card-body card-event-stats">
+      <%= event.meeting_date.strftime('%A %B %Y') %>
+      Organisé par <%= event.user.first_name %>
+      <%= link_to 'details', event_path(event) %>
+      </div>
+    </li>
+  <% end %>
+
+  </ul>
+</div>
+
+</main>
