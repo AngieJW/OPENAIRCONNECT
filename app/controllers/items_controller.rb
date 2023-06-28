@@ -24,12 +24,14 @@ class ItemsController < ApplicationController
     item_ids = params[:item_ids] # how does it know what to get
     packed = params[:packed] # what is stored in packed ?
 
-    item_ids.each_with_index do |item_id, index|
+    item_ids.each do |item_id|
       item = Item.find(item_id)
-      item.update(packed: packed[index])
+      item.packed? ? item.update(packed: false) : item.update(packed: true)
     end
 
-    redirect_to items_path, notice: "You're items are now packed!"
+    i = Item.find(item_ids.last)
+
+    redirect_to event_items_path(i.event), notice: "You're items are now packed!"
 
     # @item.packed = true
   end
