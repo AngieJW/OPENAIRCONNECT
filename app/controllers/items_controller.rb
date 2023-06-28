@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update destroy]
 
   def index
-    @items = Item.all
+    @items = policy_scope(Item)
+    @event = Event.find(params[:event_id])
   end
 
   def new
@@ -17,6 +18,20 @@ class ItemsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def update_all
+    item_ids = params[:item_ids] # how does it know what to get
+    packed = params[:packed] # what is stored in packed ?
+
+    item_ids.each_with_index do |item_id, index|
+      item = Item.find(item_id)
+      item.update(packed: packed[index])
+    end
+
+    redirect_to items_path, notice: "You're items are now packed!"
+
+    # @item.packed = true
   end
 
   def edit

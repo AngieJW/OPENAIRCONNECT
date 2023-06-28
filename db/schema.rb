@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_27_204514) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_28_124932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,13 +61,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_204514) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lists", force: :cascade do |t|
-    t.string "item"
+  create_table "items", force: :cascade do |t|
+    t.string "name"
     t.integer "quantity"
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_lists_on_event_id"
+    t.boolean "packed"
+    t.index ["event_id"], name: "index_items_on_event_id"
   end
 
   create_table "memories", force: :cascade do |t|
@@ -98,5 +99,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_204514) do
   add_foreign_key "events", "hikes"
   add_foreign_key "events", "memories"
   add_foreign_key "events", "users"
-  add_foreign_key "lists", "events"
+  add_foreign_key "items", "events"
 end
