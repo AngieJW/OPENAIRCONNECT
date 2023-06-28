@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   get 'dashboard', to: "pages#dashboard"
   get 'myevents', to: "events#myevents"
 
+<<<<<<< HEAD
+  get "strava", to: "pages#strava"
+  get "hikes", to: "hikes#index"
+=======
+>>>>>>> master
 
   resources :events, only: %i[index show new create edit update] do
     resources :chatrooms, only: %i[new create]

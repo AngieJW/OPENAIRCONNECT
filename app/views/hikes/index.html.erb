@@ -1,0 +1,10 @@
+<div data-controller="map">
+  <form class="d-flex my-5" data-action="submit->map#find">
+    <input type="text" class="form-control flex-grow-1 me-2" placeholder="Type an address" data-map-target="input">
+    <input type="submit" value="Geocode!" class="btn btn-primary">
+  </form>
+</div>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5EWXevNdPjNBFjQYtY-pbhKNMQ7TarR0&callback=initMap&v=weekly"
+  defer>
+</script>

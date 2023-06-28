@@ -8,4 +8,7 @@ class PagesController < ApplicationController
     # @eventsbooked = Events.join(:booking).where(booking: { user: current_user })
     @myevents = current_user.events
   end
+
+  def strava
+  end
 end
