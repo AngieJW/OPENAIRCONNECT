@@ -1,8 +1,9 @@
+
 <section>
-  <h1 class="home-headings">Randonnées autour de moi</h1>
+  <h1 class="home-headings">Futures randonnées</h1>
   <div class="container-fluid">
   <ul class="row justify-content-start p-4 g-2">
-  <% @events.each do |event| %>
+  <% @myevents.each do |event| %>
     <li class="card card_openair col-xs-12 col-lg-6 p-3">
       <%= image_tag('PrisonMick.jpg') %>
       <div class="card-body card-event-stats">

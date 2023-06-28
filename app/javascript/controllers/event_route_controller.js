@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="event-route"
 export default class extends Controller {
-  static targets = ["location" "results"]
+  static targets = ["location", "results"]
 
   // connect() {
   //   console.log("hello toi");
