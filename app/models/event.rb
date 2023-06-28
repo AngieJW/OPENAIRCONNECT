@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   belongs_to :user
   belongs_to :memory, optional: true
   has_many :items, dependent: :destroy
-
+  has_many :bookings
+  has_many :users, through: :bookings
   validates :meeting_date, :meeting_point, :meeting_time, presence: true
 end

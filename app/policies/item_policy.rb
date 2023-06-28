@@ -1,13 +1,16 @@
-class EventPolicy < ApplicationPolicy
+class ItemPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
+    # def resolve
+    #   scope.all
+    # end
     def resolve
       scope.all
     end
   end
 
-  def new?
-    return create?
+  def new
+    true
   end
 
   def create?
@@ -19,18 +22,10 @@ class EventPolicy < ApplicationPolicy
   end
 
   def edit?
-    return update?
-  end
-
-  def update?
     record.user == user
   end
 
   def destroy?
     record.user == user
-  end
-
-  def myevents?
-    true
   end
 end
