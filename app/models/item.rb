@@ -1,5 +1,5 @@
-class List < ApplicationRecord
+class Item < ApplicationRecord
   belongs_to :event
 
-  validates :item, presence: true
+  validates :name, presence: true
 end

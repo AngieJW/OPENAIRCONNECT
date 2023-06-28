@@ -1,4 +1,3 @@
 class Chatroom < ApplicationRecord
-  belongs_to :booking
-  belongs_to :event, through: :booking, optional: true
+  belongs_to :event, optional: true
 end
