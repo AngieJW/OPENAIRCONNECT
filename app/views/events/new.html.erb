@@ -1,4 +1,26 @@
-<div class="container form-event"><h1>Nouvel évènement</h1>
+<div class="container form-event" data-controller="event-route"><h1>Nouvel évènement</h1>
 
-<%= render 'form' %>
+<%= simple_form_for @event , defaults: { input_html: { class: 'input-event' } }  do |f| %>
+
+  <%= f.input :location, label: false, placeholder: "Lieu de l'évènement", :input_html => { data: { event_route_target: :location }} %>
+  <%= f.input :meeting_date, label: "Date", as: :date, html5: true %>
+  <%= f.input :meeting_time, label: "Heure" %>
+  <%= f.input :meeting_point, label: false, placeholder: "Point de rendez-vous"   %> <!--A METTRE PLUS BAS, UNE FOIS L'ITINERAIRE CHOISI -->
+  <%= f.input :group_size , label: false, placeholder: "Taille max du groupe" %>
+  <%= f.input :difficulty, label: false, placeholder: "Difficulté" %>
+  <div class="container d-flex justify-content-around">
+    <%= f.input :swim, label: "Baignade" %>
+    <%= f.input :break, label: "Pause" %>
+  </div>
+  <%= f.input :description, label: false, placeholder: "Description"  %>
+  <button data-action="click->event-route#displayRoutes" class="btn btn-warning m-2">Suivant</button>
+  <section class="routes-results d-none" data-event-route-target="results">
+    Vos itinéraires pour :
+  </section>
+
+
+<%# BOUTON POUR SOUMETTRE LE FORMULAIRE %>
+  <%# <%= f.button :submit, "Créer mon évènement", class:"btn btn-warning m-2" %>
+  <% end %>
+
 </div>

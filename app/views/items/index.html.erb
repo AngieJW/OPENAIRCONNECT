@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <h1>Packing list</h1>
+
+  <div class="form-check">
+    <%= form_with url: "/update_all", method: :patch do |f| %>
+      <% @items.each do |item| %>
+        <input type="checkbox">
+        <%= item.name %> : <%= item.quantity %> <br>
+      <% end %>
+      <br>
+      <%= f.submit "clique" %>
+    <% end %>
+  </div>
+
+</div>

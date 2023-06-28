@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[show]
+  before_action :set_event, only: %i[show edit update destroy]
   def index
     @events = policy_scope(Event)
   end
@@ -17,19 +17,24 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     @event.hike = Hike.new
+    authorize @event
     if @event.save!
       redirect_to events_path
     else
       render :new, status: :unprocessable_entity
     end
-    authorize @event
   end
 
   def edit
     authorize @event
   end
 
+  def update
+    authorize @event
+  end
+
   def destroy
+    authorize @event
     @event.destroy
     redirect_to events_path, status: :see_other
   end
