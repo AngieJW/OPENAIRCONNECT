@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  get 'hike/index'
   devise_for :users
 
   root to: "pages#home"
   get 'home', to: 'pages#home'
   get 'dashboard', to: "pages#dashboard"
   get 'myevents', to: "events#myevents"
+
+  get "strava", to: "pages#strava"
+  get "hikes", to: "hikes#index"
 
   resources :events, only: %i[index show new create edit update] do
     resources :chatrooms, only: %i[new create]
