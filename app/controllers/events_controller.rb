@@ -1,10 +1,13 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
+
   def index
     @events = policy_scope(Event)
   end
 
   def show
+    @booking = Booking.find_by(user: current_user, event: @event)
+    @mybookings = Booking.where( :user == current_user)
     authorize @event
   end
 
@@ -41,8 +44,11 @@ class EventsController < ApplicationController
 
   def myevents
     @events = Event.where(user: current_user)
+    @mybookings = Booking.where( :user == current_user)
     authorize @events
   end
+
+
 
   private
 
@@ -51,6 +57,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:meeting_date, :meeting_time, :meeting_point, :group_size)
+    params.require(:event).permit(:meeting_date, :meeting_time, :meeting_point, :group_size, :location, :difficulty, :swim, :break, :description)
   end
 end

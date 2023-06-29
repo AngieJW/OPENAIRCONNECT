@@ -1,18 +1,27 @@
-<h1>Event#show</h1>
-<p>Find me in app/views/event/show.html.erb</p>
-<%#
-    t.date "meeting_date"
-    t.time "meeting_time"
-    t.string "meeting_point"
-    t.integer "group_size"
-    t.boolean "swim"
-    t.boolean "break"
-    t.string "difficulty"
-    t.text "description"
-    t.bigint "hike_id", null: false
-    t.bigint "user_id", null: false %>
+<section><h1>MAP ICI</h1>
+<p>Données de la hike ici</p></section>
+<section>
+<%= @event.meeting_date %> <br>
+<%= @event.meeting_time %> <br>
+<%= @event.meeting_point %> <br>
+<%= @event.group_size %> <br>
 
-Date de l'évenement : <%= @event.meeting_date %> <br>
-Heure : <%= @event.meeting_time %> <br>
-Point de rendez-vous : <%= @event.meeting_point %> <br>
-Nombre de personnes : <%= @event.group_size %>
+<%# VUE DE L'ORGANISATEUR DE L'EVENEMENT %>
+<% if current_user == @event.user %>
+<%= "Vous êtes l'organisateur de cet évènement" %>
+<% end %>
+
+
+<%# VUE DES PARTICIPANTS A L'EVENEMENT %>
+<% if !@mybookings.where(:event == @event).empty? %>
+<%= "Vous participez à cet évènement" %>
+<%= button_to "Se désinscrire de l'évenement", booking_path(@booking), method: :delete, class: 'btn btn-success' %>
+<% else %>
+<%# VUE DES VISITEURS   %>
+<%= button_to "Rejoindre l'évenement", event_bookings_path(@event), method: :post, class: 'btn btn-success' %>
+<% end %>
+</section>
+
+
+
+<%# <section>CHATROOM</section> %>
