@@ -1,6 +1,6 @@
 <h1 class="home-headings">Mes evenements</h1>
 
-<main id="myevents">
+<section id="myevents">
 
 <div class="container-fluid">
   <ul class="row d-flex justify-content-start p-4 g-2">
@@ -18,4 +18,14 @@
   </ul>
 </div>
 
-</main>
+</section>
+
+<section>
+<h2 class="home-headings">Les évènements que j'ai rejoint</h2>
+<% @mybookings.each do |booking| %>
+  Organisé par <%= booking.event.user.first_name %>
+  Date <%= booking.event.meeting_date %>
+  Lieu <%= booking.event.location %>
+  Heure <%= booking.event.meeting_time %>
+  <% end %>
+</section>

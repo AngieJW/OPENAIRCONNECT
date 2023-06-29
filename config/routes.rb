@@ -12,5 +12,8 @@ Rails.application.routes.draw do
     resources :memories, only: %i[show new create edit update]
   end
 
+
+  post 'events/:id', to: 'events#create_booking', as: 'create_booking'
+  delete 'events/:id', to: 'events#delete_booking', as: 'delete_booking'
   patch 'update_all', to: "items#update_all", as: :update_items
 end
