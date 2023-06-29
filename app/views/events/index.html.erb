@@ -6,10 +6,16 @@
     <li class="card card_openair <%= 'owner_event' if event.user == current_user %> col-xs-12 col-lg-6 p-3">
     <div class="row">
       <%= image_tag('PrisonMick.jpg', class: 'col-xs-12 col-md-4') %>
-      <div class="card-body card-event-stats col-xs-12 col-md-8">
-      <%= event.meeting_date.strftime('%A %B %Y') %>
-      Organisé par <%= event.user.first_name %> <%= '(Vous)' if event.user == current_user %>
-      <%= link_to 'details', event_path(event) %>
+      <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
+        <div class="d-flex justify-content-between">
+          <span>lieu : Chez moi</span> <!-- Lieu de la randonnée ( hike ) -->
+          <span>difficulty</span>
+        </div>
+        <div class="d-flex justify-content-between">
+        <span><strong><%= event.meeting_date.strftime('%A %B %Y') %></strong></span>
+        <span> <i class="fa-solid fa-user"></i> <%= event.user.first_name %> <% if event.user == current_user %><strong>(Vous)</strong> <% end %></span>
+        <%# <%= link_to 'details', event_path(event) %>
+        </div>
       </div>
     </div>
     </li>
