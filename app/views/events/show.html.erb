@@ -23,9 +23,9 @@ Nombre de personnes : <%= @event.group_size %>
 
 
 <%# VUE DES PARTICIPANTS A L'EVENEMENT %>
-<% if !@mybookings.where(:event == @event).empty? %>
+<% if !@mybookings.where(event: @event).empty? %>
 <%= "Vous participez à cet évènement" %>
-<%= button_to "Se désinscrire de l'évenement", booking_path(@booking), method: :delete, class: 'btn btn-success' %>
+<%# <%= button_to "Se désinscrire de l'évenement", booking_path(@booking), data { turbo_method: :delete}, class: 'btn btn-success' %> %>
 <% else %>
 <%# VUE DES VISITEURS   %>
 <%= button_to "Rejoindre l'évenement", event_bookings_path(@event), method: :post, class: 'btn btn-success' %>
@@ -35,4 +35,3 @@ Nombre de personnes : <%= @event.group_size %>
 
 
 <%# <section>CHATROOM</section> %>
-
