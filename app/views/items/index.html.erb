@@ -4,8 +4,9 @@
   <div class="form-check">
     <%= form_with url: "/update_all", method: :patch do |f| %>
       <% @items.each do |item| %>
-        <input type="checkbox">
-        <%= item.name %> : <%= item.quantity %> <br>
+        <%= item.quantity %>
+        <label for="<%= item.id %>"><%= item.name %></label>
+        <input type="checkbox" id="item_ids_<%= item.id %>" name="item_ids[]" value="<%= item.id %>">
       <% end %>
       <br>
       <%= f.submit "clique" %>
