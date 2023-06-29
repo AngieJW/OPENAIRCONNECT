@@ -18,6 +18,4 @@ Rails.application.routes.draw do
 
   resources :bookings, only: :destroy
 
-  patch 'update_all', to: "items#update_all", as: :update_items
-
 end
