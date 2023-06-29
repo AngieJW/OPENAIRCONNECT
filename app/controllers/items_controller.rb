@@ -20,22 +20,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def update_all
-    item_ids = params[:item_ids] # how does it know what to get
-    packed = params[:packed] # what is stored in packed ?
-
-    item_ids.each do |item_id|
-      item = Item.find(item_id)
-      item.packed? ? item.update(packed: false) : item.update(packed: true)
-    end
-
-    i = Item.find(item_ids.last)
-
-    redirect_to event_items_path(i.event), notice: "You're items are now packed!"
-
-    # @item.packed = true
-  end
-
   def edit
   end
 

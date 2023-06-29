@@ -6,6 +6,16 @@
 <%= @event.meeting_point %> <br>
 <%= @event.group_size %> <br>
 
+
+Date de l'évenement : <%= @event.meeting_date %> <br>
+Heure : <%= @event.meeting_time %> <br>
+Point de rendez-vous : <%= @event.meeting_point %> <br>
+Nombre de personnes : <%= @event.group_size %>
+
+
+
+<%= link_to "packing list", event_items_path(event_id: @event.id) %>
+
 <%# VUE DE L'ORGANISATEUR DE L'EVENEMENT %>
 <% if current_user == @event.user %>
 <%= "Vous êtes l'organisateur de cet évènement" %>
@@ -25,3 +35,4 @@
 
 
 <%# <section>CHATROOM</section> %>
+
