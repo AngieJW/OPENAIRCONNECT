@@ -14,7 +14,7 @@
         <div class="d-flex justify-content-between">
         <span><strong><%= event.meeting_date.strftime('%A %B %Y') %></strong></span>
         <span> <i class="fa-solid fa-user"></i> <%= event.user.first_name %> <% if event.user == current_user %><strong>(Vous)</strong> <% end %></span>
-        <%# <%= link_to 'details', event_path(event) %>
+        <%= link_to 'details', event_path(event) %>
         </div>
       </div>
     </div>
