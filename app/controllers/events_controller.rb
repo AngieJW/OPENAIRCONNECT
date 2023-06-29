@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find_by(user: current_user, event: @event)
     @mybookings = Booking.where( :user == current_user)
     authorize @event
   end
@@ -47,23 +48,7 @@ class EventsController < ApplicationController
     authorize @events
   end
 
-  def create_booking
-    @booking = Booking.new
-    @booking.event = @event
-    @booking.user = current_user
-    if @booking.save!
-      redirect_to event_path(@event), notice: "Vous avez rejoint l'évènement de #{@event.user.first_name}"
-    else
-      render event_path(@event), status: :unprocessable_entity
-    end
-  end
 
-  def delete_booking
-    @mybookings = Booking.where( :user == current_user)
-    @booking = @mybookings.joins(:event).where( :event == @event)
-    @booking.destroy
-    redirect_to event_path(@event), notice: "Vous vous êtes désinscrit de l'évènement de #{@event.user.first_name}", status: :see_other
-  end
 
   private
 

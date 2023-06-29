@@ -23,9 +23,13 @@
 <section>
 <h2 class="home-headings">Les évènements que j'ai rejoint</h2>
 <% @mybookings.each do |booking| %>
-  Organisé par <%= booking.event.user.first_name %>
-  Date <%= booking.event.meeting_date %>
-  Lieu <%= booking.event.location %>
-  Heure <%= booking.event.meeting_time %>
+  <li class="card card_openair col-xs-12 col-lg-6 p-3">
+      <%= image_tag('PrisonMick.jpg') %>
+      <div class="card-body card-event-stats">
+      <%= booking.event.meeting_date.strftime('%A %B %Y') %>
+      Organisé par <%= booking.event.user.first_name %>
+      <%= link_to 'details', event_path(booking.event) %>
+      </div>
+    </li>
   <% end %>
 </section>

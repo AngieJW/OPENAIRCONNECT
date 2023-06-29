@@ -26,8 +26,8 @@ jeanjean = User.create(email: 'toto@gmail.com',
                       phone_number: '0618729271')
 lenonvoulu = User.create(email: 'titi@gmail.com',
                         password: 'tototo',
-                        first_name: 'Tereva',
-                        last_name: 'Millet',
+                        first_name: 'Adrien',
+                        last_name: 'Le Doussal',
                         phone_number: '0618729271')
 new_hike = Hike.create(distance: 304,
                        elevation: 120,
@@ -41,6 +41,11 @@ eventu = Event.create(meeting_date: Date.new,
                       meeting_point: '21 Rue Haxo',
                       group_size: rand(5..10),
                       user: coucou)
+monsuperevent = Event.create(meeting_date: Date.new,
+                      meeting_time: Time.new,
+                      meeting_point: 'Cassis',
+                      group_size: rand(5..10),
+                      user: lenonvoulu)
 eventu.hike = new_hike
 eventu.save!
 
