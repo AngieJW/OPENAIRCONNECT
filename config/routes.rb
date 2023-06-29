@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     resources :memories, only: %i[show new create edit update]
   end
 
-  patch 'update_all', to: "items#update_all", as: :update_items
+  patch 'create_brings', to: "item_brings#create_brings", as: :update_items
 end

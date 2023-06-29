@@ -1,25 +1,31 @@
 <div class="container-fluid">
-  <h1 class="list-title">LISTE DES CHOSES D’APPORTER</h1>
+  <h1 class="list-title">LISTE DES CHOSES QUE J’APPORTE</h1>
   <br>
   <div class="form-check">
-    <%= form_with url: "/update_all", method: :patch do |f| %>
+    <%= form_with url: "/create_brings", method: :patch do |f| %>
         <% @items.each do |item| %>
+          <% packed_items = 0 %>
+          <% item.item_brings.each do |packed_unit| %>
+             <% packed_items += packed_unit.quantity.to_i %>
+          <% end %>
+
           <div class="inline-elements list-text">
-            <h6><input type="checkbox" id="item_ids_<%= item.id %>" name="item_ids[]" value="<%= item.id %>" class="checkbox-style" ></h6>
-            <% if  item.quantity > 0%>
-              <h6><%= item.quantity%></h6>
-              <h6 class="binder-margin">-</h6>
+            <h6><input type="checkbox" id="item_brings_<%= item.id %>" name="item_brings[<%= item.id %>]" value="<%= item.id %>" class="checkbox-style" ></h6>
+            <h6><%= item.quantity%></h6>
+            <h6 class="binder-margin">-</h6>
+
+            <h6 class="item-name">
+              <label for="<%= item.id %>"><%= item.name %></label>
+            </h6>
+
+            <%# on click: If quantity is > 1, show form %>
+            <h6><input id="item_brings_<%= item.id %>" name="item_brings[<%= item.id %>]" placeholder="combien?"></h6>
+            <%# check that packed_items is not greater that the needed quantity %>
+
+            <%# on submit: replace form by text stating the new item.quantity - item.packed_quantity unless item.quantity - item.packed_quantity == 0 %>
+             <% unless item.quantity == packed_items%>
+              <h6 class="list-text"> reste <%= item.quantity - packed_items%> units à emmener </h6>
             <% end %>
-            <h6 class="item-name"><label for="<%= item.id %>"><%= item.name %></label></h6>
-
-            <%# on click: if quantity is > 1, ask for number of units restrained to item.quantity - item.packed_quantity ) %>
-            <% if item.quantity > 1 %>
-              <h6><input id="item_ids_<%= item.id %>" name="item_ids[]" value="combien?"></h6>
-
-              <%# on submit: update item.packed_quantity, and replace form by text stating the new item.quantity - item.packed_quantity unless item.quantity - item.packed_quantity == 0 %>
-              <h6 class="list-text"> reste <%= item.quantity %> units à emmener </h6>
-            <% end %>
-
           </div>
           <br>
         <% end %>

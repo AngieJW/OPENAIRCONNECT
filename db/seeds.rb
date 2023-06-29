@@ -1,7 +1,11 @@
 
 Booking.destroy_all
 
+ItemBring.destroy_all
+puts 'Item-brings delete'
+
 Item.destroy_all
+puts 'Items delete'
 
 Event.delete_all
 puts 'events delete'
@@ -44,11 +48,13 @@ eventu = Event.create(meeting_date: Date.new,
 eventu.hike = new_hike
 eventu.save!
 
-item = Item.create(name: "gourde", quantity: "2", event: eventu)
-item2 = Item.create(name: "pain", quantity: "1", event: eventu)
-item3 = Item.create(name: "tente", quantity: "1", event: eventu)
+item = Item.create(name: "gourde", quantity: "7", event: eventu)
+item2 = Item.create(name: "pain", quantity: "4", event: eventu)
+item3 = Item.create(name: "tente", quantity: "3", event: eventu)
 
 booking = Booking.create(user: coucou, event: eventu)
 booking = Booking.create(user: jeanjean, event: eventu)
+
+item_brings1 = ItemBring.create(user: coucou, event:eventu, item:item, quantity: 3)
 
 puts 'finished'
