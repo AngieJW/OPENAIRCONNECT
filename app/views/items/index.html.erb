@@ -1,16 +1,32 @@
 <div class="container-fluid">
-  <h1>Packing list</h1>
-
+  <h1 class="list-title">LISTE DES CHOSES D’APPORTER</h1>
+  <br>
   <div class="form-check">
     <%= form_with url: "/update_all", method: :patch do |f| %>
-      <% @items.each do |item| %>
-        <%= item.quantity %>
-        <label for="<%= item.id %>"><%= item.name %></label>
-        <input type="checkbox" id="item_ids_<%= item.id %>" name="item_ids[]" value="<%= item.id %>">
-      <% end %>
+        <% @items.each do |item| %>
+          <div class="inline-elements list-text">
+            <h6><input type="checkbox" id="item_ids_<%= item.id %>" name="item_ids[]" value="<%= item.id %>" class="checkbox-style" ></h6>
+            <% if  item.quantity > 0%>
+              <h6><%= item.quantity%></h6>
+              <h6 class="binder-margin">-</h6>
+            <% end %>
+            <h6 class="item-name"><label for="<%= item.id %>"><%= item.name %></label></h6>
+
+            <%# on click: if quantity is > 1, ask for number of units restrained to item.quantity - item.packed_quantity ) %>
+            <% if item.quantity > 1 %>
+              <h6><input id="item_ids_<%= item.id %>" name="item_ids[]" value="combien?"></h6>
+
+              <%# on submit: update item.packed_quantity, and replace form by text stating the new item.quantity - item.packed_quantity unless item.quantity - item.packed_quantity == 0 %>
+              <h6 class="list-text"> reste <%= item.quantity %> units à emmener </h6>
+            <% end %>
+
+          </div>
+          <br>
+        <% end %>
       <br>
       <%= f.submit "clique" %>
     <% end %>
+
   </div>
 
 </div>

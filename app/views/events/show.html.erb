@@ -16,3 +16,7 @@ Date de l'évenement : <%= @event.meeting_date %> <br>
 Heure : <%= @event.meeting_time %> <br>
 Point de rendez-vous : <%= @event.meeting_point %> <br>
 Nombre de personnes : <%= @event.group_size %>
+
+<br>
+
+<%= link_to "packing list", event_items_path(event_id: @event.id) %>
