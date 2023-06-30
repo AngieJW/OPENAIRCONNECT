@@ -1,7 +1,7 @@
 $navbar_footer_height: 100px;
 .navbar-lewagon {
   justify-content: space-between;
-  background: #28965A;
+  background: $green;
   color: white;
   height: $navbar_footer_height;
   .navbar-collapse {

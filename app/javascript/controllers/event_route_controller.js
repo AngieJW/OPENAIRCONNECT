@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="event-route"
 export default class extends Controller {
-  static targets = ["location", "results"]
+  static targets = ["location", "results", "hidden"]
 
   // connect() {
   //   console.log("hello toi");
@@ -15,7 +15,7 @@ export default class extends Controller {
     console.log( this.resultsTarget);
 
 
-    this.resultsTarget.classList.remove("d-none");
-    this.resultsTarget.outerHTML = this.locationTarget.value
+    this.hiddenTarget.classList.remove("d-none");
+    this.resultsTarget.outerHTML = `Vos itinéraires pour ${this.locationTarget.value}`
   }
 }
