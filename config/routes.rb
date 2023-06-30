@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   patch 'create_brings', to: "item_brings#create_brings", as: :update_items
 
-  resources :bookings, only: :destroy
+  resources :bookings, only: %i[destroy]
 
 end

@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def show
     @booking = Booking.find_by(user: current_user, event: @event)
-    @mybookings = Booking.where( :user == current_user)
+    @mybookings = Booking.where(user: current_user)
     authorize @event
   end
 
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
 
   def myevents
     @events = Event.where(user: current_user)
-    @mybookings = Booking.where( :user == current_user)
+    @mybookings = Booking.where(user: current_user)
     authorize @events
   end
 
