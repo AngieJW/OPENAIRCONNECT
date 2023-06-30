@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'dashboard', to: "pages#dashboard"
   get 'myevents', to: "events#myevents"
   get "hikes", to: "hikes#index"
+  get 'pages/apiconnection', to: 'pages#apiconnection'
+  get 'pages/indexstrava', to: 'pages#indexstrava'
+  get 'pages/indexstrava.html/exchange_token', to: 'pages#indexstrava'
   resources :events, only: %i[index show new create edit update] do
     resources :bookings, only: %i[create]
     resources :chatrooms, only: %i[new create]
