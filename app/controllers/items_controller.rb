@@ -2,8 +2,8 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update destroy]
 
   def index
-    @items = policy_scope(Item)
     @event = Event.find(params[:event_id])
+    @items = Item.where(event: @event)
   end
 
   def new
