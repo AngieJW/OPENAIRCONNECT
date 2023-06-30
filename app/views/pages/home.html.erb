@@ -24,12 +24,12 @@ def hello(e)
 end
   %>
 
-<section id="home">
+<section id="home" data-controller="cards">
 
 <div class="container">
-  <ul class="row d-flex justify-content-start p-4 g-2">
+  <ul class="row d-flex justify-content-start p-4 g-2" data-cards-target="list_cards">
   <% @events.each do |event| %>
-    <li class="card_openair <%= 'owner_event' if event.user == current_user %>col-xs-12 col-lg-6">
+    <li class="card card_openair <%= 'owner_event' if event.user == current_user %>col-xs-12 col-lg-6" data-cards-target="card">
     <%= link_to (event_path(event)), class: 'anchor_card d-flex p-3' do %>
       <div class="row">
         <img src="/assets/<%= hello(event) %>" class="col-xs-12 col-md-4" alt="">
