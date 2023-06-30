@@ -24,13 +24,13 @@
 
             <%# on submit: replace form by text stating the new item.quantity - item.packed_quantity unless item.quantity - item.packed_quantity == 0 %>
              <% unless item.quantity == packed_items%>
-              <h6 class="list-text"> reste <%= item.quantity - packed_items%> units à emmener </h6>
+              <h6 class="list-text"> reste <%= item.quantity - packed_items%> à emmener </h6>
             <% end %>
           </div>
           <br>
         <% end %>
       <br>
-      <%= f.submit "clique" %>
+      <%= f.submit "Mettre à jour la liste" %>
     <% end %>
 
   </div>

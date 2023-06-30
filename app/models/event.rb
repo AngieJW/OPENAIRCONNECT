@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   has_many :bookings
   has_many :users, through: :bookings
 
-  validates :meeting_date, :meeting_point, :meeting_time, presence: true
+  validates :meeting_date, :location, :meeting_time, presence: true
   # LEVELS = ["balade", "adapté aux enfants", "intermédiaire", "difficile"]
   # validates :difficulty, inclusion: { in: LEVELS }
 end

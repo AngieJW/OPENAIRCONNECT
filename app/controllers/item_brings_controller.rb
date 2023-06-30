@@ -12,7 +12,7 @@ class ItemBringsController < ApplicationController
     end
 
     item = Item.find(params[:item_brings].keys.first)
-    redirect_to event_items_path(item.event), notice: "You're items are now packed!"
+    redirect_to event_items_path(item.event), notice: "Vos articles ont été ajoutés!"
 
   end
 end
