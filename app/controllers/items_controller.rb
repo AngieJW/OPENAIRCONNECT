@@ -7,14 +7,22 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @event = Event.find(params[:event_id])
     @item = Item.new
   end
 
   def create
-    @item = Item.new(item_params)
-    @item.event = @event
-    if @item.save!
-      redirect_to items_path
+    @event = Event.find(params[:event_id])
+    @items = []
+
+    params[:item].each do |item_param|
+      item = Item.new(name: item_param['name'], quantity: item_param['quantity'])
+      item.event = @event
+      @items << item
+    end
+
+    if @items.all?(&:save)
+      redirect_to event_path(@event)
     else
       render :new, status: :unprocessable_entity
     end
