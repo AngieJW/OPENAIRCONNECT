@@ -17,12 +17,10 @@
 
   <body>
     <%= render 'shared/top_navbar' %>
+    <%= render 'shared/flashes' %>
     <main>
     <%= yield %>
     </main>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert alert-success"><%= alert %></p>
     <%= render 'shared/navbar' %>
   </body>
 </html>
