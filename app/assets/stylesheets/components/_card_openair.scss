@@ -1,8 +1,44 @@
+@keyframes card_appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    transform: translateY(0px);
+  }
+}
+
+.card_animation {
+  display: block !important;
+  animation: card_appear 0.5s ease-out;
+}
+
 .card_openair {
-  background-color: $yellow;
-  border-radius: 20px;
+  display: none;
+  z-index: 5;
+  border-radius: 16px;
+  background: $vanilla;
+  box-shadow:  -3px 3px 16px #88895f,
+               3px -3px 16px #ffffc3;
+  list-style-type: none;
+  transition: 0.5s all;
+  * {
+    color: #1f1f1f;
+  }
+  .anchor_card {
+    text-decoration: none;
+  }
   img {
     border-radius: 20px;
   }
-  box-shadow: 1px 1px 4px rgba(99, 99, 99, 0.459);
+  &:hover {
+    background: #e5e78c;
+    box-shadow:  -3px 3px 16px #9c9c6c,
+                  3px -3px 16px #ffffc8;
+
+  }
 }
