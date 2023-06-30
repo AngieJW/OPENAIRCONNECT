@@ -39,7 +39,7 @@ clara = User.create(email: 'claraholms@gmail.com',
 users = [tereva, adrien, angie, clara]
 puts 'Users created'
 
-rand(1..20).times do
+rand(15..20).times do
   new_date = Date.today + rand(3..10)
   groupsize = rand(5..20)
   owner = users.sample
