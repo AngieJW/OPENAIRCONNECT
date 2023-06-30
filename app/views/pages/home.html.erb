@@ -29,7 +29,7 @@ end
 <div class="container">
   <ul class="row d-flex justify-content-start p-4 g-2">
   <% @events.each do |event| %>
-    <li class="card_openair <%= 'owner_event' if event.user == current_user %>col-xs-12 col-lg-6">
+    <li class="card_open <%= 'owner_event' if event.user == current_user %>col-xs-12 col-lg-6">
     <%= link_to (event_path(event)), class: 'anchor_card d-flex p-3' do %>
       <div class="row">
         <img src="/assets/<%= hello(event) %>" class="col-xs-12 col-md-4" alt="">
