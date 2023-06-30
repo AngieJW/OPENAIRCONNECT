@@ -1,1 +1,14 @@
 <div class="container form-event"><h1>Ajouter une liste</h1>
+
+
+
+<%= simple_form_for [@event, @item] do |f| %>
+  <% 2.times do %>
+    <div>
+      <%= text_field_tag 'item[][name]', '', placeholder: 'Name' %>
+      <%= text_field_tag 'item[][quantity]', '', placeholder: 'quantity' %>
+    </div>
+  <% end %>
+  <br>
+  <%= submit_tag 'submit' %>
+<% end %>
