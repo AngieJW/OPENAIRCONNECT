@@ -1,3 +1,29 @@
+<%
+
+def hello(e)
+    case e.location
+    when 'Marseille'
+      'rand_1.jpg'
+    when 'Cassis'
+      'rand_2.jpg'
+    when 'Aix-en-Provence'
+      'rand_3.jpg'
+    when 'Fuveau'
+      'rand_4.jpg'
+    when 'Saint-Cyr'
+      'rand_5.jpg'
+    when 'Aubagne'
+      'rand_6.jpg'
+    when 'Ciotat'
+      'rand_7.jpg'
+    when 'Gemenos'
+      'rand_8.jpg'
+    else
+      'PrisonMick.jpg'
+    end
+end
+  %>
+
 
 <section>
 <h1 class="home-headings">Mes évènements</h1>
@@ -5,9 +31,10 @@
 <div class="container">
   <ul class="row d-flex justify-content-start p-4 g-2">
   <% @events.each do |event| %>
-    <li class="card card_open col-xs-12 col-lg-6 p-3">
+    <li class="card_openair d-block col-xs-12 col-lg-6 p-3">
+    <%= link_to (event_path(event)), class: 'anchor_card d-flex p-3' do %>
       <div class="row">
-        <%= image_tag('randonnee_map_1.jpg', class: 'col-xs-12 col-md-4') %>
+      <img src="/assets/<%= hello(event) %>" class="col-xs-12 col-md-4" alt="">
         <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
           <div class="d-flex justify-content-between">
             <span><%= event.location %></span>
@@ -15,11 +42,11 @@
           </div>
           <div class="d-flex justify-content-between">
           <span><strong><%= event.meeting_date.strftime('%d/%m/%Y') %></strong></span>
-            <span><i class="fa-solid fa-user"></i> <%= event.user.first_name %> <% if event.user == current_user %><strong>(Vous)</strong> <% end %></span>
-            <%= link_to 'détails', event_path(event) %>
+            <span><i class="fa-solid fa-user"></i> <%= event.user.first_name %></span>
           </div>
         </div>
       </div>
+      <% end %>
     </li>
   <% end %>
 
@@ -36,7 +63,7 @@
       <li class="card_openair col-xs-12 col-lg-6" data-cards-target="card">
         <%= link_to (event_path(booking.event)), class: 'anchor_card d-flex p-3' do %>
           <div class="row">
-            <%= image_tag('randonnee_map_1.jpg', class: 'col-xs-12 col-md-4') %>
+            <img src="/assets/<%= hello(booking.event) %>" class="col-xs-12 col-md-4" alt="">
             <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
               <div class="d-flex justify-content-between">
                 <span><%= booking.event.location %></span>

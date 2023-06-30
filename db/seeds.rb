@@ -43,6 +43,7 @@ rand(15..20).times do
   new_date = Date.today + rand(3..10)
   groupsize = rand(5..20)
   owner = users.sample
+  difficultylist = ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Impossible']
   lieu = ['Marseille', 'Cassis', 'Aix-en-Provence', 'Fuveau', 'Saint-Cyr', 'Aubagne', 'Ciotat', 'Gemenos']
   new_hike = Hike.create(distance: rand(12_000..34_000),
                          elevation: rand(80..160),
@@ -55,12 +56,13 @@ rand(15..20).times do
                            meeting_time: Time.new(new_date.year, new_date.month, new_date.day, rand(10..14), rand(1..59), rand(1..59), "+02:00"),
                            location: lieu.sample,
                            group_size: groupsize,
+                           difficulty: difficultylist.sample,
                            user: owner)
   new_event.hike = new_hike
   new_event.save!
-  items = ['tente', 'gourde', 'pain', 'fruits', 'chocolat', 'red bull x monster de la mort qui tue gout piment']
+  items = ['tente', 'chips', 'couverture', 'pain', 'fruits', 'chocolat', 'red bull x monster de la mort qui tue gout piment']
   items.each do |item|
-    Item.create(name: item, quantity: groupsize + rand(1..10), event: new_event)
+    Item.create(name: item, quantity: (groupsize / 4) + rand(1..10), event: new_event)
   end
   rand(0..1).times do
     Booking.create(user: users.reject { |x| x == owner }.sample, event: new_event)

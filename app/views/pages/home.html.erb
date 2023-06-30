@@ -1,3 +1,29 @@
+<%
+
+def hello(e)
+    case e.location
+    when 'Marseille'
+      'rand_1.jpg'
+    when 'Cassis'
+      'rand_2.jpg'
+    when 'Aix-en-Provence'
+      'rand_3.jpg'
+    when 'Fuveau'
+      'rand_4.jpg'
+    when 'Saint-Cyr'
+      'rand_5.jpg'
+    when 'Aubagne'
+      'rand_6.jpg'
+    when 'Ciotat'
+      'rand_7.jpg'
+    when 'Gemenos'
+      'rand_8.jpg'
+    else
+      'PrisonMick.jpg'
+    end
+end
+  %>
+
 <section id="home">
 
 <div class="container">
@@ -6,7 +32,7 @@
     <li class="card_openair <%= 'owner_event' if event.user == current_user %>col-xs-12 col-lg-6">
     <%= link_to (event_path(event)), class: 'anchor_card d-flex p-3' do %>
       <div class="row">
-        <%= image_tag('randonnee_map_1.jpg', class: 'col-xs-12 col-md-4') %>
+        <img src="/assets/<%= hello(event) %>" class="col-xs-12 col-md-4" alt="">
         <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
           <div class="d-flex justify-content-between">
             <span>Chez moi</span> <!-- Lieu de la randonnée ( hike ) -->
