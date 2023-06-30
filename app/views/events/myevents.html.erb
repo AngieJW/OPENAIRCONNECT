@@ -7,7 +7,7 @@
   <% @events.each do |event| %>
     <li class="card card_openair <%= 'owner_event' if event.user == current_user %> col-xs-12 col-lg-6 p-3">
       <div class="row">
-        <%= image_tag('PrisonMick.jpg', class: 'col-xs-12 col-md-4') %>
+        <%= image_tag('randonnee_map_1.jpg', class: 'col-xs-12 col-md-4') %>
         <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
           <div class="d-flex justify-content-between">
             <span>lieu : Chez moi</span> <!-- Lieu de la randonnée ( hike ) -->
@@ -28,32 +28,31 @@
 
 </section>
 
-
-
-
-<section>
+<section data-controller="cards">
 <h2 class="home-headings">Les évènements que j'ai rejoint</h2>
-  <div class="container">
-    <ul class="row d-flex justify-content-start p-4 g-2">
-    <% @mybookings.each do |booking| %>
-      <li class="card card_openair col-xs-12 col-lg-6 p-3">
-        <div class="row">
-          <%= image_tag('PrisonMick.jpg', class: 'col-xs-12 col-md-4') %>
-          <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
-            <div class="d-flex justify-content-between">
-              <span>lieu : Chez moi</span> <!-- Lieu de la randonnée ( hike ) -->
-              <span>difficulty</span>
-            </div>
-            <div class="d-flex justify-content-between">
-            <span><strong><%= booking.event.meeting_date.strftime('%A %B %Y') %></strong></span>
-              <span><i class="fa-solid fa-user"></i> <%= booking.event.user.first_name %>.<%= booking.event.user.last_name.first %> </span>
-              <%= link_to 'details', event_path(booking.event) %>
-            </div>
+<div class="container">
+  <ul class="row d-flex justify-content-start p-4 g-2" data-cards-target="list_cards">
+  <% @mybookings.each do |booking| %>
+    <li class="card_openair col-xs-12 col-lg-6" data-cards-target="card">
+    <%= link_to (event_path(booking.event)), class: 'anchor_card d-flex p-3' do %>
+      <div class="row">
+        <%= image_tag('randonnee_map_1.jpg', class: 'col-xs-12 col-md-4') %>
+        <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
+          <div class="d-flex justify-content-between">
+            <span>lieu : Chez moi</span> <!-- Lieu de la randonnée ( hike ) -->
+            <span>difficulty</span>
+          </div>
+          <div class="d-flex justify-content-between">
+          <span><strong><%= booking.event.meeting_date.strftime('%A %B %Y') %></strong></span>
+            <span><i class="fa-solid fa-user"></i> <%= booking.event.user.first_name %>.<%= booking.event.user.last_name.first %></span>
           </div>
         </div>
-      </li>
+      </div>
     <% end %>
+    </li>
+  <% end %>
 
-    </ul>
-  </div>
+  </ul>
+</div>
+
 </section>

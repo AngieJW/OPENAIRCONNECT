@@ -5,7 +5,7 @@
   <ul class="row justify-content-start p-4 g-2">
   <% @myevents.each do |event| %>
     <li class="card card_openair col-xs-12 col-lg-6 p-3">
-      <%= image_tag('PrisonMick.jpg') %>
+      <%= image_tag('randonnee_map_1.jpg') %>
       <div class="card-body card-event-stats">
       <%= event.meeting_date.strftime('%A %B %Y') %>
       Organisé par <%= event.user.first_name %>
