@@ -39,8 +39,8 @@
         <%= image_tag('randonnee_map_1.jpg', class: 'col-xs-12 col-md-4') %>
         <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
           <div class="d-flex justify-content-between">
-            <span>booking.event.location</span> <!-- Lieu de la randonnée ( hike ) -->
-            <span>booking.event.difficulty</span>
+            <span><%= booking.event.location %></span> <!-- Lieu de la randonnée ( hike ) -->
+            <span><%= booking.event.difficulty %></span>
           </div>
           <div class="d-flex justify-content-between">
           <span><strong><%= booking.event.meeting_date.strftime('%d %m %Y') %></strong></span>
