@@ -43,9 +43,9 @@ class EventsController < ApplicationController
   end
 
   def myevents
-    @events = Event.where(user: current_user)
+    @myevents = Event.where(user: current_user)
     @mybookings = Booking.where(user: current_user)
-    authorize @events
+    authorize @myevents
   end
 
 

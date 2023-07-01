@@ -38,8 +38,13 @@ $navbar_footer_height: 100px;
 @media (max-width: 600px) {
   .navbar-lewagon {
     height: $navbar_footer_height / 2;
-  }
-  .navbar-lewagon .navbar-item p {
-    display: none;
+    .navbar-item {
+      p {
+        display: none;
+      }
+      i {
+        transform: scale(0.7);
+      }
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
+// Connects to data-controller="card-events"
 export default class extends Controller {
   static targets = ["list_cards","card"];
 

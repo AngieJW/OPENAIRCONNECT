@@ -4,8 +4,11 @@
 
 import { application } from "./application"
 
-import CardsController from "./cards_controller"
-application.register("cards", CardsController)
+import CardBookingsController from "./card_bookings_controller"
+application.register("card-bookings", CardBookingsController)
+
+import CardEventsController from "./card_events_controller"
+application.register("card-events", CardEventsController)
 
 import EventRouteController from "./event_route_controller"
 application.register("event-route", EventRouteController)
