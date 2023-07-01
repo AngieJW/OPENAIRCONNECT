@@ -8,7 +8,7 @@ export default class extends Controller {
     cards.forEach((card, index) => {
       setTimeout(() => {
         card.classList.add('card_animation');
-      }, (index + 1) * 500);
+      }, (index + 1) * 100);
     });
   }
 }

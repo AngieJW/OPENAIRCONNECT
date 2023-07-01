@@ -33,6 +33,9 @@ export default class extends Controller {
       this.initializeMap(this.polyline)
     })
   }
+  jaiappuyer() {
+    console.log('tu rentres dedans !')
+  }
 
   find(event) {
     event.preventDefault();
@@ -49,6 +52,7 @@ export default class extends Controller {
       this.polyline = routeArray[0].map.summary_polyline
       this.initializeMap(this.polyline)
     })
+
 
     // CODE DU GEOCODER
 
