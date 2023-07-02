@@ -53,9 +53,9 @@ end
   </div>
   <div class="d-flex justify-content-between">
   <h6><% if @event.items.count > 0 %>
-  <%= link_to "Liste", event_items_path(event_id: @event.id) %> <br>
+  <%= link_to "Liste", event_items_path(event_id: @event.id) %>
 <% else %>
-  <%= link_to "Ajoutez une liste", new_event_item_path(event_id: @event.id) %> <br>
+  <%= link_to "Ajoutez une liste", new_event_item_path(event_id: @event.id) %>
 <% end %></h6>
       <h6> météo : il pleut </h6>
   </div>

@@ -1,18 +1,32 @@
-.top-navbar {
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #28965A;
-
-  .navbar-brand {
-    color: white;
-    text-align: center;
+.navbar_openair {
+  background-color: $green;
+  .navbar-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    a {
+      color: white;
+      font-size: 15px;
+    }
+  }
+  .nav_user-list {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    width: 150px;
+    z-index: 1;
   }
 }
 
-.logout-link {
-  position: absolute;
-  right: 10px;
-  color: white;
+.navbar-button {
+  margin-left: auto;
+}
+
+.nav_user-list.show {
+  display: block;
+}
+
+.dropdown-menu-end {
+  right: 0;
+  left: auto !important;
 }

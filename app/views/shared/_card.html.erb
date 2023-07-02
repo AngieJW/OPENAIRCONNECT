@@ -1,0 +1,18 @@
+<li class="card_openair <%= 'owner_event' if item.user == current_user %>" <% if(item.class == Event.new.class ) %>data-card-events-target="card" <% elsif(item.class == Booking.new.class) %>data-card-bookings-target="card"<% end %>>
+<%= link_to (event_path(item)), class: 'row anchor_card' do %>
+  <div class="images position-relative" style="background-image: url('/assets/<%= pictureHike(item) %>')" class="col-xs-12 col-md-4">
+    <div class="group_size"><i class="fa-solid fa-users fa-xs" style="color: #ffffff;"></i><span><%= item.bookings.count %> / <%= item.group_size %></span></div>
+    <div class="event_hour"><span><%= item.meeting_time.hour %>h </span> <i class="fa-solid fa-clock fa-xs" style="color: #ffffff;"></i></div>
+  </div>
+  <div class="card-event-stats col-12">
+    <div class="d-flex justify-content-between">
+      <span><strong><%= item.location %></strong></span>
+      <span class="difficult <%= difficult(item)%>"><%= item.difficulty %></span>
+    </div>
+    <div class="d-flex justify-content-between">
+    <span class="event_time"><%= item.meeting_date.strftime('%d/%m/%Y') %></span>
+      <span><%= item.user.first_name %>.<%= item.user.last_name.first %> <% if item.user == current_user %><strong class="owner">(Vous)</strong> <% end %> <i class="fa-regular fa-user"></i></span>
+    </div>
+  </div>
+<% end %>
+</li>

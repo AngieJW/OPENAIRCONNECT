@@ -1,6 +1,5 @@
 <div class="container-fluid">
   <h1 class="list-title">LISTE DES CHOSES A APPORTER</h1>
-  <br>
   <div class="form-check">
     <%= form_with url: "/create_brings", method: :patch do |f| %>
         <% @items.each do |item| %>
@@ -27,9 +26,7 @@
               <h6 class="list-text"> reste <%= item.quantity - packed_items%> à emmener </h6>
             <% end %>
           </div>
-          <br>
         <% end %>
-      <br>
       <%= f.submit "Mettre à jour la liste" %>
     <% end %>
 

@@ -1,6 +1,6 @@
 <%
 
-def hello(e)
+def pictureHike(e)
     case e.location
     when 'Marseille'
       'rand_1.jpg'
@@ -22,61 +22,42 @@ def hello(e)
       'PrisonMick.jpg'
     end
 end
+
+def difficult(e)
+  case e.difficulty
+  when 'Facile'
+    'facile'
+  when 'Balade'
+    'balade'
+  when 'Intermédiaire'
+    'inter'
+  when 'Difficile'
+    'difficile'
+  when 'Sportif'
+    'sportif'
+  end
+end
   %>
 
-
-<section>
+<section data-controller="card-events">
 <h1 class="home-headings">Mes évènements</h1>
 
 <div class="container">
-  <ul class="row d-flex justify-content-start p-4 g-2">
-  <% @events.each do |event| %>
-    <li class="card_openair d-block col-xs-12 col-lg-6 p-3">
-    <%= link_to (event_path(event)), class: 'anchor_card d-flex p-3' do %>
-      <div class="row">
-      <img src="/assets/<%= hello(event) %>" class="col-xs-12 col-md-4" alt="">
-        <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
-          <div class="d-flex justify-content-between">
-            <span><%= event.location %></span>
-            <span><%= event.difficulty %></span>
-          </div>
-          <div class="d-flex justify-content-between">
-          <span><strong><%= event.meeting_date.strftime('%d/%m/%Y') %></strong></span>
-            <span><i class="fa-solid fa-user"></i> <%= event.user.first_name %></span>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </li>
-  <% end %>
-
+    <ul class="row d-flex justify-content-evenly p-4 g-2" data-card-events-target="list_cards">
+    <% @myevents.each do |event| %>
+      <%= render 'shared/card', item: event %>
+    <% end %>
   </ul>
 </div>
 
 </section>
 
-<section data-controller="cards">
+<section data-controller="card-bookings">
 <h2 class="home-headings">Les évènements que j'ai rejoint</h2>
 <div class="container">
-  <ul class="row d-flex justify-content-start p-4 g-2" data-cards-target="list_cards">
+      <ul class="row d-flex justify-content-evenly p-4 g-2" data-card-bookings-target="list_cards">
     <% @mybookings.each do |booking| %>
-      <li class="card_openair col-xs-12 col-lg-6" data-cards-target="card">
-        <%= link_to (event_path(booking.event)), class: 'anchor_card d-flex p-3' do %>
-          <div class="row">
-            <img src="/assets/<%= hello(booking.event) %>" class="col-xs-12 col-md-4" alt="">
-            <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
-              <div class="d-flex justify-content-between">
-                <span><%= booking.event.location %></span>
-                <span><%= booking.event.difficulty %></span>
-              </div>
-              <div class="d-flex justify-content-between">
-              <span><strong><%= booking.event.meeting_date.strftime('%d %m %Y') %></strong></span>
-              <span><i class="fa-solid fa-user"></i> <%= booking.event.user.first_name %>.<%= booking.event.user.last_name.first %></span>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </li>
+          <%= render 'shared/card', item: booking.event %>
     <% end %>
   </ul>
 </div>

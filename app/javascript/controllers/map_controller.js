@@ -5,10 +5,6 @@ export default class extends Controller {
   connect() {
     console.log('map connected');
 
-    navigator.geolocation.getCurrentPosition((data) => {
-      console.log(data)
-    });
-
     this.map = new google.maps.Map(
       document.getElementById("map_canvas"), {
         center: new google.maps.LatLng(37.4419, -122.1419),

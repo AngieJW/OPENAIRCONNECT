@@ -1,28 +1,26 @@
-<footer class="navbar-lewagon d-flex justify-content-center align-items-center fixed-bottom">
-  <div class="container d-flex justify-content-around align-items-center py-3">
+<footer class="navbar-lewagon d-flex justify-content-evenly align-items-center fixed-bottom">
     <div class="navbar-item">
       <%= link_to(myevents_path) do %>
         <i class="fas fa-calendar-check"></i>
-        <p>Mes evenements</p>
+        <h6>Mes evenements</h6>
       <% end %>
     </div>
     <div class="navbar-item">
       <%= link_to(events_path) do %>
         <i class="fas fa-map-marker-alt"></i>
-        <p>Evenements autour de moi</p>
+        <h6>Evenements autour de moi</h6>
       <% end %>
     </div>
     <div class="navbar-item">
       <%= link_to(hikes_path) do %>
         <i class="fas fa-route"></i>
-        <p>Explorer des itinéraires</p>
+        <h6>Explorer des itinéraires</h6>
       <% end %>
     </div>
     <div class="navbar-item">
       <%= link_to(new_event_path) do %>
         <i class="fas fa-plus-square"></i>
-        <p>Créer un evenement</p>
+        <h6>Créer un evenement</h6>
       <% end %>
     </div>
-  </div>
 </footer>
