@@ -22,6 +22,7 @@ export default class extends Controller {
     .then(response => response.json())
     .then(routeArray => {
       routeArray.forEach((route, index) => {
+        console.log(route)
         const routeCard = document.createElement("div")
         routeCard
       })
