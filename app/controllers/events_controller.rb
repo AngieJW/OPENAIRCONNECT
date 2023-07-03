@@ -17,9 +17,10 @@ class EventsController < ApplicationController
   end
 
   def create
+    @hike = Hike.create_from_strava(params[:hike_id_strava])
     @event = Event.new(event_params)
+    @event.hike = @hike
     @event.user = current_user
-    @event.hike = Hike.new
     authorize @event
     if @event.save!
       redirect_to events_path

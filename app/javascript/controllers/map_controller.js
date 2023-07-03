@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['input']
+  static targets = ['input', 'strava']
   connect() {
     console.log('map connected');
 
@@ -22,9 +22,30 @@ export default class extends Controller {
     .then(response => response.json())
     .then(routeArray => {
       routeArray.forEach((route, index) => {
-        console.log(route)
-        const routeCard = document.createElement("div")
-        routeCard
+        let title = route["name"]
+        let distance = route["distance"] / 10000
+        let elevation = Math.trunc(route["elevation_gain"])
+        let duration = route["estimated_moving_time"] / 60
+        let hours = Math.floor(duration / 60);
+        let minutes = Math.trunc(duration % 60);
+        let route_url = route["map_urls"]["url"]
+        console.log(route);
+        let info = `<h2 class="title"> ${title}</h2> <ul><li>Durée : ${hours}h ${minutes}m </li><li> Distance : ${distance.toFixed(1)} km </li><li>Dénivelé :${elevation} m</li></ul> `;
+        let btnInput = `<button class="btn-create-hike">Créer une randonnée</button>`
+        document.querySelector('#strava').insertAdjacentHTML('beforeend', `<img src='${route_url}'>`)
+        document.querySelector('#strava').insertAdjacentHTML('beforeend', info)
+        document.querySelector('#strava').insertAdjacentHTML('beforeend', btnInput)
+
+
+
+        // AJOUTER EN INPUT FIELD POUR AJOUTER LA HIKE A L'EVENEMENT
+        // ECOUTER LA VALUER DE L'INPUT (1 seul)*
+
+
+        // const routeCard = createElement("div")
+        // routeCard.innerHTML= `Pour la randonnée ${title}, la durée est de ${hours}h ${minutes}m, la distance est de ${distance.toFixed(1)} km et le dénivelé est de :${elevation} m`
+        // let strava_results = document.getElementById("main");
+        // strava_results.appendChild(routeCard);
       })
       this.polyline = routeArray[0].map.summary_polyline
       this.initializeMap(this.polyline)
@@ -78,19 +99,19 @@ export default class extends Controller {
         }
       };
 
-      var map = new google.maps.Map(
+      let map = new google.maps.Map(
         document.getElementById("map_canvas"), {
           center: new google.maps.LatLng(37.4419, -122.1419),
           zoom: 13,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-      var polyline = new google.maps.Polyline({
+      let gmapsPolyline = new google.maps.Polyline({
         path: google.maps.geometry.encoding.decodePath(json.overview_polyline.points),
         map: map
       });
-      var bounds = new google.maps.LatLngBounds();
-      for (var i = 0; i < polyline.getPath().getLength(); i++) {
-        bounds.extend(polyline.getPath().getAt(i));
+      let bounds = new google.maps.LatLngBounds();
+      for (var i = 0; i < gmapsPolyline.getPath().getLength(); i++) {
+        bounds.extend(gmapsPolyline.getPath().getAt(i));
       }
       map.fitBounds(bounds);
     }
