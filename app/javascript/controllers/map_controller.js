@@ -11,14 +11,14 @@ export default class extends Controller {
 
     this.map = new google.maps.Map(
       document.getElementById("map_canvas"), {
-        center: new google.maps.LatLng(37.4419, -122.1419),
+        center: new google.maps.LatLng(43.2965, 5.3698),
         zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
   }
 
   routesFinder() {
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=8e52e5877ad8bad8d7d525fe99504c9b073d7dcc"
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=53b964a5cbefd9000950f5d1962721a2c6c40023"
 
     this.polyline = ""
 
@@ -36,7 +36,7 @@ export default class extends Controller {
 
   find(event) {
     event.preventDefault();
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=8e52e5877ad8bad8d7d525fe99504c9b073d7dcc"
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=53b964a5cbefd9000950f5d1962721a2c6c40023"
 
     this.polyline = ""
 
