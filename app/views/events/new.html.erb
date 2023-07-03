@@ -3,8 +3,10 @@
 <%= simple_form_for @event , defaults: { input_html: { class: 'input-event' } }  do |f| %>
 
   <%= f.input :location, label: false, placeholder: "Lieu de l'évènement", :input_html => { data: { event_route_target: :location }}, class: "input-event" %>
+  <div class="new_event_time">
   <%= f.input :meeting_date, label: "Date", as: :date, html5: true, input_html: { min: Date.today } %>
   <%= f.input :meeting_time, label: "Heure", :minute_step => 15 %>
+  </div>
   <!--A METTRE PLUS BAS, UNE FOIS L'ITINERAIRE CHOISI -->
   <%= f.input :group_size, label: false, placeholder: "Taille max du groupe" %>
   <%= f.input :difficulty, label: false, placeholder: "Difficulté", class: "input-event"  %>
