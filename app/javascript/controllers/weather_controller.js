@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     console.log("salut moi c'est le tezerferfmps")
     console.log(this.locationTarget.innerText)
-    this.weatherForCity();
+    // this.weatherForCity();
   }
 
   weatherForCity() {
