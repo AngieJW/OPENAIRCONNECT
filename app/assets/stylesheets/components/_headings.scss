@@ -1,10 +1,12 @@
 .home-headings {
+  position: sticky;
+  display: inline-block;
+  top: 0;
   z-index: 10;
-  width: 60vw;
   background-color: $dark-green;
   color: white;
-  font-size: 16px;
+  font-size: 13px;
   padding: 8px;
   margin: 0;
-
+  border-bottom-right-radius: 10px;
 }

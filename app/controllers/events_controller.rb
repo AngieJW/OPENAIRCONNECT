@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
-    @events = policy_scope(Event.all.order(:meeting_date))
+    @events = policy_scope(Event.all.where.not(user: current_user).order(:meeting_date))
   end
 
   def show

@@ -12,8 +12,8 @@ export default class extends Controller {
     event.preventDefault();
     console.log(this.locationTarget.value);
     console.log("tu as cliqué sur suivant")
-    const res = this.resultsTarget
 
+    const res = this.resultsTarget
     this.hiddenTarget.classList.remove("d-none");
     this.resultsTarget.innerHTML = `Vos itinéraires pour ${this.locationTarget.value}`
 
