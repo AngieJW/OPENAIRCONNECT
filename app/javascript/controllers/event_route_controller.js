@@ -13,8 +13,6 @@ export default class extends Controller {
     console.log(this.locationTarget.value);
     console.log("tu as cliqué sur suivant")
     console.log( this.resultsTarget);
-
-
     this.hiddenTarget.classList.remove("d-none");
     this.resultsTarget.outerHTML = `Vos itinéraires pour ${this.locationTarget.value}`
   }
