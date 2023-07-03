@@ -40,11 +40,12 @@
     height: 100%;
     text-decoration: none;
     .bookmark_event {
-      z-index: 1000;
+      z-index: 10;
       position: absolute;
       color: rgb(237, 154, 0);
       width: auto;
       right: 0;
+      filter: drop-shadow(5px 5px 3px rgba(1, 1, 1, 0.34));
       transform: translateY(5px);
     }
     .images {
