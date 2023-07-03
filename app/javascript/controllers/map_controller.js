@@ -14,7 +14,7 @@ export default class extends Controller {
   }
 
   routesFinder() {
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=53b964a5cbefd9000950f5d1962721a2c6c40023"
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=58fa3f577e2904ecadac6e62e370ef4e92246cf0"
 
     this.polyline = ""
 
@@ -29,7 +29,6 @@ export default class extends Controller {
         let hours = Math.floor(duration / 60);
         let minutes = Math.trunc(duration % 60);
         let route_url = route["map_urls"]["url"]
-        console.log(route);
         let info = `<h2 class="title"> ${title}</h2> <ul><li>Durée : ${hours}h ${minutes}m </li><li> Distance : ${distance.toFixed(1)} km </li><li>Dénivelé :${elevation} m</li></ul> `;
         let btnInput = `<button class="btn-create-hike">Créer une randonnée</button>`
         document.querySelector('#strava').insertAdjacentHTML('beforeend', `<img src='${route_url}'>`)
@@ -54,7 +53,7 @@ export default class extends Controller {
 
   find(event) {
     event.preventDefault();
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=53b964a5cbefd9000950f5d1962721a2c6c40023"
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=58fa3f577e2904ecadac6e62e370ef4e92246cf0"
 
     this.polyline = ""
 
