@@ -18,27 +18,17 @@
 
   <%# BOUTON SUIVANT POUR RECHERCHER LES HIKES PAR RAPPORT AU LIEU %>
   <button data-action="click->event-route#displayRoutes" class="btn btn-warning m-2">Suivant</button>
-  <section class="routes-results" data-event-route-target="results">
-  <%# -------------APIII A METTRE ICI --------------------- %>
-    <%# -------------APIII A METTRE ICI --------------------- %>
-     <%# -------------APIII A METTRE ICI --------------------- %>
-       <%# -------------APIII A METTRE ICI --------------------- %>
+
+  <section class="routes-results" data-event-route-target="results" id="myroutes" >
+
   </section>
 
-  <section class="routes-results d-none" data-event-route-target="hidden">
-    <%= image_tag("imageluminy.png", :style => "width: 400px")%>
-    <h3>Luminy à Cassis </h3>
-    <ul>
-      <li>Difficulté : Intermédiaire</li>
-      <li>Distance : 10,87km</li>
-      <li>Durée estimée: 2h 50</li>
-      <li>Dénivelé : 550m</li>
-    </ul>
+  <section class="routes-results d-none" data-event-route-target="hidden" >
 
     <%= f.input :meeting_point, label: false, placeholder: "Point de rendez-vous"  %>
 
   <%# BOUTON POUR SOUMETTRE LE FORMULAIRE %>
-  <%= f.button :submit, "Créer mon évènement", class:"btn btn-warning m-2" %>
+  <%= f.button :submit, "Créer mon évènement", class:"btn btn-success m-2" %>
   </section>
 
   <% end %>

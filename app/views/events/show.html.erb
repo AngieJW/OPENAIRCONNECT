@@ -66,10 +66,9 @@ end
       <h6><%= @event.meeting_date.strftime('%d/%m/%Y') %></h6>
       <h6><%= @event.meeting_time.hour   %>h <%= @event.meeting_time.min %></h6>
     </div>
-  </div>
 </div>
 
-<h2 class="text-center p-5">Y AURA UNE CHATROOM LA</h2>
+<h3 class="text-center p-5">Chatroom ici</h3>
 
 <%# VUE DE L'ORGANISATEUR DE L'EVENEMENT %>
 <% if current_user == @event.user %>

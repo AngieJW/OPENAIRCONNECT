@@ -2,23 +2,24 @@
   <div class="container">
     <div class="navbar-title">
       <%= link_to "OpenAirConnect", root_path, class: "navbar-brand mx-auto" %>
+      <%= image_tag("logo-white.png", alt: "Logo", class: "navbar-logo") %>
     </div>
     <div class="navbar-button">
       <div class="dropdown">
         <i class="fa-solid fa-user" style="color: #ffffff" id="userBtn" data-bs-toggle="dropdown" aria-expanded="false"></i>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userBtn">
           <% if user_signed_in? %>
-        <li>
-          <%= link_to 'Mon dashboard', dashboard_path, class: "dropdown-item"%>
-        </li>
-        <li>
-            <%= link_to 'Se déconnecter', destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-danger"%>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item text-success" %>
-        </li>
-      <% end %>
+            <li>
+              <%= link_to 'Mon dashboard', dashboard_path, class: "dropdown-item"%>
+            </li>
+            <li>
+              <%= link_to 'Se déconnecter', destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-danger"%>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item text-success" %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
