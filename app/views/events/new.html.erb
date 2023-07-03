@@ -3,8 +3,10 @@
 <%= simple_form_for @event , defaults: { input_html: { class: 'input-event' } }  do |f| %>
 
   <%= f.input :location, label: false, placeholder: "Lieu de l'évènement", :input_html => { data: { event_route_target: :location }}, class: "input-event" %>
-  <%= f.input :meeting_date, label: "Date", as: :date, html5: true %>
-  <%= f.input :meeting_time, label: "Heure" %>
+  <div class="new_event_time">
+  <%= f.input :meeting_date, label: "Date", as: :date, html5: true, input_html: { min: Date.today } %>
+  <%= f.input :meeting_time, label: "Heure", :minute_step => 15 %>
+  </div>
   <!--A METTRE PLUS BAS, UNE FOIS L'ITINERAIRE CHOISI -->
   <%= f.input :group_size, label: false, placeholder: "Taille max du groupe" %>
   <%= f.input :difficulty, label: false, placeholder: "Difficulté", class: "input-event"  %>
@@ -16,14 +18,12 @@
 
   <%# BOUTON SUIVANT POUR RECHERCHER LES HIKES PAR RAPPORT AU LIEU %>
   <button data-action="click->event-route#displayRoutes" class="btn btn-warning m-2">Suivant</button>
-  <br>
   <section class="routes-results" data-event-route-target="results">
   <%# -------------APIII A METTRE ICI --------------------- %>
     <%# -------------APIII A METTRE ICI --------------------- %>
      <%# -------------APIII A METTRE ICI --------------------- %>
        <%# -------------APIII A METTRE ICI --------------------- %>
   </section>
-  <br>
 
   <section class="routes-results d-none" data-event-route-target="hidden">
     <%= image_tag("imageluminy.png", :style => "width: 400px")%>
@@ -37,7 +37,7 @@
 
     <%= f.input :meeting_point, label: false, placeholder: "Point de rendez-vous"  %>
 
-  <%# BOUTON POUR SOUMETTRE LE FORMULAIRE %> <br>
+  <%# BOUTON POUR SOUMETTRE LE FORMULAIRE %>
   <%= f.button :submit, "Créer mon évènement", class:"btn btn-warning m-2" %>
   </section>
 

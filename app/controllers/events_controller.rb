@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
-    @events = policy_scope(Event)
+    @events = policy_scope(Event.all.order(:meeting_date))
   end
 
   def show
@@ -43,9 +43,9 @@ class EventsController < ApplicationController
   end
 
   def myevents
-    @events = Event.where(user: current_user)
-    @mybookings = Booking.where(user: current_user)
-    authorize @events
+    @myevents = Event.where(user: current_user).order(:meeting_date)
+    @mybookings = Booking.joins(:event).where(user: current_user).order(:meeting_date)
+    authorize @myevents
   end
 
 

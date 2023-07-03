@@ -1,6 +1,6 @@
 <%
 
-def hello(e)
+def pictureHike(e)
     case e.location
     when 'Marseille'
       'rand_1.jpg'
@@ -22,33 +22,30 @@ def hello(e)
       'PrisonMick.jpg'
     end
 end
+
+def difficult(e)
+  case e.difficulty
+  when 'Facile'
+    'facile'
+  when 'Balade'
+    'balade'
+  when 'Intermédiaire'
+    'inter'
+  when 'Difficile'
+    'difficile'
+  when 'Sportif'
+    'sportif'
+  end
+end
   %>
 
-<section id="home" data-controller="cards">
-
-<div class="container">
-  <ul class="row d-flex justify-content-start p-4 g-2" data-cards-target="list_cards">
-  <% @events.each do |event| %>
-    <li class="card card_openair <%= 'owner_event' if event.user == current_user %>col-xs-12 col-lg-6" data-cards-target="card">
-    <%= link_to (event_path(event)), class: 'anchor_card d-flex p-3' do %>
-      <div class="row">
-        <img src="/assets/<%= hello(event) %>" class="col-xs-12 col-md-4" alt="">
-        <div class="card-event-stats d-flex justify-content-between flex-column col-xs-12 col-md-8 p-2">
-          <div class="d-flex justify-content-between">
-            <span>Chez moi</span> <!-- Lieu de la randonnée ( hike ) -->
-            <span>difficulty</span>
-          </div>
-          <div class="d-flex justify-content-between">
-          <span><strong><%= event.meeting_date.strftime('%A %B %Y') %></strong></span>
-            <span><i class="fa-solid fa-user"></i> <%= event.user.first_name %> <% if event.user == current_user %><strong>(Vous)</strong> <% end %></span>
-          </div>
-        </div>
-      </div>
+<section id="home" data-controller="card-events">
+  <h1 class="home-headings">Prochains evenements</h1>
+  <div class="container">
+    <ul class="row d-flex justify-content-evenly p-4 g-2" data-card-events-target="list_cards">
+    <% @events.each do |event| %>
+      <%= render 'shared/card', item: event %>
     <% end %>
-    </li>
-  <% end %>
-
-  </ul>
-</div>
-
+    </ul>
+  </div>
 </section>

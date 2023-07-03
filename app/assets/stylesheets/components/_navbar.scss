@@ -1,26 +1,16 @@
-$navbar_footer_height: 100px;
 .navbar-lewagon {
-  justify-content: space-between;
   background: $green;
   color: white;
-  height: $navbar_footer_height;
-  .navbar-collapse {
-    flex-grow: 0;
-  }
-
-  .navbar-brand img {
-    width: 40px;
-  }
-
+  padding: 10px;
   .navbar-item {
     text-align: center;
-
+    display: flex;
+    align-items: center;
+    h6 {
+      font-size: 10px;
+    }
     i {
       font-size: 2em;
-    }
-
-    p {
-      margin-bottom: 0;
     }
   }
 
@@ -28,18 +18,17 @@ $navbar_footer_height: 100px;
     color: white;
     text-decoration: none;
   }
-
-  a:hover {
-    color: white;
-    text-decoration: none;
-  }
 }
 
 @media (max-width: 600px) {
   .navbar-lewagon {
-    height: $navbar_footer_height / 2;
-  }
-  .navbar-lewagon .navbar-item p {
-    display: none;
+    .navbar-item {
+      h6 {
+        display: none;
+      }
+      i {
+        transform: scale(0.7);
+      }
+    }
   }
 }
