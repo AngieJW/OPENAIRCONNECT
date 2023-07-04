@@ -1,45 +1,45 @@
-$navbar_footer_height: 100px;
+$navbar_footer_height: 60px;
 .navbar-lewagon {
-  justify-content: space-between;
-  background: $green;
-  color: white;
   height: $navbar_footer_height;
-  .navbar-collapse {
-    flex-grow: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: $green;
+  padding-bottom: 5px;
+  .active {
+    h6 {
+      color: white !important;
+      font-weight: bold !important;
+      font-size: 9px !important;
+    }
   }
-
-  .navbar-brand img {
-    width: 40px;
-  }
-
   .navbar-item {
-    text-align: center;
-
-    i {
-      font-size: 2em;
+    transform: translateY(3px);
+    padding: 2px 10px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h6 {
+      text-align: center;
+      margin: 0;
+      padding-top: 2px;
+      font-weight: lighter;
+      font-size: 8px;
+      color: rgb(203, 203, 203);
     }
-
-    p {
-      margin-bottom: 0;
+    i {
+      font-size: 16px;
     }
   }
-
+  .main-item {
+    background-color: #2fab67;
+  }
   a {
     color: white;
     text-decoration: none;
-  }
-
-  a:hover {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .navbar-lewagon {
-    height: $navbar_footer_height / 2;
-  }
-  .navbar-lewagon .navbar-item p {
-    display: none;
   }
 }

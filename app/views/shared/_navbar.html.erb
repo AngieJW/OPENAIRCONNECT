@@ -1,28 +1,27 @@
-<footer class="navbar-lewagon d-flex justify-content-center align-items-center fixed-bottom">
-  <div class="container d-flex justify-content-around align-items-center py-3">
-    <div class="navbar-item">
-      <%= link_to(myevents_path) do %>
-        <i class="fas fa-calendar-check"></i>
-        <p>Mes evenements</p>
-      <% end %>
-    </div>
-    <div class="navbar-item">
-      <%= link_to(events_path) do %>
-        <i class="fas fa-map-marker-alt"></i>
-        <p>Evenements autour de moi</p>
-      <% end %>
-    </div>
-    <div class="navbar-item">
-      <%= link_to(hikes_path) do %>
-        <i class="fas fa-route"></i>
-        <p>Explorer des itinéraires</p>
-      <% end %>
-    </div>
-    <div class="navbar-item">
-      <%= link_to(new_event_path) do %>
-        <i class="fas fa-plus-square"></i>
-        <p>Créer un evenement</p>
-      <% end %>
-    </div>
-  </div>
+<footer class="navbar-lewagon d-flex justify-content-evenly align-items-start fixed-bottom">
+<%= link_to(myevents_path, class: (current_page?(myevents_path) ? 'navbar-item active' : 'navbar-item')) do %>
+    <i class="fas fa-calendar-check" <% if current_page?(myevents_path) %> style="color: white" <% else %> style="color: rgb(203, 203, 203);" <% end %>></i>
+    <h6>Mes evenements</h6>
+  <% end %>
+
+  <%= link_to(events_path, class: (current_page?(events_path) ? 'navbar-item active' : 'navbar-item')) do %>
+    <i class="fas fa-map-marker-alt" <% if current_page?(events_path) %> style="color: white" <% else %> style="color: rgb(203, 203, 203);" <% end %>></i>
+    <h6>Autour de moi</h6>
+  <% end %>
+
+  <%= link_to(root_path, class: (current_page?(root_path) ? 'navbar-item active main-item' : 'navbar-item main-item')) do %>
+    <i class="fa-solid fa-house" <% if current_page?(root_path) %> style="color: white" <% else %> style="color: rgb(203, 203, 203);" <% end %> ></i>
+    <h6>Accueil</h6>
+  <% end %>
+
+  <%= link_to(hikes_path, class: (current_page?(hikes_path) ? 'navbar-item active' : 'navbar-item')) do %>
+    <i class="fas fa-route" <% if current_page?(hikes_path) %> style="color: white" <% else %> style="color: rgb(203, 203, 203);" <% end %>></i>
+    <h6>Explorer</h6>
+  <% end %>
+
+
+  <%= link_to(new_event_path, class: (current_page?(new_event_path) ? 'navbar-item active' : 'navbar-item')) do %>
+    <i class="fas fa-plus-square" <% if current_page?(new_event_path) %> style="color: white" <% else %> style="color: rgb(203, 203, 203);" <% end %>></i>
+    <h6>Créer un evenement</h6>
+  <% end %>
 </footer>

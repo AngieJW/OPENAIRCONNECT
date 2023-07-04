@@ -1,6 +1,10 @@
 <div data-controller="map">
-  <form class="d-flex my-5" data-action="submit->map#find">
+  <form class="d-flex my-5" data-action="submit->map#routesFinder">
     <input type="text" class="form-control flex-grow-1 me-2" placeholder="Entre une adresse" data-map-target="input">
     <input type="submit" value="Localiser!" class="btn btn-primary">
   </form>
+
+  <div id="map_canvas"></div>
+
 </div>
+  <div id="strava"></div>

@@ -1,12 +1,15 @@
+
 <% if notice %>
-  <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div data-controller="flashes">
+  <div class="alert alert-dismissible fade show m-1" role="alert" data-flashes-target="alert">
     <%= notice %>
   </div>
+</div>
 <% end %>
 <% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div data-controller="flashes">
+  <div class="alert alert-dismissible fade show m-1" role="alert" data-flashes-target="alert">
     <%= alert %>
   </div>
+</div>
 <% end %>

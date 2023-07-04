@@ -6,14 +6,18 @@
   color: $dark-green;
   margin: 0.5em auto;
   }
+  .new_event_time {
+    background-color: rgba(141, 141, 141, 0.224);
+    border-radius: 10px;
+    margin: 10px 0;
+  }
 }
 
 .input-event {
   background-color: rgb(255, 255, 255);
   color: $gray;
-  border-color: $green;
-  border-width: 3px;
-  border-radius: 5px;
+  border: 1px solid grey;
+  border-radius: 15px;
   margin: 0 auto;
   &:focus {
     background-color: $vanilla;

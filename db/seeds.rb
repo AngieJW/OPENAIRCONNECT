@@ -43,7 +43,7 @@ rand(15..20).times do
   new_date = Date.today + rand(3..10)
   groupsize = rand(5..20)
   owner = users.sample
-  difficultylist = ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Impossible']
+  difficultylist = ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Sportif']
   lieu = ['Marseille', 'Cassis', 'Aix-en-Provence', 'Fuveau', 'Saint-Cyr', 'Aubagne', 'Ciotat', 'Gemenos']
   new_hike = Hike.create(distance: rand(12_000..34_000),
                          elevation: rand(80..160),
@@ -53,7 +53,7 @@ rand(15..20).times do
                          ending_lat: rand(-2..10),
                          ending_long: rand(-2..10))
   new_event = Event.create(meeting_date: new_date,
-                           meeting_time: Time.new(new_date.year, new_date.month, new_date.day, rand(10..14), rand(1..59), rand(1..59), "+02:00"),
+                           meeting_time: Time.new(new_date.year, new_date.month, new_date.day, rand(5..12), rand(1..59), rand(1..59)),
                            location: lieu.sample,
                            group_size: groupsize,
                            difficulty: difficultylist.sample,

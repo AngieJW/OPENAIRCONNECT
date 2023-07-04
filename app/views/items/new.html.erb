@@ -5,10 +5,10 @@
 <%= simple_form_for [@event, @item] do |f| %>
   <% 3.times do %>
     <div>
-      <%= text_field_tag 'item[][name]', '', placeholder: 'Name' %>
-      <%= text_field_tag 'item[][quantity]', '', placeholder: 'quantity' %>
+      <%= text_field_tag 'item[][name]', '', placeholder: 'Article' %>
+      <%= text_field_tag 'item[][quantity]', '', placeholder: 'quantité' %>
     </div>
   <% end %>
-  <br>
-  <%= submit_tag 'Créez la liste' %>
+
+   <%= submit_tag 'Créer une liste', class:'btn btn-success' %>
 <% end %>
