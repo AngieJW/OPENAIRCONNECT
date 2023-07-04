@@ -18,9 +18,6 @@ export default class extends Controller {
 
     const url = "https://www.strava.com/api/v3/athlete/routes?access_token=bde052ec7576cb89beb7b8ea9ee4aefb61567789"
 
-
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=bde052ec7576cb89beb7b8ea9ee4aefb61567789"
-
     fetch(url)
       .then(response => response.json())
       .then(routeArray => {

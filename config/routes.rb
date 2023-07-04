@@ -15,10 +15,6 @@ Rails.application.routes.draw do
     resources :items, only: %i[index show new create edit update destroy]
     resources :memories, only: %i[show new create edit update]
   end
-
-
   patch 'create_brings', to: "item_brings#create_brings", as: :update_items
-
   resources :bookings, only: %i[destroy]
-
 end

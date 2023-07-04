@@ -1,15 +1,97 @@
 #show {
   padding-bottom: 50px;
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   .show_hike_map {
-    h2 {
+    h4 {
       background-color: rgba(66, 66, 66, 0.411);
-      padding: 15px;
+      padding: 5px;
       color: white;
-      font-size: 20px;
+      font-size: 18px;
+    }
+  }
+  .show_hike_details {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    i {
+      margin: 0;
+      padding: 0;
+    }
+    p {
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+      animation: appear 0.5s ease-in;
+      .average_time {
+        font-style: italic;
+        font-size: 12px;
+      }
     }
   }
   .show_event_details {
-    background-color: rgba(234, 186, 82, 0.566);
+    background-color: white;
+    padding: 10px 5px;
+    .show_owner_event {
+      padding: 10px 0;
+      border-bottom: 1px solid grey;
+      animation: appear 0.5s ease-in;
+      h6 {
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+    .show_delete_js {
+      background-color: rgb(210, 0, 0);
+      color: white;
+      padding: 5px;
+      margin-top: 5px;
+      font-size: 12px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .details_stats {
+      padding: 0;
+      margin: 5px 0;
+      border-radius: 10px;
+      background-color: rgba(199, 199, 199, 0.527);
+      animation: appear 0.5s ease-in;
+      h6 {
+        font-size: 12px;
+        margin: 0;
+        padding: 10px 5px;
+        span {
+          font-size: 12px;
+          font-weight: bold;
+        }
+      }
+      .event_stats {
+        h6 {
+          color: black;
+          margin: 0;
+          padding: 0;
+        }
+        .list_items_btn {
+          * {
+            color: black !important;
+            text-decoration: none;
+          }
+          padding: 10px;
+          border-radius: 10px;
+          border: 1px solid grey;
+        }
+      }
+    }
+    .img_parent {
+      padding: 0 !important;
+    }
     .difficulty {
       padding: 10px;
       border-radius: 10px;
@@ -21,7 +103,7 @@
     .facile {
       background-color: green;
     }
-    .intermediaire {
+    .inter {
       background-color: orange;
     }
     .difficile {
