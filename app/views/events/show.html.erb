@@ -68,7 +68,7 @@ end
     </div>
 </div>
 
-<h3 class="text-center p-5">Chatroom ici</h3>
+      <%= link_to "Rejoindre la chatroom", event_chatroom_path(@event, @event.chatroom), class: 'btn btn-success' %>
 
 <%# VUE DE L'ORGANISATEUR DE L'EVENEMENT %>
 <% if current_user == @event.user %>
@@ -82,8 +82,3 @@ end
 <%= button_to "Rejoindre l'évenement", event_bookings_path(@event), method: :post, class: 'btn btn-success' %>
 <% end %>
 </section>
-
-
-      <!-----
-      <%= button_to "Rejoindre la chatroom", event_chatroom_path(@event, @event.chatroom), class: 'btn btn-success' %>
-      >
