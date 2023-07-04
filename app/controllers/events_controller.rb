@@ -63,8 +63,6 @@ end
     authorize @myevents
   end
 
-
-
   private
 
   def set_event
@@ -76,6 +74,6 @@ end
   end
 
   def hike_params
-      params.require(:event).permit(:hike_id_strava)
+    params.require(:event).permit(:hike_id_strava)
   end
 end
