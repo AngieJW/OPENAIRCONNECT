@@ -44,7 +44,7 @@ end
   <div class="container">
     <ul class="row d-flex justify-content-evenly p-4 g-2" data-card-events-target="list_cards">
     <% @events.each do |event| %>
-      
+
       <%= render 'shared/card', item: event %>
     <% end %>
     </ul>
