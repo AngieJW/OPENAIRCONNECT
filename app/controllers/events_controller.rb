@@ -28,11 +28,11 @@ end
   end
 
   def create
-    # @hike = Hike.create_from_strava(params[:hike_id_strava])
+    @hike = Hike.create_from_strava(params[:event][:hike_id_strava])
     @event = Event.new(event_params)
     @event.hike = @hike
     @event.user = current_user
-    @event.hike = Hike.new
+
     authorize @event
     if @event.save!
       # @chatroom = Chatroom.create!(event: @event)
@@ -73,5 +73,9 @@ end
 
   def event_params
     params.require(:event).permit(:meeting_date, :meeting_time, :meeting_point, :group_size, :location, :difficulty, :swim, :break, :description)
+  end
+
+  def hike_params
+      params.require(:event).permit(:hike_id_strava)
   end
 end

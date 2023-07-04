@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2023_07_04_143700) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,13 +56,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_143700) do
   create_table "hikes", force: :cascade do |t|
     t.float "distance"
     t.integer "elevation"
-    t.time "duration"
     t.float "starting_lat"
     t.float "starting_long"
     t.float "ending_lat"
     t.float "ending_long"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_url"
+    t.integer "duration"
   end
 
   create_table "item_brings", force: :cascade do |t|
