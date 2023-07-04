@@ -4,7 +4,7 @@
 
   <%= f.input :location, label: false, placeholder: "Lieu de l'évènement", :input_html => { data: { event_route_target: :location }}, class: "input-event" %>
   <div class="new_event_time">
-  <%= f.input :meeting_date, label: "Date", as: :date, html5: true, input_html: { min: Date.today } %>
+  <%= f.input :meeting_date, as: :date, html5: true, input_html: { min: Date.today } %>
   <%= f.input :meeting_time, label: "Heure", :minute_step => 15 %>
   </div>
   <%= f.input :group_size, label: false, placeholder: "Taille max du groupe" %>
