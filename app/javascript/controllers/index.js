@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddInputController from "./add_input_controller"
+application.register("add-input", AddInputController)
+
 import CardBookingsController from "./card_bookings_controller"
 application.register("card-bookings", CardBookingsController)
 
@@ -27,4 +30,3 @@ application.register("toggle-input", ToggleInputController)
 
 import WeatherController from "./weather_controller"
 application.register("weather", WeatherController)
-

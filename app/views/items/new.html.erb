@@ -1,14 +1,24 @@
 <div class="container form-event"><h1>Ajouter une liste</h1>
 
-
-
-<%= simple_form_for [@event, @item] do |f| %>
-  <% 3.times do %>
-    <div>
-      <%= text_field_tag 'item[][name]', '', placeholder: 'Article' %>
-      <%= text_field_tag 'item[][quantity]', '', placeholder: 'quantité' %>
+<div class="form-container justify-content-center">
+<br>
+  <%= simple_form_for [@event, @item], data: { controller: "add-input"} do |f| %>
+  <div data-add-input-target="inputs">
+    <div class="add-list-unit d-flex">
+      <div id="add-item-name">
+        <%= text_field_tag 'item[][name]', '', placeholder: 'Name' %>
+      </div>
+      <div id="add-item-quantity">
+        <%= text_field_tag 'item[][quantity]', '', placeholder: 'quantity' %>
+      </div>
     </div>
-  <% end %>
+  </div>
+  <div class="d-flex justify-content-end">
+    <div class="add-button" data-action="click->add-input#addField">+</div>
+  </div>
 
-   <%= submit_tag 'Créer une liste', class:'btn btn-success' %>
-<% end %>
+  <div class="submit-button">
+    <%= submit_tag 'Créez la liste' %>
+  </div>
+</div>
+  <% end %>

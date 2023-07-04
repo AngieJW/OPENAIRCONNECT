@@ -1,0 +1,35 @@
+#add-item-name{
+  width: 70%;
+}
+
+#add-item-quantity {
+  width: 30%;
+}
+
+.form-container {
+  margin: 0 auto;
+  height: 725px;}
+
+.add-list-unit {
+  input {
+    padding: 10px 2px;
+    border-radius: 8px;
+    border-style: none;
+    margin-bottom: 10px;
+  }
+}
+
+.add-button {
+  background-color: white;
+  font-size: 27px;
+  text-align: center;
+  width: 47px;
+  border-radius: 11px;
+}
+
+.submit-button {
+  position: fixed;
+  bottom: 80px;
+  left: calc(50vw - 100px);
+  width: 200px;
+}
