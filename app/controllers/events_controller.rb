@@ -2,7 +2,11 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
-    @events = policy_scope(Event.all.where.not(user: current_user).order(:meeting_date))
+    if params[:query].present?
+      @events = policy_scope(Event.where('location LIKE ?', "%#{params[:query]}%").where.not(user: current_user).order(:meeting_date))
+    else
+      @events = policy_scope(Event.all.where.not(user: current_user).order(:meeting_date))
+    end
   end
 
   def show
