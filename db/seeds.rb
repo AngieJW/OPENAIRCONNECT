@@ -42,19 +42,18 @@ clara = User.create!(email: 'claraholms@gmail.com',
 users = [tereva, adrien, angie, clara]
 puts 'Users created'
 
+
+strava = [3111329327680250312, 3111329866812508050, 3111330269123832722, 3111330553428303762, 3111330629832325210, 3111331295633258386]
+lieu = ['Marseille', 'Cassis', 'Aix-en-Provence', 'Fuveau', 'Saint-Cyr', 'Aubagne', 'Ciotat', 'Gemenos']
+
 rand(15..20).times do
   new_date = Date.today + rand(3..10)
   groupsize = rand(5..20)
   owner = users.sample
   difficultylist = ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Sportif']
-  lieu = ['Marseille', 'Cassis', 'Aix-en-Provence', 'Fuveau', 'Saint-Cyr', 'Aubagne', 'Ciotat', 'Gemenos']
-  new_hike = Hike.create!(distance: rand(12_000..34_000),
-                         elevation: rand(80..160),
-                         duration: (Time.new + rand(5000..15_000)) - Time.new,
-                         starting_lat: rand(2..10),
-                         starting_long: rand(2..13),
-                         ending_lat: rand(-2..10),
-                         ending_long: rand(-2..10))
+
+  new_hike = Hike.self.create_from_strava(strava.sample)
+
   new_event = Event.create!(meeting_date: new_date,
                            meeting_time: Time.new(new_date.year, new_date.month, new_date.day, rand(5..12), rand(1..59), rand(1..59)),
                            location: lieu.sample,
