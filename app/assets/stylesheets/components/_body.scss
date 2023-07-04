@@ -8,6 +8,12 @@ body {
   }
 }
 
+@media screen and (max-width: 390px) {
+  .nav-link {
+    font-size: 0.8rem;
+  }
+}
+
 // * {
 //   border: dashed 1px red;
 // }
