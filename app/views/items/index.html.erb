@@ -1,38 +1,55 @@
 <div class="container-fluid">
-  <h1 class="list-title">LISTE DES CHOSES QUE J’APPORTE</h1>
-  <br>
-  <div class="form-check">
+  <div class="list-page-wrapper">
+    <h1 id="list-title">LISTE DES CHOSES QUE J’APPORTE</h1>
+    <br>
+      <div class="list-headers">
+        <h6 id="item-header">item</h6>
+        <h6 id="quantity-header">quantity</h6>
+      </div>
     <%= form_with url: "/create_brings", method: :patch do |f| %>
+    <div class="form-check">
+      <div class="list-body scrollable">
         <% @items.each do |item| %>
           <% packed_items = 0 %>
           <% item.item_brings.each do |packed_unit| %>
-             <% packed_items += packed_unit.quantity.to_i %>
+              <% packed_items += packed_unit.quantity.to_i %>
           <% end %>
 
-          <div class="inline-elements list-text">
-            <h6><input type="checkbox" id="item_brings_<%= item.id %>" name="item_brings[<%= item.id %>]" value="<%= item.id %>" class="checkbox-style" ></h6>
-            <h6><%= item.quantity%></h6>
-            <h6 class="binder-margin">-</h6>
+          <div class="list-unit" data-controller="toggle-input">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <% if item.quantity == packed_items%>
+                  <h6><i class="fa-solid fa-check" style="color: #000000;"></i></h6>
+                <% else %>
+                  <input type="checkbox" id="item_brings_<%= item.id %>" name="item_brings[<%= item.id %>]" value="<%= item.id %>" class="checkbox-style" data-action="toggle-input#toggleTargets">
+                <% end %>
 
-            <h6 class="item-name">
-              <label for="<%= item.id %>"><%= item.name %></label>
-            </h6>
-
-            <%# on click: If quantity is > 1, show form %>
-            <h6><input id="item_brings_<%= item.id %>" name="item_brings[<%= item.id %>]" placeholder="combien?"></h6>
+                <h6 class="item-name">
+                  <label for="<%= item.id %>"><%= item.name %></label>
+                </h6>
+            </div>
             <%# check that packed_items is not greater that the needed quantity %>
 
-            <%# on submit: replace form by text stating the new item.quantity - item.packed_quantity unless item.quantity - item.packed_quantity == 0 %>
-             <% unless item.quantity == packed_items%>
-              <h6 class="list-text"> reste <%= item.quantity - packed_items%> à emmener </h6>
-            <% end %>
-          </div>
-          <br>
-        <% end %>
-      <br>
-      <%= f.submit "Mettre à jour la liste" %>
-    <% end %>
+              <div class="quantity-container">
+                <h6><%= packed_items%> / <%=item.quantity%></h6>
+              </div>
+            </div>
 
+            <div class="packed-quantity d-none" data-toggle-input-target="hideable">
+              <input id="item_brings_<%= item.id %>" name="item_brings[<%= item.id %>]" placeholder=" combien?" type="number" max="<%=item.quantity - packed_items%>">
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+      <div class="list-footer"></div>
+      <br>
+
+      <div class="submit-button">
+        <%= f.submit "Mettre à jour la liste" %>
+      </div>
+
+      <% end %>
   </div>
 
 </div>

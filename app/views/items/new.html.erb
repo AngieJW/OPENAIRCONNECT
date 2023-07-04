@@ -3,12 +3,12 @@
 
 
 <%= simple_form_for [@event, @item] do |f| %>
-  <% 2.times do %>
+  <% 3.times do %>
     <div>
       <%= text_field_tag 'item[][name]', '', placeholder: 'Name' %>
       <%= text_field_tag 'item[][quantity]', '', placeholder: 'quantity' %>
     </div>
   <% end %>
   <br>
-  <%= submit_tag 'submit' %>
+  <%= submit_tag 'Créez la liste' %>
 <% end %>

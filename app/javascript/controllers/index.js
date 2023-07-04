@@ -15,3 +15,6 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import ToggleInputController from "./toggle_input_controller"
+application.register("toggle-input", ToggleInputController)
