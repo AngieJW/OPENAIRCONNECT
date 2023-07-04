@@ -1,5 +1,18 @@
 body {
   padding-bottom: $navbar_footer_height;
+  background-image: url('forest3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+body::before{
+  z-index: -1000;
+  background-color: rgba(0, 0, 0, 0.37);
+  content: '';
+  display: block;
+  height: 100%;
+  position: fixed;
+  width: 100%;
 }
 
 @media (max-width: 600px) {
