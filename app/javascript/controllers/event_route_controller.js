@@ -17,7 +17,7 @@ export default class extends Controller {
     this.hiddenTarget.classList.remove("d-none");
     this.resultsTarget.innerHTML = `Vos itinéraires pour ${this.locationTarget.value}`
 
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=58fa3f577e2904ecadac6e62e370ef4e92246cf0"
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=6682f9073b1be80c2a4459a828ba41557daca7a2"
 
 
     fetch(url)
