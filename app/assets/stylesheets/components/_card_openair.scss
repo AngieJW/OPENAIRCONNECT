@@ -26,8 +26,6 @@
   opacity: 0;
   margin: 10px 0;
   padding: 0;
-  box-shadow: -3px 3px 10px #888956,
-              3px -3px 10px #f5f5c6;
   list-style-type: none;
   * {
     color: #1f1f1f;
@@ -39,6 +37,8 @@
     width: 100%;
     height: 100%;
     text-decoration: none;
+    background-color: $vanilla;
+    border-radius: 8px;
     .bookmark_event {
       z-index: 10;
       position: absolute;
@@ -131,22 +131,4 @@
 }
 .booking_event {
   border: 2px solid orange;
-}
-
-$navbar_footer_height: 100px;
-@media (max-width: 600px) {
-  .navbar-lewagon {
-    height: $navbar_footer_height / 2;
-  }
-  .navbar-lewagon .navbar-item p {
-    display: none;
-    .navbar-item {
-      p {
-        display: none;
-      }
-      i {
-        transform: scale(0.7);
-      }
-    }
-  }
 }

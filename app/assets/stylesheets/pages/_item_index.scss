@@ -1,28 +1,121 @@
-
-.list-title {
-  font-size: 14px;
-  font-family: Montserrat;
-  font-weight: lighter;
+#item-header {
+  margin: 2px 3px 1px 22px;
 }
 
-.inline-elements {
-  display: inline-flex;
+#quantity-header {
+  margin: 2px 12px 4px 5px;
+}
+
+.list-page-wrapper {
+  margin: 20px 30px 10px;
+  display: block;
   align-items: center;
+}
+
+#list-title {
+  font-size: 15px;
+  font-family: Montserrat;
+  font-weight: lighter;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0px 12px 0px;
+}
+
+.list-headers {
+  display: flex;
+  justify-content: space-between;
+  background-color: #28965A;
+  border-radius: 5px 5px 0px 0px;
+  padding: 12px;
+  h6 {
+    font-size: 16px;
+    font-family: Montserrat;
+    color: white;
+    font-weight: lighter;
+    margin: 0px;
+  }
+}
+
+.list-footer{
+  height: 24px;
+  background-color: #28965A;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.list-body{
+  background-color: white;
+  padding: 10px 23px 0px 23px;
+}
+
+.list-body.scrollable {
+  max-height: 552px; /* Set a maximum height for the scrollable area */
+  overflow-y: auto; /* Enable vertical scrolling */
+  scroll-behavior: smooth; /* Apply smooth scrolling behavior */
+
+}
+
+.list-body.scrollable::-webkit-scrollbar-thumb {
+  background-color: #e2e2e2d8; /* Set the color of the scrollbar thumb to blue */
+}
+
+.list-body.scrollable::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Set the background color of the scrollbar track */
+}
+
+.list-unit{
+  padding: 27px 0px;
+  border-bottom: 0.3px solid #d6e4dd;
+  grid-template-columns: 1fr 1fr 4fr;
   .checkbox-style {
     margin: 0px 26px 0px 0px;
-  }
-  .binder-margin{
-    margin: 0px 20px 0px;
+    color: #0B582E;
   }
   .item-name {
     margin-right: 10px;
   }
+  input {
+    border-style: none;
+    border-bottom: 0.4px solid;
+  }
   h6 {
     font-size: 12px;
     font-family: Montserrat;
+    margin: 0;
   }
 }
 
 .form-check {
   padding: 0px;
+}
+
+.quantity-container{
+  text-align: end;
+}
+
+.hidden {
+  display: none;
+}
+
+.fa-check {
+  font-size: 16px;
+  margin-right: 26px;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: center;
+  input {
+    padding: 14px 28px;
+    border-radius: 6px;
+    border-style: none;
+    background: #EAE151;
+    color: #0B582E;
+    font-weight: normal;
+  }
+}
+
+.packed-quantity {
+  margin: 15px 0px 3px 0px;
+  font-family: Montserrat;
+  font-size: 14px;
 }

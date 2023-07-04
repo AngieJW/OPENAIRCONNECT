@@ -13,7 +13,11 @@ export default class extends Controller {
 
     const res = this.resultsTarget
     this.hiddenTarget.classList.remove("d-none");
-    this.resultsTarget.innerHTML = `<h2 class="home-headings">Vos itinéraires pour ${this.locationTarget.value}</h2>`
+
+    this.resultsTarget.innerHTML = `Vos itinéraires pour ${this.locationTarget.value}`
+
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=bde052ec7576cb89beb7b8ea9ee4aefb61567789"
+
 
     const url = "https://www.strava.com/api/v3/athlete/routes?access_token=bde052ec7576cb89beb7b8ea9ee4aefb61567789"
 

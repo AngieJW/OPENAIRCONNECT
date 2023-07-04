@@ -1,26 +1,27 @@
-<footer class="navbar-lewagon d-flex justify-content-evenly align-items-center fixed-bottom">
-    <div class="navbar-item">
-      <%= link_to(myevents_path) do %>
-        <i class="fas fa-calendar-check"></i>
-        <h6>Mes evenements</h6>
-      <% end %>
-    </div>
-    <div class="navbar-item">
-      <%= link_to(events_path) do %>
-        <i class="fas fa-map-marker-alt"></i>
-        <h6>Evenements autour de moi</h6>
-      <% end %>
-    </div>
-    <div class="navbar-item">
-      <%= link_to(hikes_path) do %>
-        <i class="fas fa-route"></i>
-        <h6>Explorer des itinéraires</h6>
-      <% end %>
-    </div>
-    <div class="navbar-item">
-      <%= link_to(new_event_path) do %>
-        <i class="fas fa-plus-square"></i>
-        <h6>Créer un evenement</h6>
-      <% end %>
-    </div>
+<footer class="navbar-lewagon d-flex justify-content-evenly align-items-start fixed-bottom">
+<%= link_to(myevents_path, class: (current_page?(myevents_path) ? 'navbar-item active' : 'navbar-item')) do %>
+    <i class="fas fa-calendar-check"></i>
+    <h6>Vous</h6>
+  <% end %>
+
+  <%= link_to(events_path, class: (current_page?(events_path) ? 'navbar-item active' : 'navbar-item')) do %>
+    <i class="fas fa-map-marker-alt"></i>
+    <h6>Explorer</h6>
+  <% end %>
+
+  <%= link_to(root_path, class: (current_page?(root_path) ? 'navbar-item active' : 'navbar-item')) do %>
+    <i class="fa-solid fa-house"></i>
+    <h6>Accueil</h6>
+  <% end %>
+
+  <%= link_to(hikes_path, class: (current_page?(hikes_path) ? 'navbar-item active' : 'navbar-item')) do %>
+    <i class="fas fa-route"></i>
+    <h6>Parcours</h6>
+  <% end %>
+
+
+  <%= link_to(new_event_path, class: (current_page?(new_event_path) ? 'navbar-item active' : 'navbar-item')) do %>
+    <i class="fas fa-plus-square"></i>
+    <h6>Créer</h6>
+  <% end %>
 </footer>
