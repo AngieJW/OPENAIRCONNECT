@@ -39,19 +39,18 @@ end
 %>
 
 <div>
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <ul id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <a class="nav-link active" id="myevents-tab" data-bs-toggle="tab" href="#myevents" role="tab" aria-controls="myevents" aria-selected="true">Mes évènements</a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="bookings-tab" data-bs-toggle="tab" href="#bookings" role="tab" aria-controls="bookings" aria-selected="false">Les évènements que j'ai rejoint</a>
+      <a class="nav-link" id="bookings-tab" data-bs-toggle="tab" href="#bookings" role="tab" aria-controls="bookings" aria-selected="false">Reservations</a>
     </li>
   </ul>
 
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="myevents" role="tabpanel" aria-labelledby="myevents-tab">
       <section data-controller="card-events">
-        <h1 class="home-headings">Mes évènements</h1>
         <div class="container">
             <ul class="row d-flex justify-content-evenly p-4 g-2" data-card-events-target="list_cards">
             <% @myevents.each do |event| %>
@@ -63,7 +62,6 @@ end
     </div>
     <div class="tab-pane fade" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
       <section data-controller="card-bookings">
-        <h2 class="home-headings">Les évènements que j'ai rejoint</h2>
         <div class="container">
               <ul class="row d-flex justify-content-evenly p-4 g-2" data-card-bookings-target="list_cards">
             <% @mybookings.each do |booking| %>
