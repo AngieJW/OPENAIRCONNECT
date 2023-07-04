@@ -10,15 +10,12 @@ export default class extends Controller {
 
   displayRoutes(event) {
     event.preventDefault();
-    console.log(this.locationTarget.value);
-    console.log("tu as cliqué sur suivant")
 
     const res = this.resultsTarget
     this.hiddenTarget.classList.remove("d-none");
-    this.resultsTarget.innerHTML = `Vos itinéraires pour ${this.locationTarget.value}`
+    this.resultsTarget.innerHTML = `<h2 class="home-headings">Vos itinéraires pour ${this.locationTarget.value}</h2>`
 
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=58fa3f577e2904ecadac6e62e370ef4e92246cf0"
-
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=bde052ec7576cb89beb7b8ea9ee4aefb61567789"
 
     fetch(url)
       .then(response => response.json())
@@ -30,12 +27,18 @@ export default class extends Controller {
           let duration = route["estimated_moving_time"] / 60
           let hours = Math.floor(duration / 60);
           let minutes = Math.trunc(duration % 60);
-          let route_url = route["map_urls"]["url"]
-
+          let routeUrl = route["map_urls"]["url"]
+          const firstHalf = route["id_str"].substring(0, route["id_str"].length / 2)
+          const secondHalf = route["id_str"].substring(route["id_str"].length / 2)
+          console.log(route);
+          console.log(route["id_str"]);
+          // console.log(firstHalf);
+          // console.log(secondHalf);
+          let stravaId = new String(route["id_str"])
           let info = `<h2 class="title"> ${title}</h2> <ul><li>Durée : ${hours}h ${minutes}m </li><li> Distance : ${distance.toFixed(1)} km </li><li>Dénivelé :${elevation} m</li></ul> `;
-          let btnInput = `<button class="btn-create-hike btn btn-warning">Choisir cette randonnée</button>`
-          console.log(res)
-          res.insertAdjacentHTML('beforeend', `<img src='${route_url}'>`)
+          let btnInput = `<div class="btn-create-hike btn btn-warning" data-action="click->choose-hike#pickHike" data-choose-hike-strava-id-param="id_is_${stravaId}">Choisir cette randonnée</div>`
+          console.log(btnInput);
+          res.insertAdjacentHTML('beforeend', `<img src='${routeUrl}'>`)
           res.insertAdjacentHTML('beforeend', info)
           res.insertAdjacentHTML('beforeend', btnInput)
         })

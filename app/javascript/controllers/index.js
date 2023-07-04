@@ -10,6 +10,9 @@ application.register("card-bookings", CardBookingsController)
 import CardEventsController from "./card_events_controller"
 application.register("card-events", CardEventsController)
 
+import ChooseHikeController from "./choose_hike_controller"
+application.register("choose-hike", ChooseHikeController)
+
 import EventRouteController from "./event_route_controller"
 application.register("event-route", EventRouteController)
 
