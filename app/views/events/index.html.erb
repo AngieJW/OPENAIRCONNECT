@@ -3,17 +3,28 @@
 <button data-action="click->map#myPosition">Ma position</button>
 <section id="searchbar" class="container p-3">
 <%= form_with url: events_path, method: :get, html: { class: 'row', data: { refresh_list_target: 'form' } } do |f| %>
-<%= f.text_field :query,
-                  class: "col-10 p-2 mx-auto",
-                  placeholder: 'Ville',
-                  value: params[:query],
-                  data: {
-                    refresh_list_target: 'searchInput',
-                } %>
+  <div class="form-group col-md-5">
+    <%= f.label :query, 'Ville', class: 'form-label' %>
+    <%= f.text_field :query,
+                      class: "form-control",
+                      placeholder: 'ex: Aubagne',
+                      value: params[:query],
+                      data: {
+                        refresh_list_target: 'searchInput',
+                    } %>
+  </div>
+  <div class="form-group col-md-5">
+    <%= label_tag :date, 'Date', class: 'form-label' %>
+    <%= date_field_tag :date, params[:date], class: 'form-control' %>
+  </div>
+  <div class="form-group col-md-2 align-self-end">
+    <%= button_tag 'Cherchez', class: 'btn btn-primary btn-block', type: 'submit' %>
+  </div>
 <% end %>
-<div data-refresh-list-target="list">
+<div data-refresh_list_target="list">
 </div>
 </section>
+
 <%
 def pictureHike(e)
     case e.location

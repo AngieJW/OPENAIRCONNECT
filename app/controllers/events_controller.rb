@@ -1,13 +1,20 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
-  def index
-    if params[:query].present?
-      @events = policy_scope(Event.where('location LIKE ?', "%#{params[:query]}%").where.not(user: current_user).order(:meeting_date))
-    else
-      @events = policy_scope(Event.all.where.not(user: current_user).order(:meeting_date))
-    end
+# raise if params[:query].present? || params[:date].present?
+
+def index
+  @events = policy_scope(Event.all)
+
+  if params[:query].present?
+    @events = @events.where('location LIKE ?', "%#{params[:query]}%")
   end
+
+  if params[:date].present?
+    date = Date.parse(params[:date])
+    @events = @events.where(meeting_date: date)
+  end
+end
 
   def show
     @booking = Booking.find_by(user: current_user, event: @event)
