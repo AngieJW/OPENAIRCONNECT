@@ -5,7 +5,7 @@ class Hike < ApplicationRecord
   has_many :events
 
   def self.create_from_strava(strava_id)
-    url = "https://www.strava.com/api/v3/routes/#{strava_id.to_i}?access_token=94ae00bb8f3b1f1fd03c76deffc517849eced90a"
+    url = "https://www.strava.com/api/v3/routes/#{strava_id.to_i}?access_token=fae8f5a264dd1e038303e66f6d305c78581a61f9"
 
     route_serialized = URI.open(url).read
     route = JSON.parse(route_serialized)

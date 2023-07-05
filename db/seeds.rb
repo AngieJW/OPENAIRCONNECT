@@ -42,22 +42,26 @@ clara = User.create!(email: 'claraholms@gmail.com',
 users = [tereva, adrien, angie, clara]
 puts 'Users created'
 
-
 strava = [3111329327680250312, 3111329866812508050, 3111330269123832722, 3111330553428303762, 3111330629832325210, 3111331295633258386]
 
-rand(15..20).times do
+index = 0
+nmb_of_loop = rand(15..20)
+puts "nombre de boucle : #{nmb_of_loop}"
+nmb_of_loop.times do
   new_date = Date.today + rand(3..10)
   groupsize = rand(5..15)
   owner = users.sample
   difficultylist = ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Sportif']
-
+  meeting_pointlist = ['Devant le tabac', "A coté de l'arret de bus", 'Devant la mairie', 'Devant le magasin de jouet', 'Au départ de la randonnée']
   new_hike = Hike.create_from_strava(strava.sample)
   new_location = new_hike.title.split(':', 2)[0]
   new_event = Event.create!(meeting_date: new_date,
                             meeting_time: Time.new(new_date.year, new_date.month, new_date.day, rand(5..12), rand(1..59), rand(1..59)),
+                            meeting_point: meeting_pointlist.sample,
                             location: new_location,
                             group_size: groupsize,
                             difficulty: difficultylist.sample,
+                            description: 'Bonjour à tous, cet evenement est accessible à tous, on fera quelques pauses.',
                             user: owner,
                             hike: new_hike)
   new_event.save!
@@ -66,9 +70,8 @@ rand(15..20).times do
   items.each do |item|
     Item.create(name: item, quantity: (groupsize / 4) + rand(1..3), event: new_event)
   end
-  rand(0..1).times do
-    Booking.create(user: users.reject { |x| x == owner }.sample, event: new_event)
-  end
+  rand(0..1).times { Booking.create(user: users.reject { |x| x == owner }.sample, event: new_event) }
+  puts "#{index += 1} tour de boucle finis"
 end
 
-puts 'finished - hikes + events + lists items + chatroomd + bookings created'
+puts 'finished - hikes + events + lists items + chatroome + bookings created'

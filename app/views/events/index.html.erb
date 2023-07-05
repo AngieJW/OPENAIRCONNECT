@@ -1,6 +1,6 @@
 <main data-controller="map">
-<h1 class="home-headings">Autour de chez moi</h1>
-<button data-action="click->map#myPosition">Ma position</button>
+<%# <button data-action="click->map#myPosition">Ma position</button> %>
+<%# mettre le btn geolocalisation et renvoyer dans l'input en dessous la ville selon la loc %>
 <section id="searchbar" class="container p-3">
 <%= form_with url: events_path, method: :get, html: { class: 'row', data: { refresh_list_target: 'form' } } do |f| %>
   <div class="form-group col-md-5">
