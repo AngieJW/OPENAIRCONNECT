@@ -10,6 +10,9 @@ application.register("card-bookings", CardBookingsController)
 import CardEventsController from "./card_events_controller"
 application.register("card-events", CardEventsController)
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import ChooseHikeController from "./choose_hike_controller"
 application.register("choose-hike", ChooseHikeController)
 

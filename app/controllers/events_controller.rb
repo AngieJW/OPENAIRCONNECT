@@ -61,8 +61,6 @@ end
     authorize @myevents
   end
 
-
-
   private
 
   def set_event
