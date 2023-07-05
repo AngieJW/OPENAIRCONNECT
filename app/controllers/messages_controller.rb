@@ -5,7 +5,14 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
     @message.user = current_user
     if @message.save
-      redirect_to event_chatroom_path(@chatroom.event, @chatroom)
+      ChatroomChannel.broadcast_to(
+        @chatroom,
+        {
+          authorId: @message.user.id,
+          elementToAppend: render_to_string(partial: "message", locals: {message: @message, author: false})
+        }.to_json
+      )
+      head :ok
     else
       render "chatrooms/show", status: :unprocessable_entity
     end
