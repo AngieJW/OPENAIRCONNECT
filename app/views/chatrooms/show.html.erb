@@ -1,24 +1,26 @@
-<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+<div
+  class="container chatroom"
+  data-controller="chatroom-subscription"
+  data-chatroom-subscription-user-id-value="<%= current_user.id %>"
+  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+>
   <h1 class="home-headings">Discussion pour la randonnée de <%= @chatroom.event.hike.title %></h1>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
-      <div id="message-<%= message.id %>" class="message <%= message.user == current_user ? 'my-message' : 'other-message' %>">
-        <small>
-          <strong><%= message.user.first_name %>.<%= message.user.last_name.first %></strong>
-          <%# <i><%= message.created_at.strftime("%a %b %e at %l:%M %p")</i> %>
-        </small>
-        <p><%= message.content %></p>
-      </div>
+      <%= render "messages/message", message: message, author: current_user == message.user %>
     <% end %>
   </div>
   <div class="message-input">
-    <%= simple_form_for [@chatroom.event, @chatroom, @message], url: event_chatroom_messages_path(@chatroom.event, @chatroom), html: { class: "d-flex", id: "new-message-form" } do |f| %>
+    <%= simple_form_for [@chatroom.event, @chatroom, @message],
+      html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" } },
+      class: "d-flex", id: "new-message-form",
+      url: event_chatroom_messages_path(@chatroom.event, @chatroom) do |f| %>
       <%= f.input :content, label: false, placeholder: "Message", wrapper_html: { class: "flex-grow-1" } %>
       <%= f.submit "Envoyer", class: "btn btn-warning mb-3" %>
     <% end %>
   </div>
+</div>
   <%= link_to (event_path(@event)), class: 'btn_message' do %>
     <i class="fa-solid fa-arrow-left"></i>
     <% end %>
-</div>
