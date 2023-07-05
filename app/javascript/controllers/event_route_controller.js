@@ -4,10 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["location", "results", "hidden"]
 
-  // connect() {
-  //   console.log("hello toi");
-  // }
-
   displayRoutes(event) {
     event.preventDefault();
 
@@ -29,8 +25,6 @@ export default class extends Controller {
           let hours = Math.floor(duration / 60);
           let minutes = Math.trunc(duration % 60);
           let routeUrl = route["map_urls"]["url"]
-          console.log(route);
-          console.log(route["id_str"]);
           let stravaId = new String(route["id_str"])
           let info = `
           <h2 class="title">${title}</h2>
@@ -47,7 +41,7 @@ export default class extends Controller {
           data-choose-hike-target="button"
           data-choose-hike-strava-id-param="id_is_${stravaId}"
         >
-          Choisissez cette randonnée
+          Choisir cette randonnée
         </div>
       `;
 

@@ -59,7 +59,7 @@ nmb_of_loop.times do
                             location: new_location,
                             group_size: groupsize,
                             difficulty: difficultylist.sample,
-                            description: 'Bonjour à tous, cet evenement est accessible à tous, on fera quelques pauses.',
+                            description: 'Bonjour à tous, cet venement est accessible à tous, on fera quelques pauses.',
                             user: owner,
                             hike: new_hike)
   new_event.save!
