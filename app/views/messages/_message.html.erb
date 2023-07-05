@@ -1,0 +1,10 @@
+<div id="message-<%= message.id %>" class="message <%= message.user == current_user ? 'my-message' : 'other-message' %>">
+  <small>
+    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p><%= message.content %></p>
+
+  <% if message.user == current_user %>
+    <%= link_to "Delete", event_chatroom_message_path(@chatroom.event, @chatroom, message), method: :delete, class: "delete-button", data: { message_id: message.id, controller: "delete-message", action: "click->delete-message#delete" } %>
+  <% end %>
+</div>

@@ -1,0 +1,77 @@
+.container.chatroom {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  color: $vanilla;
+}
+
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.message {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px 0;
+  max-width: 70%;
+  color: white;
+  position: relative;
+}
+
+.my-message {
+  align-self: flex-end;
+  background-color: $green;
+  margin-left: auto; /* Added to push the message to the right side */
+}
+
+.other-message {
+  align-self: flex-start;
+  background-color: $gray;
+  margin-right: auto; /* Added to push the message to the left side */
+}
+
+small {
+  display: block;
+  color: $light-gray;
+  font-size: 0.8rem;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: white;
+}
+
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: $green;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: $dark-green;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #07391d;
+}
+
+@media screen and (max-height: 740px) {
+  .container.chatroom {
+    height: 80vh;
+  }
+}

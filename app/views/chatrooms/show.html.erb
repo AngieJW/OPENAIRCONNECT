@@ -1,20 +1,25 @@
-<div class="container chatroom">
-  <h1>La Chatroom de <%= @chatroom.event.user.first_name %></h1>
+<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+  <h1 class="home-headings">Discussion pour la randonnée de <%= @chatroom.event.hike.title %></h1>
 
-  <div class="messages">
+  <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
+      <div id="message-<%= message.id %>" class="message <%= message.user == current_user ? 'my-message' : 'other-message' %>">
         <small>
-          <%# <strong><%= message.user.nickname %></strong> %>
           <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
         </small>
         <p><%= message.content %></p>
+
+        <% if message.user == current_user %>
+          <%= link_to "Supprimer", event_chatroom_message_path(@chatroom.event, @chatroom, message), method: :delete, class: "delete-button" %>
+        <% end %>
       </div>
     <% end %>
   </div>
 
-  <%= simple_form_for [@chatroom.event, @chatroom, @message], url: event_chatroom_messages_path(@chatroom.event, @chatroom), html: { class: "d-flex" } do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message", wrapper_html: { class: "flex-grow-1" } %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
+  <div class="message-input">
+    <%= simple_form_for [@chatroom.event, @chatroom, @message], url: event_chatroom_messages_path(@chatroom.event, @chatroom), html: { class: "d-flex", id: "new-message-form" } do |f| %>
+      <%= f.input :content, label: false, placeholder: "Message", wrapper_html: { class: "flex-grow-1" } %>
+      <%= f.submit "Envoyer", class: "btn btn-warning mb-3" %>
+    <% end %>
+  </div>
 </div>

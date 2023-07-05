@@ -9,18 +9,16 @@ Rails.application.routes.draw do
   get 'pages/apiconnection', to: 'pages#apiconnection'
   get 'pages/indexstrava', to: 'pages#indexstrava'
   get 'pages/indexstrava.html/exchange_token', to: 'pages#indexstrava'
+
   resources :events, only: %i[index show new create edit update] do
     resources :bookings, only: %i[create]
     resources :chatrooms, only: :show do
-      resources :messages, only: :create
+      resources :messages, only: %i[create destroy show]
     end
     resources :items, only: %i[index show new create edit update destroy]
     resources :memories, only: %i[show new create edit update]
   end
 
-
   patch 'create_brings', to: "item_brings#create_brings", as: :update_items
-
   resources :bookings, only: %i[destroy]
-
 end
