@@ -29,21 +29,10 @@ end
     <%= image_tag @event.hike.image_url,  class: 'col-12 p-0' %>
     <h4 class="position-absolute text-center bottom-0 m-0" data-weather-target="location"><%= @event.location %></h4>
   </div>
-<<<<<<< HEAD
-  <div class="row">
-    <div class="col-12 d-flex justify-content-between align-items-center">
-      <% if @event.items.count > 0 %>
-      <h6><%= link_to "Liste", event_items_path(event_id: @event.id) %></h6>
-      <% else %>
-      <h6><%= link_to "Ajoutez une liste", new_event_item_path(event_id: @event.id) %></h6>
-      <% end %>
-      <h6 data-weather-target="icon"></h6>
-=======
   <div class="show_hike_details p-3">
     <div class="hike_stats d-flex justify-content-between">
     <p><i class="fa-solid fa-arrow-up-right-dots"></i> <strong> <%= @event.hike.elevation %> m</strong></p>
     <p><i class="fa-solid fa-person-hiking"></i> <strong><%= @event.hike.distance.floor(1) %> km</strong></p>
->>>>>>> b98ca142c9b936b053f08f765bf346b4f3e1d735
     </div>
   <p><i class="fa-regular fa-clock"></i> <strong><%= (@event.hike.duration / 60 / 60) %>h<%= (@event.hike.duration / 60) % 60 %>min</strong><span class="average_time"> ( Temps estimé )</span></p>
   </div>
@@ -57,7 +46,6 @@ end
       <h6 class="participate">Vous participez à cet evenement </h6>
       <%= button_to "Se désinscrire de l'évenement", booking_path(@booking), method: :delete, class: 'show_btn_js' %>
       <% elsif current_user != @event.user %>
-      <%# VUE DES VISITEURS   %>
       <%= button_to "Rejoindre l'évenement", event_bookings_path(@event), method: :post, class: 'show_btn_js' %>
       <% end %>
     <div class="details_stats container row">
