@@ -15,7 +15,7 @@
   </div>
   <div class="form-group col-md-5">
     <%= label_tag :date, 'Date', class: 'form-label' %>
-    <%= date_field_tag :date, params[:date], class: 'form-control' %>
+    <%= date_field_tag :date, params[:date], class: 'form-control', data: { controller: 'flatpickr' } %>
   </div>
   <div class="form-group col-md-2 align-self-end">
     <%= button_tag 'Rechercher', class: 'btn btn-warning btn-block', type: 'submit' %>
