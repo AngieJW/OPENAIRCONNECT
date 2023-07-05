@@ -48,8 +48,24 @@
         font-size: 14px;
       }
     }
+    .participate {
+      font-size: 12px;
+      margin: 0;
+      padding: 5px;
+    }
     .show_delete_js {
       background-color: rgb(210, 0, 0);
+      color: white;
+      padding: 5px;
+      margin-top: 5px;
+      font-size: 12px;
+      border-radius: 5px;
+      outline: none !important;
+      border: none !important;
+      text-decoration: none;
+    }
+    .show_btn_js {
+      background-color: $green;
       color: white;
       padding: 5px;
       margin-top: 5px;
@@ -112,5 +128,22 @@
     .sportif {
       background-color: black;
     }
+  }
+}
+
+.btn_message {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  bottom: 70px;
+  right: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  i {
+    color: white;
   }
 }

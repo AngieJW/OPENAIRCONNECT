@@ -32,12 +32,10 @@ end
     @event = Event.new(event_params)
     @event.hike = @hike
     @event.user = current_user
-
     authorize @event
     if @event.save!
-      # @chatroom = Chatroom.create!(event: @event)
-
-      redirect_to events_path
+      Chatroom.create!(event: @event)
+      redirect_to events_path(@event)
     else
       render :new, status: :unprocessable_entity
     end
@@ -76,6 +74,6 @@ end
   end
 
   def hike_params
-      params.require(:event).permit(:hike_id_strava)
+    params.require(:event).permit(:hike_id_strava)
   end
 end
