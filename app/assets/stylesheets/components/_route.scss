@@ -1,0 +1,18 @@
+.routes-results .active {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #212529;
+}
+
+.btn-create-hike {
+  margin-bottom: 10px;
+}
+
+.myroutes {
+  display: flex;
+  flex-direction: column;
+}
+
+.randonnee-selected {
+  border: 1px solid green;
+}
