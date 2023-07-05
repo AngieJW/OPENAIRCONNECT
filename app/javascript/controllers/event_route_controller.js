@@ -10,15 +10,16 @@ export default class extends Controller {
     const res = this.resultsTarget
     this.hiddenTarget.classList.remove("d-none");
 
-    this.resultsTarget.innerHTML = `Vos itinéraires pour ${this.locationTarget.value}`
+    this.resultsTarget.innerHTML = `<h2 class="home-headings">Vos itinéraires pour ${this.locationTarget.value}</h2>`
 
     const url = "https://www.strava.com/api/v3/athlete/routes?access_token=56c04df1216fd05947d99a8992b0bb347e20f996"
 
     fetch(url)
       .then(response => response.json())
       .then(routeArray => {
-        routeArray.slice(-5).forEach((route, index) => {
-          let title = route["name"]
+        const routesFiltered = routeArray.filter(route => route["name"].split(':', 2)[0].trim() == this.locationTarget.value.trim());
+        routesFiltered.forEach((route, index) => {
+          let title = route["name"].split(':', 2)[1]
           let distance = route["distance"] / 10000
           let elevation = Math.trunc(route["elevation_gain"])
           let duration = route["estimated_moving_time"] / 60
@@ -28,15 +29,15 @@ export default class extends Controller {
           let stravaId = new String(route["id_str"])
           let info = `
           <h2 class="title">${title}</h2>
-          <ul class="d-flex">
-            <li>Duration: ${hours}h ${minutes}m</li>
-            <li>Distance: ${distance.toFixed(1)} km</li>
-            <li>Elevation: ${elevation} m</li>
+          <ul class="list-group list-unstyled">
+            <li class="list-group-item"><i class="fa-regular fa-clock"></i> Durée : ${hours}h ${minutes}m</li>
+            <li class="list-group-item"><i class="fa-solid fa-person-hiking"></i> Distance : ${distance.toFixed(1)} km</li>
+            <li class="list-group-item"><i class="fa-solid fa-arrow-up-right-dots"></i> Dénivelé : ${elevation} m</li>
           </ul>
         `;
         let btnInput = `
         <div
-          class="btn-create-hike btn btn-warning"
+          class="btn-create-hike btn btn-success"
           data-action="click->choose-hike#pickHike"
           data-choose-hike-target="button"
           data-choose-hike-strava-id-param="id_is_${stravaId}"
@@ -48,10 +49,11 @@ export default class extends Controller {
         this.resultsTargets.forEach((result, i) => {
           let randonnee = document.createElement('div');
           randonnee.setAttribute('data-choose-hike-target', 'randonnee');
+          randonnee.setAttribute('class', 'randonnee');
 
           result.appendChild(randonnee);
 
-          randonnee.insertAdjacentHTML('beforeend', `<img src='${routeUrl}'>`);
+          randonnee.insertAdjacentHTML('beforeend', `<img class="img-fluid" src='${routeUrl}'>`);
           randonnee.insertAdjacentHTML('beforeend', info);
           randonnee.insertAdjacentHTML('beforeend', btnInput);
         });

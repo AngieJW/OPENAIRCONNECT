@@ -3,12 +3,10 @@
 <%= simple_form_for @event , defaults: { input_html: { class: 'input-event' } }  do |f| %>
 
   <%= f.input :location, label: false, placeholder: "Lieu de l'évènement", :input_html => { data: { event_route_target: :location }}, class: "input-event" %>
-  <div class="new_event_time">
-  <%= f.input :meeting_date, as: :date, html5: true, input_html: { min: Date.today } %>
+  <%= f.input :meeting_date, label: "Date", html5: true, input_html: { min: Date.today } %>
   <%= f.input :meeting_time, label: "Heure", :minute_step => 15 %>
-  </div>
-  <%= f.input :group_size, collection: (2..20),label: false, placeholder: "Taille max du groupe" %>
-  <%= f.input :difficulty, collection: ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Sportif'], label: false, placeholder: "Difficulté", class: "input-event"  %>
+  <%= f.input :group_size, prompt: "Taille du groupe", collection: (2..20),label: false %>
+  <%= f.input :difficulty, collection: ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Sportif'], prompt: "Difficulté", label: false, class: "input-event"  %>
   <div class="container d-flex justify-content-around">
     <%= f.input :swim, label: "Baignade" %>
     <%= f.input :break, label: "Pause" %>
@@ -30,7 +28,7 @@
     <%= f.input :meeting_point, label: false, placeholder: "Point de rendez-vous"  %>
 
   <%# BOUTON POUR SOUMETTRE LE FORMULAIRE %>
-  <%= f.button :submit, "Créer mon évènement", class:"btn btn-success m-2" %>
+  <%= f.button :submit, "Créer mon évènement", class:"btn btn-warning m-2" %>
   </section>
  </div>
   <% end %>
