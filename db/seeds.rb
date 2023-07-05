@@ -58,6 +58,8 @@ nmb_of_loop.times do
                             meeting_point: meeting_pointlist.sample,
                             location: new_location,
                             group_size: groupsize,
+                            swim: [true, false].sample,
+                            break: [true, false].sample,
                             difficulty: difficultylist.sample,
                             description: 'Bonjour à tous, cet venement est accessible à tous, on fera quelques pauses.',
                             user: owner,
