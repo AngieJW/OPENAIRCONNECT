@@ -3,7 +3,7 @@
 <%= simple_form_for @event , defaults: { input_html: { class: 'input-event' } }  do |f| %>
 
   <%= f.input :location, label: false, placeholder: "Lieu de l'évènement", :input_html => { data: { event_route_target: :location }}, class: "input-event" %>
-  <%= f.input :meeting_date, label: "Date", html5: true, input_html: { min: Date.today } %>
+  <%= f.input :meeting_date, label: "Date", html5: true,:data => { :provide => :datepicker }, input_html: { min: Date.today } %>
   <%= f.input :meeting_time, label: "Heure", :minute_step => 15 %>
   <%= f.input :group_size, prompt: "Taille du groupe", collection: (2..20),label: false %>
   <%= f.input :difficulty, collection: ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Sportif'], prompt: "Difficulté", label: false, class: "input-event"  %>
