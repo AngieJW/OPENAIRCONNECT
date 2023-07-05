@@ -2,7 +2,6 @@
 
   <div class="list-page-wrapper">
     <h1 id="list-title">LISTE DES CHOSES QUE J’APPORTE</h1>
-    <br>
       <div class="list-headers">
         <h6 id="item-header">item</h6>
         <h6 id="quantity-header">quantity</h6>
@@ -22,8 +21,6 @@
               <div class="d-flex align-items-center">
                 <% if item.quantity == packed_items%>
                   <h6><i class="fa-solid fa-check" style="color: #000000;"></i></h6>
-                <% else %>
-                  <input type="checkbox" id="item_brings_<%= item.id %>" name="item_brings[<%= item.id %>]" value="<%= item.id %>" class="checkbox-style" data-action="toggle-input#toggleTargets">
                 <% end %>
 
                 <h6 class="item-name">
@@ -36,28 +33,23 @@
                 <h6><%= packed_items%> / <%=item.quantity%></h6>
               </div>
             </div>
-
-            <div class="packed-quantity d-none" data-toggle-input-target="hideable">
-              <input id="item_brings_<%= item.id %>" name="item_brings[<%= item.id %>]" placeholder=" combien?" type="number" max="<%=item.quantity - packed_items%>">
+            <% if item.quantity != packed_items%>
+            <div class="packed-quantity" data-toggle-input-target="hideable">
+              <input id="item_brings_<%= item.id %>" name="item_brings[<%= item.id %>]" placeholder="quantité" type="number" max="<%=item.quantity - packed_items%>">
             </div>
-
+            <% end %>
           </div>
         <% end %>
 
       </div>
-      <div class="list-footer"></div>
-      <br>
-
-     
-
-
-
       <div class="submit-button">
         <%= f.submit "Mettre à jour la liste" %>
       </div>
 
       <% end %>
   </div>
-    <%= link_to "Retourner à l'évènement", event_path(@event), class: 'btn btn-warning'%>
 
 </div>
+ <%= link_to (event_path(@event)), class: 'btn_message' do %>
+    <i class="fa-solid fa-arrow-left"></i>
+    <% end %>

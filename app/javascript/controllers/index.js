@@ -16,6 +16,9 @@ application.register("chatroom-subscription", ChatroomSubscriptionController)
 import ChooseHikeController from "./choose_hike_controller"
 application.register("choose-hike", ChooseHikeController)
 
+import DeleteMessageController from "./delete_message_controller"
+application.register("delete-message", DeleteMessageController)
+
 import EventRouteController from "./event_route_controller"
 application.register("event-route", EventRouteController)
 
@@ -24,6 +27,9 @@ application.register("flashes", FlashesController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ItemsController from "./items_controller"
+application.register("items", ItemsController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)

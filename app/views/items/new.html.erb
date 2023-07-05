@@ -1,13 +1,21 @@
-<div class="container form-event"><h1>Ajouter une liste</h1>
+<section data-controller="items" id="new_list">
+  <div class="container">
+    <h1>Ajouter une liste</h1>
+    <button data-action="click->items#addItem" id="addbtn"> Ajouter un article </button>
+    <%= simple_form_for [@event, @item] do |f| %>
+      <ul data-items-target="listItems" id="listItems">
+        <% 3.times do %>
+          <li class="item">
+            <%= text_field_tag 'item[][name]', '', placeholder: 'Article', class: 'articles article_item' %>
+            <%= text_field_tag 'item[][quantity]', '', placeholder: 'quantité', class: 'articles quantity_item' %>
+          </li>
+        <% end %>
+      </ul>
+      <%= submit_tag 'Créer la liste', class:'createbtn' %>
+    <% end %>
+  </div>
+</section>
 
-
-
-<%= simple_form_for [@event, @item] do |f| %>
-  <% 3.times do %>
-    <div>
-      <%= text_field_tag 'item[][name]', '', placeholder: 'Article' %>
-      <%= text_field_tag 'item[][quantity]', '', placeholder: 'quantité' %>
-    </div>
-  <% end %>
-  <%= submit_tag 'Créer une liste', class:'btn btn-success' %>
+<%= link_to (event_path(@event)), class: 'btn_message' do %>
+    <i class="fa-solid fa-arrow-left"></i>
 <% end %>
