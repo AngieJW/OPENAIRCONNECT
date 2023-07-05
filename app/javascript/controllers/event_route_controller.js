@@ -16,7 +16,7 @@ export default class extends Controller {
 
     this.resultsTarget.innerHTML = `Vos itinéraires pour ${this.locationTarget.value}`
 
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=fae8f5a264dd1e038303e66f6d305c78581a61f9"
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=56c04df1216fd05947d99a8992b0bb347e20f996"
 
     fetch(url)
       .then(response => response.json())
@@ -29,19 +29,38 @@ export default class extends Controller {
           let hours = Math.floor(duration / 60);
           let minutes = Math.trunc(duration % 60);
           let routeUrl = route["map_urls"]["url"]
-          const firstHalf = route["id_str"].substring(0, route["id_str"].length / 2)
-          const secondHalf = route["id_str"].substring(route["id_str"].length / 2)
           console.log(route);
           console.log(route["id_str"]);
-          // console.log(firstHalf);
-          // console.log(secondHalf);
           let stravaId = new String(route["id_str"])
-          let info = `<h2 class="title"> ${title}</h2> <ul><li>Durée : ${hours}h ${minutes}m </li><li> Distance : ${distance.toFixed(1)} km </li><li>Dénivelé :${elevation} m</li></ul> `;
-          let btnInput = `<div class="btn-create-hike btn btn-warning" data-action="click->choose-hike#pickHike" data-choose-hike-strava-id-param="id_is_${stravaId}">Choisir cette randonnée</div>`
-          console.log(btnInput);
-          res.insertAdjacentHTML('beforeend', `<img src='${routeUrl}'>`)
-          res.insertAdjacentHTML('beforeend', info)
-          res.insertAdjacentHTML('beforeend', btnInput)
+          let info = `
+          <h2 class="title">${title}</h2>
+          <ul class="d-flex">
+            <li>Duration: ${hours}h ${minutes}m</li>
+            <li>Distance: ${distance.toFixed(1)} km</li>
+            <li>Elevation: ${elevation} m</li>
+          </ul>
+        `;
+        let btnInput = `
+        <div
+          class="btn-create-hike btn btn-warning"
+          data-action="click->choose-hike#pickHike"
+          data-choose-hike-target="button"
+          data-choose-hike-strava-id-param="id_is_${stravaId}"
+        >
+          Choisissez cette randonnée
+        </div>
+      `;
+
+        this.resultsTargets.forEach((result, i) => {
+          let randonnee = document.createElement('div');
+          randonnee.setAttribute('data-choose-hike-target', 'randonnee');
+
+          result.appendChild(randonnee);
+
+          randonnee.insertAdjacentHTML('beforeend', `<img src='${routeUrl}'>`);
+          randonnee.insertAdjacentHTML('beforeend', info);
+          randonnee.insertAdjacentHTML('beforeend', btnInput);
+        });
         })
       })
   }

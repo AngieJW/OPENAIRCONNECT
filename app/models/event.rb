@@ -8,6 +8,6 @@ class Event < ApplicationRecord
   has_one :chatroom, dependent: :destroy
 
   validates :meeting_date, :location, :meeting_time, presence: true
-  # LEVELS = ["balade", "adapté aux enfants", "intermédiaire", "difficile"]
-  # validates :difficulty, inclusion: { in: LEVELS }
+  LEVELS = ["balade", "adapté aux enfants", "intermédiaire", "difficile"]
+  validates :difficulty, inclusion: { in: LEVELS }
 end

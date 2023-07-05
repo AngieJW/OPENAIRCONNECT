@@ -14,7 +14,7 @@ export default class extends Controller {
   }
 
   routesFinder() {
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=fae8f5a264dd1e038303e66f6d305c78581a61f9"
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=56c04df1216fd05947d99a8992b0bb347e20f996"
 
 
     this.polyline = ""
@@ -54,7 +54,7 @@ export default class extends Controller {
 
   find(event) {
     event.preventDefault();
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=fae8f5a264dd1e038303e66f6d305c78581a61f9"
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=56c04df1216fd05947d99a8992b0bb347e20f996"
 
 
     this.polyline = ""

@@ -35,7 +35,7 @@ end
     authorize @event
     if @event.save!
       Chatroom.create!(event: @event)
-      redirect_to events_path(@event)
+      redirect_to event_path(@event)
     else
       render :new, status: :unprocessable_entity
     end
