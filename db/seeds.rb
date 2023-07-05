@@ -54,10 +54,12 @@ nmb_of_loop.times do
   new_hike = Hike.create_from_strava(strava.sample)
   new_location = new_hike.title.split(':', 2)[0]
   new_event = Event.create!(meeting_date: new_date,
-                            meeting_time: Time.new(new_date.year, new_date.month, new_date.day, rand(5..12), rand(1..59), rand(1..59)),
+                            meeting_time: Time.new(new_date.year, new_date.month, new_date.day, rand(5..12), [15, 30, 35, 00].sample, rand(1..59)),
                             meeting_point: meeting_pointlist.sample,
                             location: new_location,
                             group_size: groupsize,
+                            swim: [true, false].sample,
+                            break: [true, false].sample,
                             difficulty: difficultylist.sample,
                             description: 'Bonjour à tous, cet venement est accessible à tous, on fera quelques pauses.',
                             user: owner,

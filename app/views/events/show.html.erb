@@ -19,7 +19,7 @@
       <%= link_to "Annuler l'évènement", '#', class:'show_delete_js' %>
       <% elsif !@mybookings.where(event: @event).empty? %>
       <h6 class="participate">Vous participez à cet évènement </h6>
-      <%= button_to "Se désinscrire de l'évènement", booking_path(@booking), method: :delete, class: 'show_btn_js' %>
+      <%= button_to "Se désinscrire", booking_path(@booking), method: :delete, class: 'show_btn_js' %>
       <% elsif current_user != @event.user %>
       <%= button_to "Rejoindre l'évènement", event_bookings_path(@event), method: :post, class: 'show_btn_js' %>
       <% end %>
@@ -31,38 +31,43 @@
       <div>
         <h6>Point de rendez-vous : <span><%= @event.meeting_point %></span></h6>
       </div>
-      <div class="event_stats col-12 d-flex justify-content-between align-items-center">
-        <% if @event.items.count > 0 %>
-        <h6 class="list_items_btn btn-success"><%= link_to event_items_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> Voir la liste <% end %></h6>
-        <% else %>
-        <h6 class="list_items_btn"><%= link_to new_event_item_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> Ajouter une liste <% end %></h6>
-        <% end %>
-        <h6><i class="fa-solid fa-user"></i> </span><%= @event.bookings.count + 1 %> / <%= @event.group_size %></span></h6>
-        <h6>météo prévue:<span data-weather-target="icon" class="img_parent"></span></h6>
-      </div>
-    <div class="d-flex justify-content-between align-items-center" >
+    <div class="d-flex">
+      <div class="bool_events">
+        <div class="bool_stats text-center">
+          <i class="d-flex justify-content-center align-items-center bool-true fa-solid fa-user"></i>
+          <h6 class="d-flex flex-column px-3"><%= @event.bookings.count + 1 %> / <%= @event.group_size %></h6>
+        </div>
+          <div class="bool_stats text-center">
+            <span data-weather-target="icon" class="d-flex justify-content-center align-items-center bool-true"></span>
+            <h6 class="d-flex flex-column"><span>Météo</span> <span>prevu</span></h6>
+          </div>
         <% if @event.swim == true %>
-          <div class="swim mx-auto">
-            <div class="bool-true">
-              <i class="fa-solid fa-person-swimming "></i>
-            </div>
-            <p>Baignade </p></div>
+          <div class="bool_stats text-center">
+            <i class="d-flex justify-content-center align-items-center bool-true fa-solid fa-person-swimming "></i>
+            <h6>Baignade</h6>
+          </div>
         <% end %>
         <% if @event.break? %>
-        <div class="break mx-auto">
-          <div class="bool-true">
-            <i class="fa-solid fa-cookie-bite"></i>
-          </div>
-          <p >Pauses</p>
+        <div class="bool_stats text-center">
+          <i class="d-flex justify-content-center align-items-center bool-true fa-solid fa-cookie-bite"></i>
+          <h6>Pauses</h6>
         </div>
         <% end %>
+        </div>
       </div>
+    <div class="event_stats container row mx-auto">
+        <% if @event.items.count > 0 && !@mybookings.where(event: @event).empty? %>
+        <h6 class="col-12 list_items_btn btn-success"><%= link_to event_items_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> Voir la liste <% end %></h6>
+        <% elsif !@mybookings.where(event: @event).empty? %>
+        <h6 class="col-12 list_items_btn"><%= link_to new_event_item_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> Ajouter une liste <% end %></h6>
+        <% end %>
+      </div> <!-- btn list -->
     </div>
   </div>
 <% if (!@mybookings.where(event: @event).empty?) || (@event.user == current_user) %>
   <%= link_to (event_chatroom_path(@event, @event.chatroom)), class: 'btn_message' do %>
     <i class="fa-solid fa-message"></i>
-    <% end %>
   <% end %>
+<% end %>
 </div>
 </section>
