@@ -9,10 +9,6 @@
           <%# <i><%= message.created_at.strftime("%a %b %e at %l:%M %p")</i> %>
         </small>
         <p><%= message.content %></p>
-
-        <% if message.user == current_user %>
-          <%= link_to "Supprimer", event_chatroom_message_path(@chatroom.event, @chatroom, message), method: :delete, class: "delete-button" %>
-        <% end %>
       </div>
     <% end %>
   </div>
@@ -22,5 +18,7 @@
       <%= f.submit "Envoyer", class: "btn btn-warning mb-3" %>
     <% end %>
   </div>
-  <%= link_to 'Retour', event_path(@event) %>
+  <%= link_to (event_path(@event)), class: 'btn_message' do %>
+    <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
 </div>
