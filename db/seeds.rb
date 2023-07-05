@@ -44,7 +44,7 @@ puts 'Users created'
 strava = [3111329327680250312, 3111329866812508050, 3111330269123832722, 3111330553428303762, 3111330629832325210, 3111331295633258386, 3111386454224642962, 3111387250715775432, 3111388596649445466, 3111389024556013658, 3111389809147757458, 3111390026293333082, 3111390430731088786, 3111390584799220626]
 index = 0
 nmb_of_loop = rand(15..20)
-puts "nombre de boucle : #{nmb_of_loop}"
+puts "nombre de boucles : #{nmb_of_loop}"
 nmb_of_loop.times do
   new_date = Date.today + rand(3..10)
   groupsize = rand(5..15)
@@ -69,7 +69,7 @@ nmb_of_loop.times do
     Item.create(name: item, quantity: (groupsize / 4) + rand(1..3), event: new_event)
   end
   rand(0..1).times { Booking.create(user: users.reject { |x| x == owner }.sample, event: new_event) }
-  puts "#{index += 1} tour de boucle finis"
+  puts "#{index += 1} tours de boucles finies"
 end
 
-puts 'finished - hikes + events + lists items + chatroome + bookings created'
+puts 'finished - hikes + events + lists items + chatrooms + bookings created'

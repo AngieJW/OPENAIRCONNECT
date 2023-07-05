@@ -1,3 +1,70 @@
+#new_list {
+  margin: 0;
+  padding: 0;
+  h1 {
+    background-color: $green;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 24px;
+  }
+  #addbtn {
+    background-color: $yellow;
+    outline: none;
+    padding: 5px 10px;
+    margin: 5px 0;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 14px;
+    color: black;
+  }
+
+  #listItems {
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.484);
+    border-radius: 10px;
+    gap: 10px;
+    padding: 30px 10px;
+    margin-bottom: 50px;
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    flex-direction: column;
+    .item {
+      display: flex;
+      justify-content: space-between;
+      .articles {
+        border-radius: 5px;
+        border: 1px solid grey;
+        padding: 2px 5px;
+        outline: none;
+      }
+      .article_item {
+        width: 60%;
+      }
+      .quantity_item {
+        width: 30%;
+        min-width: 85px;
+      }
+    }
+  }
+}
+
+.createbtn {
+  position: fixed;
+  bottom: 70px;
+  right: 5px;
+  background-color: $yellow;
+  outline: none;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border: 1px solid grey;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1f1f1f;
+}
+
 #item-header {
   margin: 2px 3px 1px 22px;
 }
