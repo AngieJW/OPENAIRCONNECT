@@ -9,21 +9,20 @@ export default class extends Controller {
 
     this.chosenHikeTarget.value = str_id
 
-
     let selectedRandonnee = event.target.parentNode
-
+    console.log(this.chosenHikeTarget.value);
 
 
     if (selectedRandonnee) {
 
       this.buttonTargets.forEach(button => {
-        button.innerHTML = "Choisissez cette randonnée";
+        button.innerHTML = "Choisir cette randonnée";
       });
 
       this.randonneeTargets.forEach(randonnee => {
           randonnee.classList.remove('randonnee-selected');
           selectedRandonnee.classList.add('randonnee-selected');
-          event.target.innerHTML = "Vous avez choisi cette randonnée"
+          event.target.innerHTML = "Randonnée selectionnée"
       });
     }
   }

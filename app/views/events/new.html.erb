@@ -7,8 +7,8 @@
   <%= f.input :meeting_date, as: :date, html5: true, input_html: { min: Date.today } %>
   <%= f.input :meeting_time, label: "Heure", :minute_step => 15 %>
   </div>
-  <%= f.input :group_size, label: false, placeholder: "Taille max du groupe" %>
-  <%= f.input :difficulty, label: false, placeholder: "Difficulté", class: "input-event"  %>
+  <%= f.input :group_size, collection: (2..20),label: false, placeholder: "Taille max du groupe" %>
+  <%= f.input :difficulty, collection: ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Sportif'], label: false, placeholder: "Difficulté", class: "input-event"  %>
   <div class="container d-flex justify-content-around">
     <%= f.input :swim, label: "Baignade" %>
     <%= f.input :break, label: "Pause" %>
@@ -20,7 +20,7 @@
 
   <div class="container" data-controller="choose-hike">
   <section class="routes-results" data-event-route-target="results" id="myroutes" >
-  
+
 
   </section>
 
