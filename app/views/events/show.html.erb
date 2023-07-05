@@ -46,7 +46,6 @@ end
       <h6 class="participate">Vous participez à cet evenement </h6>
       <%= button_to "Se désinscrire de l'évenement", booking_path(@booking), method: :delete, class: 'show_btn_js' %>
       <% elsif current_user != @event.user %>
-      <%# VUE DES VISITEURS   %>
       <%= button_to "Rejoindre l'évenement", event_bookings_path(@event), method: :post, class: 'show_btn_js' %>
       <% end %>
     <div class="details_stats container row">
