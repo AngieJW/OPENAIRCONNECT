@@ -1,0 +1,62 @@
+.title {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 1em;
+
+  li {
+    color: #555;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  font-size: 1em;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: 0.25em;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-create-hike {
+  @extend .btn;
+}
+
+.btn-warning {
+  @extend .btn;
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+
+  &:hover {
+    color: #212529;
+    background-color: #ffca2c;
+    border-color: #ffca2c;
+  }
+
+  &:active {
+    color: #212529;
+    background-color: #ffd452;
+    border-color: #ffd452;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+  }
+}

@@ -17,13 +17,16 @@
 
   <%# BOUTON SUIVANT POUR RECHERCHER LES HIKES PAR RAPPORT AU LIEU %>
   <button data-action="click->event-route#displayRoutes" class="btn btn-warning m-2">Suivant</button>
+
   <div class="container" data-controller="choose-hike">
   <section class="routes-results" data-event-route-target="results" id="myroutes" >
+  
 
   </section>
 
   <section class="routes-results d-none" data-event-route-target="hidden" >
     <%= f.input :hike_id_strava,  :as => :hidden, :input_html => { value: "3109521128044970500", data: {choose_hike_target: :chosenHike} }   %>  <%# LA VALEUR EST L'ID DE LA ROUTE DE STRAVA%>
+
     <%= f.input :meeting_point, label: false, placeholder: "Point de rendez-vous"  %>
 
   <%# BOUTON POUR SOUMETTRE LE FORMULAIRE %>
