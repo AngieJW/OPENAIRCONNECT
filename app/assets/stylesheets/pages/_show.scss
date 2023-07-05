@@ -96,7 +96,7 @@
         }
         .list_items_btn {
           * {
-            color: black !important;
+            color: white !important;
             text-decoration: none;
           }
           padding: 10px;
@@ -136,13 +136,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $green;
+  background-color: $dark-green;
   bottom: 70px;
   right: 10px;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   text-decoration: none;
+  border: 2px solid white;
   i {
     color: white;
   }
