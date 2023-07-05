@@ -16,7 +16,7 @@ export default class extends Controller {
 
     this.resultsTarget.innerHTML = `Vos itinéraires pour ${this.locationTarget.value}`
 
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=94ae00bb8f3b1f1fd03c76deffc517849eced90a"
+    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=bde052ec7576cb89beb7b8ea9ee4aefb61567789"
 
     fetch(url)
       .then(response => response.json())

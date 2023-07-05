@@ -22,63 +22,56 @@ def hello(e)
       'PrisonMick.jpg'
     end
 end
-
-def difficult()
-  case @event.difficulty
-  when 'Facile'
-    'facile'
-  when 'Balade'
-    'balade'
-  when 'Intermédiaire'
-    'inter'
-  when 'Difficile'
-    'difficile'
-  when 'Sportif'
-    'sportif'
-  end
-end
   %>
 
 <section id="show" data-controller="weather">
-<div class="row m-0 show_hike_map position-relative">
-  <img src="/assets/<%= hello(@event) %>" class="col-12 p-0" alt='map show hike'>
-  <h2 class="position-absolute text-center bottom-0 m-0" data-weather-target="location"><%= @event.location %></h2>
-</div>
-<div class="show_event_details p-3">
-  <div class="row">
-    <div class="col-12 d-flex justify-content-between align-items-center">
-      <h6><i class="fa-solid fa-user"></i> <%= @event.bookings.count + 1 %> / <%= @event.group_size %></h6>
-      <h6 class="difficulty <%= difficult() %>">Difficulté : <%= @event.difficulty %></h6>
+  <div class="row m-0 show_hike_map position-relative">
+    <%= image_tag @event.hike.image_url,  class: 'col-12 p-0' %>
+    <h4 class="position-absolute text-center bottom-0 m-0" data-weather-target="location"><%= @event.location %></h4>
+  </div>
+  <div class="show_hike_details p-3">
+    <div class="hike_stats d-flex justify-content-between">
+    <p><i class="fa-solid fa-arrow-up-right-dots"></i> <strong> <%= @event.hike.elevation %> m</strong></p>
+    <p><i class="fa-solid fa-person-hiking"></i> <strong><%= @event.hike.distance.floor(1) %> km</strong></p>
+    </div>
+  <p><i class="fa-regular fa-clock"></i> <strong><%= (@event.hike.duration / 60 / 60) %>h<%= (@event.hike.duration / 60) % 60 %>min</strong><span class="average_time"> ( Temps estimé )</span></p>
+  </div>
+  <div class="show_event_details d-flex justify-content-center align-items-center flex-column">
+    <div class="show_owner_event">
+      <h6>Organisateur : <%= @event.user.first_name %>. <%= @event.user.last_name.first %>  <strong><%= '( Vous )' if current_user == @event.user %></strong></h6>
+    </div>
+    <% if current_user == @event.user %>
+      <%= link_to "Supprimer l'evenement", '#', class:'show_delete_js' %>
+      <% elsif !@mybookings.where(event: @event).empty? %>
+      <h6 class="participate">Vous participez à cet evenement </h6>
+      <%= button_to "Se désinscrire de l'évenement", booking_path(@booking), method: :delete, class: 'show_btn_js' %>
+      <% elsif current_user != @event.user %>
+      <%# VUE DES VISITEURS   %>
+      <%= button_to "Rejoindre l'évenement", event_bookings_path(@event), method: :post, class: 'show_btn_js' %>
+      <% end %>
+    <div class="details_stats container row">
+      <div class="col-12 d-flex flex-column">
+        <h6>Date de l'evenement : <span data-weather-target="date_event"><%= @event.meeting_date.strftime('%d/%m/%Y') %></span></h6>
+        <h6>Point de rendez-vous : <span><%= @event.meeting_point %></span></h6>
+        <h6>Horaire du point de rendez-vous : <span><%= @event.meeting_time.hour   %>h<%= @event.meeting_time.min %></span></h6>
+      </div>
+    </div>
+    <div class="details_stats container row">
+      <div class="event_stats col-12 d-flex justify-content-between align-items-center">
+        <% if @event.items.count > 0 %>
+        <h6 class="list_items_btn"><%= link_to event_items_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> - Voir <% end %></h6>
+        <% else %>
+        <h6 class="list_items_btn"><%= link_to new_event_item_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> - Ajouter <% end %></h6>
+        <% end %>
+        <h6><i class="fa-solid fa-user"></i> </span><%= @event.bookings.count + 1 %> / <%= @event.group_size %></span></h6>
+        <h6>météo :<span data-weather-target="icon" class="img_parent"></span></h6>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 d-flex justify-content-between align-items-center">
-      <% if @event.items.count > 0 %>
-      <h6><%= link_to "Liste", event_items_path(event_id: @event.id) %></h6>
-      <% else %>
-      <h6><%= link_to "Ajoutez une liste", new_event_item_path(event_id: @event.id) %></h6>
-      <% end %></h6>
-          <h6 data-weather-target="icon"></h6>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 d-flex justify-content-between align-items-center">
-      <h6 data-weather-target="date_event"><%= @event.meeting_date.strftime('%d/%m/%Y') %></h6>
-      <h6><%= @event.meeting_time.hour   %>h <%= @event.meeting_time.min %></h6>
-    </div>
+<% if (!@mybookings.where(event: @event).empty?) || (@event.user == current_user) %>
+  <%= link_to (event_chatroom_path(@event, @event.chatroom)), class: 'btn_message' do %>
+    <i class="fa-solid fa-message"></i>
+    <% end %>
+  <% end %>
 </div>
-
-      <%= link_to "Rejoindre la chatroom", event_chatroom_path(@event, @event.chatroom), class: 'btn btn-success' %>
-
-<%# VUE DE L'ORGANISATEUR DE L'EVENEMENT %>
-<% if current_user == @event.user %>
-<%= "Vous êtes l'organisateur de cet évènement" %>
-<%# VUE DES PARTICIPANTS A L'EVENEMENT %>
-<% elsif !@mybookings.where(event: @event).empty? %>
-<%= "Vous participez à cet évènement" %>
-<%= button_to "Se désinscrire de l'évenement", booking_path(@booking), method: :delete, class: 'btn btn-success' %>
-<% else %>
-<%# VUE DES VISITEURS   %>
-<%= button_to "Rejoindre l'évenement", event_bookings_path(@event), method: :post, class: 'btn btn-success' %>
-<% end %>
 </section>
