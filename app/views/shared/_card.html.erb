@@ -5,6 +5,9 @@
 <i class="fa-solid fa-bookmark fa-2xl bookmark_event"></i>
 <h4 class="bookmark_event_text">reservé</h4>
 <% end %>
+<% if item.user == current_user %>
+<h4 class="orga_event_text">organisateur</h4>
+<% end %>
   <div class="images position-relative" style="background-image: url('<%= item.hike.image_url %>')" class="col-xs-12 col-md-4">
     <div class="group_size"><i class="fa-solid fa-users fa-xs" style="color: #ffffff;"></i><span><%= item.bookings.count + 1 %> / <%= item.group_size %></span></div>
     <div class="event_hour"><span><%= item.meeting_time.hour %>h </span> <i class="fa-solid fa-clock fa-xs" style="color: #ffffff;"></i></div>
