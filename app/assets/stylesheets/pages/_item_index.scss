@@ -80,12 +80,12 @@
 }
 
 #list-title {
-  font-size: 15px;
-  font-family: Montserrat;
-  font-weight: lighter;
-  display: flex;
-  justify-content: center;
-  margin: 40px 0px 12px 0px;
+  background-color: $green;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
 }
 
 .list-headers {
@@ -171,14 +171,6 @@
 .submit-button {
   display: flex;
   justify-content: center;
-  input {
-    padding: 14px 28px;
-    border-radius: 6px;
-    border-style: none;
-    background: #EAE151;
-    color: #0B582E;
-    font-weight: normal;
-  }
 }
 
 .packed-quantity {

@@ -1,20 +1,24 @@
-<div class="container form-event" data-controller="event-route"><h1>Nouvel évènement</h1>
+<div class="container form-event" data-controller="event-route"><h1 class="home-headings">Nouvel évènement</h1>
 
 <%= simple_form_for @event , defaults: { input_html: { class: 'input-event' } }  do |f| %>
 
   <%= f.input :location, label: false, placeholder: "Lieu de l'évènement", :input_html => { data: { event_route_target: :location }}, class: "input-event" %>
-  <%= f.input :meeting_date, label: "Date", html5: true, input_html: { min: Date.today } %>
+  <%= f.input :meeting_date, label: 'Date', as: :string, input_html: { data: { controller: 'flatpickr' } } %>
+
   <%= f.input :meeting_time, label: "Heure", :minute_step => 15 %>
   <%= f.input :group_size, prompt: "Taille du groupe", collection: (2..20),label: false %>
   <%= f.input :difficulty, collection: ['Facile', 'Balade', 'Intermédiaire', 'Difficile', 'Sportif'], prompt: "Difficulté", label: false, class: "input-event"  %>
   <div class="container d-flex justify-content-around">
-    <%= f.input :swim, label: "Baignade" %>
-    <%= f.input :break, label: "Pause" %>
+    <input type="checkbox" id="swim" name="swim" unchecked class="radio">
+    <label for="swim">Baignade</label>
+    <input type="checkbox" id="break" name="break" unchecked class="radio">
+    <label for="break">Pauses</label>
+
   </div>
   <%= f.input :description, label: false, placeholder: "Description"  %>
 
   <%# BOUTON SUIVANT POUR RECHERCHER LES HIKES PAR RAPPORT AU LIEU %>
-  <button data-action="click->event-route#displayRoutes" class="btn btn-warning m-2">Suivant</button>
+  <button data-action="click->event-route#displayRoutes" class="openair_btn">Suivant</button>
 
   <div class="container" data-controller="choose-hike">
   <section class="routes-results" data-event-route-target="results" id="myroutes" >
@@ -28,9 +32,9 @@
     <%= f.input :meeting_point, label: false, placeholder: "Point de rendez-vous"  %>
 
   <%# BOUTON POUR SOUMETTRE LE FORMULAIRE %>
-  <%= f.button :submit, "Créer mon évènement", class:"btn btn-warning m-2" %>
+  <%= f.button :submit, "Créer mon évènement", class:"openair_btn" %>
   </section>
- </div>
+</div>
   <% end %>
 
 </div>

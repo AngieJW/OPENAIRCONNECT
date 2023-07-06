@@ -16,12 +16,12 @@
       <h6>Organisateur : <%= @event.user.first_name %>. <%= @event.user.last_name.first %>  <strong><%= '( Vous )' if current_user == @event.user %></strong></h6>
     </div>
     <% if current_user == @event.user %>
-      <%= link_to "Annuler l'évènement", '#', class:'show_delete_js' %>
+      <%= link_to "Annuler l'évènement", '#', class:'openair_btn destroy_event' %>
       <% elsif !@mybookings.where(event: @event).empty? %>
-      <h6 class="participate">Vous participez à cet évènement </h6>
-      <%= button_to "Se désinscrire", booking_path(@booking), method: :delete, class: 'show_btn_js' %>
+      <h6 class="participate participate_event">Vous participez à cet évènement </h6>
+      <%= button_to "Se désinscrire", booking_path(@booking), method: :delete, class: 'openair_btn participate_event' %>
       <% elsif current_user != @event.user %>
-      <%= button_to "Rejoindre l'évènement", event_bookings_path(@event), method: :post, class: 'show_btn_js' %>
+      <%= button_to "Rejoindre l'évènement", event_bookings_path(@event), method: :post, class: 'openair_btn participate_event' %>
       <% end %>
     <div class="details_stats col-12 container row">
       <div class="d-flex justify-content-between">
@@ -39,7 +39,7 @@
         </div>
           <div class="bool_stats text-center">
             <span data-weather-target="icon" class="d-flex justify-content-center align-items-center bool-true"></span>
-            <h6 class="d-flex flex-column"><span>Météo</span> <span>prevu</span></h6>
+            <h6 class="d-flex flex-column"><span>Météo</span> <span>prévue</span></h6>
           </div>
         <% if @event.swim == true %>
           <div class="bool_stats text-center">
@@ -56,9 +56,9 @@
         </div>
       </div>
     <div class="event_stats container row mx-auto">
-        <% if @event.items.count > 0 && !@mybookings.where(event: @event).empty? %>
+        <% if @event.items.count > 0 && !@mybookings.where(event: @event).empty? || @event.user == current_user %>
         <h6 class="col-12 list_items_btn btn-success"><%= link_to event_items_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> Voir la liste <% end %></h6>
-        <% elsif !@mybookings.where(event: @event).empty? %>
+        <% elsif !@mybookings.where(event: @event).empty? || @event.user == current_user %>
         <h6 class="col-12 list_items_btn"><%= link_to new_event_item_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> Ajouter une liste <% end %></h6>
         <% end %>
       </div> <!-- btn list -->

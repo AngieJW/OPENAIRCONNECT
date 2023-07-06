@@ -3,10 +3,13 @@
   min-height: 90vh;
   padding-bottom: 50px;
   @keyframes appear {
-    from {
+    0% {
       opacity: 0;
     }
-    to {
+    80% {
+      opacity: 0;
+    }
+    100% {
       opacity: 1;
     }
   }
@@ -43,7 +46,7 @@
     .show_owner_event {
       padding: 10px 0;
       border-bottom: 1px solid grey;
-      animation: appear 0.5s ease-in;
+      animation: appear 1.0s ease-in;
       h6 {
         margin: 0;
         font-size: 14px;
@@ -54,16 +57,12 @@
       margin: 0;
       padding: 5px;
     }
-    .show_delete_js {
-      background-color: rgb(210, 0, 0);
-      color: white;
-      padding: 5px;
-      margin-top: 5px;
-      font-size: 12px;
-      border-radius: 5px;
-      outline: none !important;
-      border: none !important;
-      text-decoration: none;
+    .destroy_event {
+      background-color: red !important;
+      animation: 1.5s appear ease-in;
+    }
+    .participate_event {
+      animation: 1.5s appear ease-in;
     }
     .show_btn_js {
       background-color: $yellow;
@@ -79,7 +78,7 @@
       margin: 5px 0;
       border-radius: 10px;
       background-color: rgb(138, 255, 138);
-      animation: appear 0.5s ease-in;
+      animation: appear 2s ease-in;
       h6 {
         font-size: 12px;
         margin: 0;
@@ -155,7 +154,7 @@
 .bool_events {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 10px 0;
   .bool_stats {
