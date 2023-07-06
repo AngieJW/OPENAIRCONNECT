@@ -3,6 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="event-route"
 export default class extends Controller {
   static targets = ["location", "results", "hidden"]
+  static values = { stravaApiKey: String}
+
+  // connect(){
+  //   console.log(this.values);
+  // }
 
   displayRoutes(event) {
     event.preventDefault();
@@ -11,8 +16,8 @@ export default class extends Controller {
     this.hiddenTarget.classList.remove("d-none");
 
     this.resultsTarget.innerHTML = `<h2 class="home-headings">Vos itinéraires pour ${this.locationTarget.value}</h2>`
-
-    const url = "https://www.strava.com/api/v3/athlete/routes?access_token=8aeed52615ba5dbc8c7943d88a29affafb0a48c3"
+    console.log(this.stravaApiKeyValue);
+    const url = `https://www.strava.com/api/v3/athlete/routes?access_token=${this.stravaApiKeyValue}`
 
 
     fetch(url)
