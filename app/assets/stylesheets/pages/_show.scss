@@ -54,12 +54,9 @@
     }
     .participate {
       font-size: 12px;
-      margin: 0;
+      margin: 5px 0 0 0;
       padding: 5px;
-    }
-    .destroy_event {
-      background-color: red !important;
-      animation: 1.5s appear ease-in;
+      border-top: 1px solid grey;
     }
     .participate_event {
       animation: 1.5s appear ease-in;
@@ -75,7 +72,7 @@
     }
     .details_stats {
       padding: 20px 0;
-      margin: 5px 0;
+      margin: 5px 0 20px 0;
       border-radius: 10px;
       background-color: rgb(138, 255, 138);
       animation: appear 2s ease-in;
@@ -179,4 +176,34 @@
       color: $green;
     }
   }
+}
+.users_list_head {
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0;
+}
+.users_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 12px;
+  .user_booking {
+    font-size: 12px;
+  }
+}
+
+.animation {
+  animation: 1.5s appear ease-in;
+}
+.destroy_event {
+  padding: 6px 10px;
+  font-size: 10px;
+  color: white;
+  border-radius: 30px;
+  box-shadow: 0 0 5px grey;
+  background-color: red !important;
+  animation: 1.5s appear ease-in;
+  font-weight: bold;
+  text-decoration: none;
 }

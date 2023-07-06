@@ -15,9 +15,15 @@
     <div class="show_owner_event">
       <h6>Organisateur : <%= @event.user.first_name %>. <%= @event.user.last_name.first %>  <strong><%= '( Vous )' if current_user == @event.user %></strong></h6>
     </div>
-    <% if current_user == @event.user %>
-      <%= link_to "Annuler l'évènement", '#', class:'openair_btn destroy_event' %>
-      <% elsif !@mybookings.where(event: @event).empty? %>
+    <div class="animation text-center">
+    <h6 class="users_list_head">Participants</h6>
+    <div class="users_list">
+      <% @bookings.each do |booking| %>
+      <div class="user_booking"><%= booking.user.first_name %> <%= booking.user.last_name %></div><% if(@bookings.last != booking) %>,&nbsp; <% end %>
+      <% end %>
+    </div>
+    </div>
+      <% if !@mybookings.where(event: @event).empty? %>
       <h6 class="participate participate_event">Vous participez à cet évènement </h6>
       <%= button_to "Se désinscrire", booking_path(@booking), method: :delete, class: 'openair_btn participate_event' %>
       <% elsif current_user != @event.user %>
@@ -69,5 +75,8 @@
     <i class="fa-solid fa-message"></i>
   <% end %>
 <% end %>
+</div>
+<div class="d-flex justify-content-center">
+  <%= link_to "Annuler l'évènement", '#', class:'destroy_event' %>
 </div>
 </section>

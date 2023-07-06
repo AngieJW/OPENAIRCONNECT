@@ -17,6 +17,7 @@ def index
 end
 
   def show
+    @bookings = @event.bookings
     @booking = Booking.find_by(user: current_user, event: @event)
     @mybookings = Booking.where(user: current_user)
     authorize @event
