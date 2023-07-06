@@ -72,6 +72,9 @@
         <h6 class="col-12 list_items_btn"><%= link_to new_event_item_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> Ajouter une liste <% end %></h6>
         <% end %>
       </div> <!-- btn list -->
+      <div>
+        <p class="para_desc_show"><%= @event.description %></p>
+      </div>
     </div>
   </div>
 <% if (!@mybookings.where(event: @event).empty?) || (@event.user == current_user) %>

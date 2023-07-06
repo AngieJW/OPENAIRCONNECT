@@ -54,19 +54,19 @@ nmb_of_loop.times do
   new_hike = Hike.create_from_strava(strava.sample)
   new_location = new_hike.title.split(':', 2)[0]
   new_event = Event.create!(meeting_date: new_date,
-                            meeting_time: Time.new(new_date.year, new_date.month, new_date.day, rand(5..12), [15, 30, 35, 00].sample, rand(1..59)),
+                            meeting_time: Time.new(new_date.year, new_date.month, new_date.day, rand(5..12), [15, 30, 35, 45, 55].sample, rand(1..59)),
                             meeting_point: meeting_pointlist.sample,
                             location: new_location,
                             group_size: groupsize,
                             swim: [true, false].sample,
                             break: [true, false].sample,
                             difficulty: difficultylist.sample,
-                            description: 'Bonjour à tous, cet venement est accessible à tous, on fera quelques pauses.',
+                            description: 'Bonjour à tous, cet evenement est accessible à tous, on fera quelques pauses à mi-distance.',
                             user: owner,
                             hike: new_hike)
   new_event.save!
   Chatroom.create!(event: new_event)
-  items = ['tente', 'chips', 'couverture', 'pain', 'fruits', 'chocolat', 'red bull x monster de la mort qui tue goût piment']
+  items = ['tente', 'chips', 'couverture', 'pain', 'fruits']
   items.each do |item|
     Item.create(name: item, quantity: (groupsize / 4) + rand(1..3), event: new_event)
   end
