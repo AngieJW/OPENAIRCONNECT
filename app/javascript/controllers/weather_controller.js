@@ -20,7 +20,12 @@ export default class extends Controller {
       fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[0]}&lon=${coords[1]}&appid=${apikey}&units=metric&cnt=${daydiff}`)
       .then(response => response.json())
       .then(data => {
-        iconParent.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`
+        if (data.weather[0].icon == '01d') {
+          iconParent.innerHTML = `<img src="/assets/sun.png" style="width: 30px; height: 30px;">`
+        }
+        else {
+          iconParent.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">`
+        }
         })
     });
   }

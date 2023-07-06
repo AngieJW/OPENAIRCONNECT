@@ -3,7 +3,7 @@
 <%= link_to (event_path(item)), class: 'row anchor_card' do %>
 <% if booked %>
 <i class="fa-solid fa-bookmark fa-2xl bookmark_event"></i>
-<h4 class="bookmark_event_text">reservé</h4>
+<h4 class="bookmark_event_text">réservé</h4>
 <% end %>
 <% if item.user == current_user %>
 <h4 class="orga_event_text">organisateur</h4>
