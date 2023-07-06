@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= "Evènement de #{@event.user.first_name} - OpenAirConnect" %>
+<% end %>
+
 <section id="show" data-controller="weather">
   <div class="row m-0 show_hike_map position-relative">
     <%= image_tag @event.hike.image_url,  class: 'col-12 p-0' %>

@@ -1,3 +1,6 @@
+<% content_for :title do %>
+  <%= "Créer un nouvel évènement - OpenAirConnect" %>
+<% end %>
 <div class="container form-event" data-controller="event-route" data-event-route-strava-api-key-value="<%=ENV['STRAVA_API_KEY'] %>"><h1 class="home-headings">Nouvel évènement</h1>
 
 <%= simple_form_for @event , defaults: { input_html: { class: 'input-event' } }  do |f| %>

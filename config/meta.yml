@@ -1,0 +1,5 @@
+meta_product_name: "OpenAirConnect"
+meta_title: "OpenAirConnect - L'organisation facilitée de tes randos"
+meta_description: "Une app pour créer des events de sorties. Ton cercle voit l'event proposé, peut s'inscrire, toute l'organisation s'y fait."
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@openairconnect"   # required for Twitter Cards
