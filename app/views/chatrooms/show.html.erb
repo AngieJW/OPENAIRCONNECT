@@ -17,7 +17,7 @@
       class: "d-flex", id: "new-message-form",
       url: event_chatroom_messages_path(@chatroom.event, @chatroom) do |f| %>
       <%= f.input :content, label: false, placeholder: "Message", wrapper_html: { class: "flex-grow-1" } %>
-      <%= f.submit "Envoyer", class: "btn btn-warning mb-3" %>
+      <%= f.submit "Envoyer", class: "openair_btn" %>
     <% end %>
   </div>
 </div>
