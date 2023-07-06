@@ -6,7 +6,7 @@
 <%= simple_form_for @event , defaults: { input_html: { class: 'input-event' } }  do |f| %>
 
   <%= f.input :location, label: false, placeholder: "Lieu de l'évènement", :input_html => { data: { event_route_target: :location }}, class: "input-event" %>
-  <%= f.input :meeting_date, as: :string, placeholder: 'date', label: false, input_html: { data: { controller: 'flatpickr' }, class: 'btn_search bttn_flat' } %>
+  <%= f.input :meeting_date, as: :string, placeholder: 'Date', label: false, input_html: { data: { controller: 'flatpickr' }, class: 'btn_search bttn_flat' } %>
 
   <%= f.input :meeting_time, placeholder: 'heure', label: false, :minute_step => 15 %>
   <%= f.input :group_size, prompt: "Taille du groupe", collection: (2..20),label: false %>
