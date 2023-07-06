@@ -5,11 +5,11 @@
   <%= simple_form_for [@event, @item], data: { controller: "add-input"} do |f| %>
   <div data-add-input-target="inputs">
     <div class="add-list-unit d-flex">
-      <div id="add-item-name">
-        <%= text_field_tag 'item[][name]', '', placeholder: 'Name' %>
+      <div class="add-item-name">
+        <%= text_field_tag 'item[][name]', '', placeholder: ' item', class:'input__name' %>
       </div>
-      <div id="add-item-quantity">
-        <%= text_field_tag 'item[][quantity]', '', placeholder: 'quantity' %>
+      <div class="add-item-quantity">
+        <%= text_field_tag 'item[][quantity]', '', placeholder: ' quantité', class:'input__quantity'%>
       </div>
     </div>
   </div>

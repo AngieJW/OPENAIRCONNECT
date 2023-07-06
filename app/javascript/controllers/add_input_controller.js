@@ -9,9 +9,14 @@ export default class extends Controller {
 
   addField() {
     console.log("clicked")
-    this.inputsTarget.insertAdjacentHTML("beforeend", `<div class="add-list-unit d-flex">
-    <input type="text" name="item[][name]" id="item__name" value="" placeholder="Name">
-    <input type="text" name="item[][quantity]" id="item__quantity" value="" placeholder="quantity">
-    </div>`)
+    this.inputsTarget.insertAdjacentHTML("beforeend",
+    `<div class="add-list-unit d-flex">
+        <div class="add-item-name">
+          <input type="text" name="item[][name]" class="input__name" value="" placeholder=" item">
+        </div>
+        <div class="add-item-quantity">
+          <input type="text" name="item[][quantity]" class="input__quantity" value="" placeholder=" quantité">
+        </div>
+    `)
   }
 }

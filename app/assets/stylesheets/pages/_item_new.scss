@@ -1,9 +1,17 @@
-#add-item-name{
-  width: 70%;
+.add-item-name{
+  width: 80%;
 }
 
-#add-item-quantity {
-  width: 30%;
+.add-item-quantity {
+  width: 23%;
+}
+
+.input__name::placeholder {
+  font-size: 14px; /* Adjust the font size to your preference */
+}
+
+.input__quantity::placeholder {
+  font-size: 14px; /* Adjust the font size to your preference */
 }
 
 .form-container {
@@ -12,6 +20,7 @@
 
 .add-list-unit {
   input {
+    width: 96%;
     padding: 10px 2px;
     border-radius: 8px;
     border-style: none;
@@ -25,6 +34,7 @@
   text-align: center;
   width: 47px;
   border-radius: 11px;
+  margin: 8px 5px 0px 0px;
 }
 
 .submit-button {
