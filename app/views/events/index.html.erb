@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= "Evènements autour de moi - OpenAirConnect" %>
+<% end %>
+
 <main data-controller="map">
 <section id="searchbar" class="container-fluid pt-2">
 <%= form_with url: events_path, method: :get, html: { class: 'row', data: { refresh_list_target: 'form' } } do |f| %>
