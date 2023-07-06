@@ -39,7 +39,7 @@
         </div>
           <div class="bool_stats text-center">
             <span data-weather-target="icon" class="d-flex justify-content-center align-items-center bool-true"></span>
-            <h6 class="d-flex flex-column"><span>Météo</span> <span>prévue</span></h6>
+            <h6 class="d-flex flex-column"><span>Météo</span></h6>
           </div>
         <% if @event.swim == true %>
           <div class="bool_stats text-center">
@@ -56,7 +56,7 @@
         </div>
       </div>
     <div class="event_stats container row mx-auto">
-        <% if @event.items.count > 0 && !@mybookings.where(event: @event).empty? || @event.user == current_user %>
+        <% if ( @event.items.count > 0 && !@mybookings.where(event: @event).empty? )|| (@event.items.count > 0 && @event.user == current_user ) %>
         <h6 class="col-12 list_items_btn btn-success"><%= link_to event_items_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> Voir la liste <% end %></h6>
         <% elsif !@mybookings.where(event: @event).empty? || @event.user == current_user %>
         <h6 class="col-12 list_items_btn"><%= link_to new_event_item_path(event_id: @event.id) do %><i class="fa-sharp fa-solid fa-clipboard"></i> Ajouter une liste <% end %></h6>

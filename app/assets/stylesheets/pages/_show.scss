@@ -164,7 +164,7 @@
     align-items: center;
     flex-direction: column;
     background-color:$green;
-    padding: 5px;
+    padding: 10px 5px 5px 5px;
     border-radius: 5px;
     h6 {
       color: white;
@@ -177,11 +177,6 @@
       width: 35px;
       font-size: 16px;
       color: $green;
-      img {
-        background-color: green;
-        border-radius: 50%;
-        width: 30px;
-      }
     }
   }
 }

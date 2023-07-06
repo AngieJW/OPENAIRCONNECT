@@ -1,22 +1,32 @@
 <main data-controller="map">
-<section id="searchbar" class="container p-3">
+<section id="searchbar" class="container-fluid pt-2">
 <%= form_with url: events_path, method: :get, html: { class: 'row', data: { refresh_list_target: 'form' } } do |f| %>
-  <div class="form-group col-md-5">
-    <%= f.label :query, 'Ville', class: 'form-label' %>
-    <%= f.text_field :query,
-                      class: "form-control",
-                      placeholder: 'ex: Aubagne',
-                      value: params[:query],
-                      data: {
-                        refresh_list_target: 'searchInput',
-                    } %>
+<div class="row container-fluid">
+    <div class="form-group col-7">
+      <%= f.text_field :query,
+                        class: "form-control btn_search",
+                        placeholder: 'lieu',
+                        value: params[:query],
+                        data: {
+                          refresh_list_target: 'searchInput',
+                      } %>
+    </div>
+    <div class="form-group col-5">
+    <% if(params[:date].nil?)
+        placedate = 'date'
+      else
+        placedate = params[:date]
+      end
+    %>
+      <%= date_field_tag :date,
+                          params[:date],
+                          class: 'form-control btn_search btn_flat',
+                          placeholder: placedate,
+                          data: { controller: 'flatpickr' } %>
+    </div>
   </div>
-  <div class="form-group col-md-5">
-    <%= label_tag :date, 'Date', class: 'form-label' %>
-    <%= date_field_tag :date, params[:date], class: 'form-control', data: { controller: 'flatpickr' } %>
-  </div>
-  <div class="form-group col-md-2 align-self-end">
-    <%= button_tag 'Rechercher', class: 'openair_btn', type: 'submit' %>
+  <div class="form-group col-12">
+    <%= button_tag 'Rechercher', class: 'openair_btn w-100', type: 'submit' %>
   </div>
 <% end %>
 <div data-refresh_list_target="list">

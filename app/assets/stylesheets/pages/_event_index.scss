@@ -1,3 +1,15 @@
 #event_index {
   background-color: $vanilla;
 }
+
+#searchbar {
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  background-color:#0b582e85;
+}
+
+.selected {
+  background-color: $green !important;
+  border: 1px solid $dark-green !important;
+}
