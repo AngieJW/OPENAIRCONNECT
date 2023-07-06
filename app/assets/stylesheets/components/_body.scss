@@ -2,8 +2,10 @@ body {
   padding-bottom: $navbar_footer_height;
   background-image: url('forest3.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow-y: scroll;
 }
 
 @media (max-width: 600px) {
