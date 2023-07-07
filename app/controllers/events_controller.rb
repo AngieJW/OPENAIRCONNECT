@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 # raise if params[:query].present? || params[:date].present?
 
 def index
-  @events = policy_scope(Event.all)
+  @events = policy_scope(Event.all.order(:meeting_date))
 
   if params[:query].present?
     @events = @events.where('location LIKE ?', "%#{params[:query]}%")

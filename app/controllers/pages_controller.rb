@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   def home
-    @events = policy_scope(Event)
+    @events = policy_scope(Event.all.order(:meeting_date))
   end
 
   def dashboard
